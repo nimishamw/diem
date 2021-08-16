@@ -1,7 +1,7 @@
 const darkCodeTheme = require('prism-react-renderer/themes/palenight');
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const objectAssignDeep = require('object-assign-deep');
-const universalConfig = require('@libra-opensource/diem-docusaurus-components/src/universal-config');
+const universalConfig = require('./src/@libra-opensource/diem-docusaurus-components/src/universal-config');
 
 module.exports = objectAssignDeep(universalConfig, {
   title: 'Diem Documentation',
@@ -23,7 +23,6 @@ module.exports = objectAssignDeep(universalConfig, {
       theme: lightCodeTheme,
       additionalLanguages: ['java'],
     },
-    sidebarCollapsible: false,
     siteID: 'developers',
   },
   plugins: [
@@ -43,7 +42,7 @@ module.exports = objectAssignDeep(universalConfig, {
       },
     ],
     require.resolve(
-      '@libra-opensource/diem-docusaurus-components/src/plugin-segment',
+      './src/@libra-opensource/diem-docusaurus-components/src/plugin-segment',
     ),
   ],
   presets: [
@@ -58,11 +57,11 @@ module.exports = objectAssignDeep(universalConfig, {
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/diem/diem/edit/main/developers.diem.com/blog/',
+          editUrl: 'https://github.com/diem/diem/edit/main/developers.diem.com/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+          sidebarCollapsible: false,
         },
       },
     ],

@@ -1,0 +1,377 @@
+@value large-tablet-breakpoint-query from '~diem-docusaurus-components/src/variables.module.css';
+@value large-tablet-breakpoint-max-query from '~diem-docusaurus-components/src/variables.module.css';
+
+/* Search */
+:global(.navbar__search) {
+  --search-width: calc(100% - (var(--sidebar-horizontal-padding) * 2));
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--default-border-color);
+  padding-left: 0;
+}
+
+:global(.ds-dropdown-menu) {
+  min-width: var(--search-width) !important;
+}
+
+:global(.algolia-autocomplete, #search_input_react) {
+  width: 100%;
+}
+
+:global(.algolia-autocomplete) {
+  width: calc(100% - 10px);
+}
+
+:global(#search_input_react) {
+  --icon-size: 16px;
+  background-color: inherit !important;
+  background-repeat: no-repeat !important;
+  background-size: var(--icon-size) var(--icon-size) !important;
+  background-position: 0 50% !important;
+  border: 0;
+  color: var(--primary-gray);
+  font-size: 18px;
+  height: 58px;
+  padding-left: calc(var(--icon-size) + 10px) !important;
+  -webkit-appearance: none;
+  background-image: url(/img/shared/search.svg) !important;
+}
+
+:global(#search_input_react:focus) {
+  outline: none;
+}
+
+:global(.navbar__search) > :global(span.search-icon) {
+  display: none !important;
+}
+
+.sidebar {
+  --sidebar-gray: var(--primary-gray);
+  font-size: 10px; /* Basis for em */
+  outline: none;
+}
+
+.menu {
+  font-weight: 400;
+  padding: 0 20px 0 var(--sidebar-horizontal-padding);
+}
+
+.menu:global(.menu--show) {
+  padding: 1rem;
+}
+
+.menu:global(.menu--show) .menuList {
+  display: inherit;
+}
+
+.sidebar .menu:not(:global(.menu--show)) .menuList.topLevel,
+.sidebar .menu:not(:global(.menu--show)) :global(#search_input_react) {
+  display: none;
+  opacity: 0;
+}
+
+.menu .listItem {
+  display: flex;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.menuList {
+  display: flex;
+  padding-left: 0;
+}
+
+.menu .menuList:not(.topLevel) {
+  flex-direction: column;
+  padding-top: 12px;
+}
+
+.menu .menuList:not(.topLevel) span {
+  line-height: 1.1;
+}
+
+/* Selects only the first level of categories specified in the sidebar */
+.menu > .menuList > .listItem > .menuList {
+  margin-left: 0;
+  padding-top: 0;
+}
+
+.category:first-child {
+  margin-top: 0;
+}
+
+.sidebar .menuList > .categoryTitle {
+  margin: 0;
+}
+
+.sidebar .menuList > .categoryTitle > .menuLink {
+  align-self: flex-start;
+}
+
+.sidebar .menuList > .categoryTitle > .menuLink:hover {
+  background-color: inherit;
+  cursor: default;
+}
+
+.menuList:not(.topLevel) {
+  margin-bottom: 3.1em;
+}
+
+.menuList > .categoryTitle > .menuLink {
+  color: var(--sidebar-gray);
+  display: flex;
+  font-size: 1.5em;
+  letter-spacing: 0.6px;
+  margin-bottom: 0.8em;
+  text-transform: uppercase;
+}
+
+.menu .menuLink {
+  align-self: center;
+  color: var(--sidebar-primary-title);
+  display: flex;
+  font-size: 1.8em;
+  font-weight: 500;
+  justify-content: space-between;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu span.menuLink {
+  cursor: default;
+}
+
+.menuLink:focus {
+  outline: none;
+}
+
+.menuLink[target="_blank"]::after {
+  background-image: url(/img/external-link.png);
+  background-position: 0px 6px;
+  background-repeat: no-repeat;
+  content: "";
+  height: 20px;
+  margin-left: 5px;
+  width: 20px;
+}
+
+.menuLink {
+  line-height: 20px;
+}
+
+.menuLink span {
+  align-self: center;
+  display: block;
+  padding-top: 2px;
+}
+
+.active {
+  color: var(--accent-highlight) !important;
+}
+
+.sidebar .listItem > .menuLink:hover {
+  background-color: inherit;
+}
+
+.listItem > .menuLink:not(span):hover,
+.listItem > .menuLink:not(span):focus,
+.backToHome:hover span,
+.backToHome a:focus span{
+  color: var(--accent-highlight) !important;
+}
+
+.menu .withBackgroundImage,
+.menu .menuLink.withBackgroundImage {
+  --icon-size: 23px;
+  background-position: 1px 0;
+  background-repeat: no-repeat;
+  background-size: var(--icon-size) var(--icon-size);
+  min-height: var(--icon-size);
+  padding-left: calc(var(--icon-size) + 18px);
+}
+
+/* Passed in dynamically via sidebar config */
+.menu .home {
+  margin-top: 3em;
+  margin-bottom: 2.3em;
+}
+
+.menu .home span {
+  font-family: var(--font-normal);
+  font-weight: normal;
+}
+
+.menu .backToHome {
+  margin-top: 33px;
+}
+
+.menu .backToHome .withBackgroundImage {
+  --icon-size: 15px;
+  background-position: 0 1px;
+  padding-left: calc(var(--icon-size) + 0.5em);
+}
+
+.menu .backToHome span {
+  color: var(--sidebar-gray);
+  font-size: 18px;
+  font-weight: normal;
+  margin-top: -2px;
+  padding-top: 0;
+}
+
+.menu .iconIndented.withBackgroundImage,
+.menu .iconIndented .withBackgroundImage,
+.menu .home .withBackgroundImage {
+  background-position: 8px 0;
+  padding-left: calc(var(--icon-size) + 1.2em);
+}
+
+.menu .categoryLabel {
+  margin-top: 2.5em;
+  margin-bottom: 2.3em;
+}
+
+.menu .categoryIndex {
+  margin-bottom: 2.5em;
+}
+
+.menu .categoryIndex .menuLink {
+  font-weight: normal;
+  font-family: var(--font-normal);
+}
+
+.standaloneReferenceLink {
+  margin: 12px 0 !important;
+}
+
+.referenceVerticalSpacing {
+  margin-top: 2.5em !important;
+}
+
+.listTitle.withBackgroundImage,
+.menu .categoryLabel .withBackgroundImage {
+  padding-left: 45px;
+}
+
+.listTitle .menuList {
+  margin-bottom: 1.3em;
+}
+
+.listTitle .menuLink {
+  color: var(--sidebar-gray);
+  font-size: 1.6em;
+  font-weight: 400;
+  line-height: 1.1;
+  padding-top: 7px;
+}
+
+.menuList:not(.topLevel) .listItem:not(.listTitle) {
+  margin: 0.55em 0;
+}
+
+.menu .listTitle .listItem {
+  margin: 0;
+}
+
+.menuList.topLevel .listTitle .listItem {
+  margin: 0 !important;
+}
+
+.listTitle .listItem:not(:last-child) .menuLink {
+  padding-bottom: 3px;
+}
+
+.listTitle .categoryTitle > .menuLink {
+  color: var(--sidenav-secondary-category-title);
+  font-size: 1.6em;
+  letter-spacing: 0;
+  margin-bottom: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.5em;
+  text-transform: inherit;
+}
+
+@media (max-width: 360px) {
+  /* Corresponds with the breakpoint algolia has put in */
+  :global(#search_input_react) {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Corresponds with the breakpoint algolia has put in */
+  .sidebar :global(.algolia-autocomplete) :global(.ds-dropdown-menu) {
+    top: 65px !important;
+  }
+
+  .sidebar :global(.algolia-autocomplete) :global(.ds-dropdown-menu:before) {
+    right: 1rem;
+  }
+}
+
+@media large-tablet-breakpoint-max-query {
+  .menu :global(.menu__button) {
+    align-items: center;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    height: 40px;
+    right: 2rem !important;
+    width: 64px;
+  }
+}
+
+@media large-tablet-breakpoint-query {
+  .sidebar {
+    height: calc(100vh - var(--total-nav-height));
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+    margin-bottom: 0.5px !important;
+  }
+
+  .sidebar .menu:not(:global(.menu--show)) .menuList.topLevel,
+  .sidebar .menu:not(:global(.menu--show)) :global(#search_input_react) {
+    display: block;
+    opacity: 1;
+  }
+
+  :global(.ds-dropdown-menu) {
+    width: 100%;
+  }
+
+  :global(.navbar__search) {
+    /*
+     * Allow for a border that traverses the width of the
+     * whole sidebar without the need for absolute positioning
+     */
+    margin-left: calc(-1 * var(--sidebar-horizontal-padding));
+    padding-left: calc(var(--sidebar-horizontal-padding));
+    width: calc(100% + 2 * var(--sidebar-horizontal-padding));
+  }
+}
+
+/* This has to go down here, otherwise it breaks prevents all other styles */
+::placeholder {
+  color: var(--search-placeholder-color);
+}
+
+::-ms-input-placeholder {
+  color: var(--search-placeholder-color);
+}
+
+html {
+  --search-placeholder-color: var(--primary-gray);
+  --sidebar-gray: var(--gray-5);
+  --sidebar-horizontal-padding: 30px;
+  --sidebar-primary-title: #354052;
+  --sidenav-secondary-category-title: black;
+}
+
+html[data-theme="dark"] {
+  --search-placeholder-color: var(--gray-2);
+  --sidebar-gray: var(--gray-1);
+  --sidebar-primary-title: var(--gray-2);
+  --sidenav-secondary-category-title: var(--accent-highlight);
+}

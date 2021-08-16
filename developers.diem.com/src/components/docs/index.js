@@ -1,8 +1,8 @@
 import BlogRedirect from './BlogRedirect';
 import Cards from './Cards';
-import CLI from './CLI';
 import Excerpt from './Excerpt';
 import Feedback from './Feedback';
+import Glossary from './Glossary';
 import MarketingModule from './MarketingModule';
 import MultiStepSnippet from './MultiStepSnippet';
 import MultiStepTabItem from './MultiStepTabItem';
@@ -14,9 +14,9 @@ import WaveBackground from './WaveBackground';
 export default {
   BlogRedirect,
   ...Cards,
-  CLI,
   Excerpt,
   Feedback,
+  Glossary,
   MarketingModule,
   MultiStepSnippet,
   MultiStepTabItem,

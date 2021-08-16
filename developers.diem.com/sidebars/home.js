@@ -11,6 +11,21 @@ const Sidebar = [
     },
   },
   {
+      type: 'category',
+      label: 'Readme Backup',
+      items: [
+        {
+          type: 'ref',
+          id: 'readme.com/v1.1.1/Basics/basics-accounts',
+          customProps: {
+            classNames: ['iconIndented'],
+            icon: 'img/core-contributors.svg',
+            iconDark: 'img/core-contributors-dark.svg',
+          },
+        },
+      ]
+  },
+  {
     type: 'category',
     label: 'Topics',
     items: [

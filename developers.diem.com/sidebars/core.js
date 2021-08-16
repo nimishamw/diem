@@ -36,7 +36,6 @@ const Sidebar = [
       href: 'https://github.com/libra/client-sdk-go',
       label: 'Go SDK',
     },
-    'core/diem-cli',
   ]),
   category('Tutorials', [
     'core/run-local-network',
