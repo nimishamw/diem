@@ -81,21 +81,10 @@ If the on-chain “BobCoins” to Diem Coins exchange rate is 2.1 and the on-cha
 Then, Bob’s transaction would be ranked higher than Alice’s.
 
 ## Core design principles
-
 Three central principles have motivated the design of gas in Move: 
-[block:parameters]
-{
-  "data": {
-    "0-0": "Move is Turing complete",
-    "0-1": "Because of this, determining if a given Move program terminates cannot be decided statically. However, by ensuring that \n  - every bytecode instruction has a non-zero gas consumption, and \n  - the amount of gas that any program can be started with is bounded, \n  we get this termination property for programs almost free of cost.",
-    "1-0": "Discourage DDoS attacks and encourage judicious use of the DPN",
-    "1-1": "The gas usage for a transaction is correlated with resource consumption such as the time taken to execute a transaction. The gas price, and hence the transaction fee, should rise-and-fall with contention in the DPN. At launch, we expect gas prices to be at or near zero. But in periods of high contention, you can prioritize transactions using the gas price, which will encourage sending only needed transactions during such times.",
-    "2-0": "The resource usage of a program needs to be agreed upon in consensus",
-    "2-1": "This means that the method of accounting for resource consumption needs to be deterministic. This rules out other means of tracking resource usage, such as cycle counters or any type of timing-based methods as they are not guaranteed to be deterministic across nodes. The method for tracking resource usage needs to be abstract.",
-    "h-0": "Design Principle",
-    "h-1": "Description"
-  },
-  "cols": 2,
-  "rows": 3
-}
-[/block]
+
+| Design Principle | Description |
+| ---------- | ---------- |
+| Move is Turing complete | Because of this, determining if a given Move program terminates cannot be decided statically. However, by ensuring that <br/>  - every bytecode instruction has a non-zero gas consumption, and <br/>  - the amount of gas that any program can be started with is bounded, <br/>  we get this termination property for programs almost free of cost. |
+| Discourage DDoS attacks and encourage judicious use of the DPN | The gas usage for a transaction is correlated with resource consumption such as the time taken to execute a transaction. The gas price, and hence the transaction fee, should rise-and-fall with contention in the DPN. At launch, we expect gas prices to be at or near zero. But in periods of high contention, you can prioritize transactions using the gas price, which will encourage sending only needed transactions during such times. |
+| The resource usage of a program needs to be agreed upon in consensus | This means that the method of accounting for resource consumption needs to be deterministic. This rules out other means of tracking resource usage, such as cycle counters or any type of timing-based methods as they are not guaranteed to be deterministic across nodes. The method for tracking resource usage needs to be abstract. |

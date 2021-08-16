@@ -105,22 +105,12 @@ Learn more about using gas to specify a transaction fee [here](doc:basics-gas-tx
 
 To compute a transaction fee, you can choose the following gas values: 
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Definition",
-    "h-1": "Set value",
-    "0-0": "`max_gas_units`",
-    "0-1": "The maximum amount of gas units that can be used to execute a transaction. This bounds the computational resources that can be consumed by a transaction. To help you choose a value for `max_gas_amount`, we will be publishing a list of suggested `max_gas_amount` for each transaction before launch. We will be keeping the current lockdown restrictions the world-over in consideration for this list.<br/><br/>On testnet: `600 < max_gas_amount ≤ 2,000,000`",
-    "1-0": "`gas_price`",
-    "1-1": "The number of gas units used in the specified gas currency. Gas price is a way to move from gas units, the abstract units of resource consumption the virtual machine (VM) uses, into a transaction fee in the specified gas currency. For launch, you can set the `gas_price` to be zero or almost zero, allowing you to submit transactions without high charges. This is because the network shouldn’t have high contention.<br/><br/>On testnet: `0 ≤ gas_price ≤ 10,000`",
-    "2-0": "`gas_currency_code`",
-    "2-1": "This is the currency of the transaction fee charged to the client.  The `gas_currency` must be a registered currency on-chain (\"XUS\" on testnet), and must be one of the held currencies of the sending account. E.g. setting the `gas_currency` to \"Coin3\" would cause the transaction to be rejected since Coin3 is not a registered currency on-chain, and the sending account does not hold that currency."
-  },
-  "cols": 2,
-  "rows": 3
-}
-[/block]
+
+| Definition | Set value |
+| ---------- | ---------- |
+| `max_gas_units` | The maximum amount of gas units that can be used to execute a transaction. This bounds the computational resources that can be consumed by a transaction. To help you choose a value for `max_gas_amount`, we will be publishing a list of suggested `max_gas_amount` for each transaction before launch. We will be keeping the current lockdown restrictions the world-over in consideration for this list.<br/><br/>On testnet: `600 < max_gas_amount ≤ 2,000,000` |
+| `gas_price` | The number of gas units used in the specified gas currency. Gas price is a way to move from gas units, the abstract units of resource consumption the virtual machine (VM) uses, into a transaction fee in the specified gas currency. For launch, you can set the `gas_price` to be zero or almost zero, allowing you to submit transactions without high charges. This is because the network shouldn’t have high contention.<br/><br/>On testnet: `0 ≤ gas_price ≤ 10,000` |
+| `gas_currency_code` | This is the currency of the transaction fee charged to the client.  The `gas_currency` must be a registered currency on-chain ("XUS" on testnet), and must be one of the held currencies of the sending account. E.g. setting the `gas_currency` to "Coin3" would cause the transaction to be rejected since Coin3 is not a registered currency on-chain, and the sending account does not hold that currency. |
 ## Accept Direct Payments
 
 If you're a Regulated VASP who wants to build and integrate your own merchant store, you will need to set up direct payments to receive payments and handle refunds. 

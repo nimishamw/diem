@@ -18,53 +18,26 @@ The Diem Reference Merchant is available as a web application. All web UI resour
 ## Merchant front-end module
 
 The merchant front-end module demonstrates the merchant’s online store UI. It communicates with the merchant back-end and the VASP module to carry out its commands.
-[block:parameters]
-{
-  "data": {
-    "h-0": "Name",
-    "h-1": "Description",
-    "0-0": "Implementation",
-    "1-0": "Extend functionality",
-    "0-1": "The Merchant front-end is a React app written in TypeScript.",
-    "1-1": "Use a robust e-commerce solution for a reliable online store implementation."
-  },
-  "cols": 2,
-  "rows": 2
-}
-[/block]
+
+| Name | Description |
+| ---------- | ---------- |
+| Implementation | The Merchant front-end is a React app written in TypeScript. |
+| Extend functionality | Use a robust e-commerce solution for a reliable online store implementation. |
 ## Merchant back-end module
 
 The Merchant back-end is a service performing all the product management and payment operations for the merchant front-end.
-[block:parameters]
-{
-  "data": {
-    "h-0": "Name",
-    "h-1": "Description",
-    "0-0": "Implementation",
-    "1-0": "Extend Functionality",
-    "0-1": "The merchant back-end module is implemented in Python, manifesting a RESTful API using Flask.",
-    "1-1": "The merchant back-end would usually be a part of a complete e-commerce solution, together with the front-end."
-  },
-  "cols": 2,
-  "rows": 2
-}
-[/block]
+
+| Name | Description |
+| ---------- | ---------- |
+| Implementation | The merchant back-end module is implemented in Python, manifesting a RESTful API using Flask. |
+| Extend Functionality | The merchant back-end would usually be a part of a complete e-commerce solution, together with the front-end. |
 ## VASP module
 The VASP module is an autonomous service that performs all the Diem-related operations for the merchant back-end and front-end modules.
-[block:parameters]
-{
-  "data": {
-    "h-0": "Name",
-    "h-1": "Description",
-    "0-0": "Implementation",
-    "0-1": "The VASP module is implemented in Python, manifesting a RESTful API using Flask; it uses Postgresql for data persistence.",
-    "1-0": "Extend functionality",
-    "1-1": "The proposed VASP reference implementation is centered on serving an online retailer. However, VASPs could supply a wide range of services, including wallets, liquidity, trading, and more."
-  },
-  "cols": 2,
-  "rows": 2
-}
-[/block]
+
+| Name | Description |
+| ---------- | ---------- |
+| Implementation | The VASP module is implemented in Python, manifesting a RESTful API using Flask; it uses Postgresql for data persistence. |
+| Extend functionality | The proposed VASP reference implementation is centered on serving an online retailer. However, VASPs could supply a wide range of services, including wallets, liquidity, trading, and more. |
 ## Localization
 
 The UI is fully translatable using standard React i18n library [react-i18next](https://react.i18next.com/). All texts are mapped in JSON files located at front-end/src/locales/LANGUAGE. 

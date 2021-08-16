@@ -19,24 +19,13 @@ The Reference Wallet is available as a web and mobile application.
 ### API methods
 
 The following API methods provide the backend interface for frontend client requests. The dedicated Flask blueprint under `wallet/routes/cico.py` handles all calls related to liquidity. 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Methods",
-    "h-1": "Description",
-    "0-0": "`GET /account/rates`",
-    "0-1": "Return to the client all available conversion rates between currency pairs.",
-    "1-0": "`POST /account/quotes`",
-    "1-1": "Request for a quote for a currency pair exchange. Return a quote id.",
-    "2-0": "`POST /account/quotes/<quote_id>/actions/execute`",
-    "2-1": "Execute the quote. At the end of execution, user balance will reflect the currency exchange.",
-    "3-0": "`GET /account/quotes/<quote_id>`",
-    "3-1": "Return the quote execution status."
-  },
-  "cols": 2,
-  "rows": 4
-}
-[/block]
+
+| Methods | Description |
+| ---------- | ---------- |
+| `GET /account/rates` | Return to the client all available conversion rates between currency pairs. |
+| `POST /account/quotes` | Request for a quote for a currency pair exchange. Return a quote id. |
+| `POST /account/quotes/<quote_id>/actions/execute` | Execute the quote. At the end of execution, user balance will reflect the currency exchange. |
+| `GET /account/quotes/<quote_id>` | Return the quote execution status. |
 ### Liquidity module
 
 This module is located under `wallet/liquidity.`
@@ -137,33 +126,15 @@ In the DPN, the transactions are done between VASPs and then allocated to the en
 ## Custody module
 
 The Custody module handles crafting and signing transactions. Once a VASP is ready to settle a transaction on-chain, the custody module needs to craft the transactions, sign with its private key, and return the signed transaction. The custody module should be the only service that has access to the wallet’s private key.
-[block:parameters]
-{
-  "data": {
-    "h-0": "Implementation",
-    "h-1": "Description",
-    "0-0": "Private Keys",
-    "0-1": "For the local development of the Reference Wallet, the private key is randomly generated on instantiation of the wallet app. It can also take a private key via environment variable as `_CUSTODIAL_PRIVATE_KEY_`.\n\nFor this demo wallet, we do not show an implementation of providing secure storage of private keys. Custody uses the `pydiem` library to create signed transactions.",
-    "1-0": "",
-    "1-1": ""
-  },
-  "cols": 2,
-  "rows": 1
-}
-[/block]
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Extend Functionality",
-    "h-1": "Description",
-    "0-0": "Custody solution",
-    "0-1": "A robust custody solution should be plugged in for a production-level product."
-  },
-  "cols": 2,
-  "rows": 1
-}
-[/block]
+| Implementation | Description |
+| ---------- | ---------- |
+| Private Keys | For the local development of the Reference Wallet, the private key is randomly generated on instantiation of the wallet app. It can also take a private key via environment variable as `_CUSTODIAL_PRIVATE_KEY_`.<br/><br/>For this demo wallet, we do not show an implementation of providing secure storage of private keys. Custody uses the `pydiem` library to create signed transactions. |
+
+
+| Extend Functionality | Description |
+| ---------- | ---------- |
+| Custody solution | A robust custody solution should be plugged in for a production-level product. |
 ## Liquidity inventory setup
 
 The liquidity inventory setup is part of the backend startup sequence. At start, an internal inventory user is created. This internal user manages the balance of the internal custody wallet inventory. After its creation, the backend [“buys” its initial Diem Coins from the external liquidity provider](doc:diem-reference-wallet#diem-coin-sourcing). The custodial wallet provider directs the liquidity provider to send purchased Diem Coins to the custody wallet’s Diem blockchain address.
@@ -250,37 +221,18 @@ Login and authentication deals with all logic related to a user creating a new a
 The main features of this module's implementation in the Reference Wallet include:
 
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Implementation",
-    "h-1": "Description",
-    "0-0": "User registration",
-    "0-1": "  * During registration, the user will choose a unique username and password, and provide information such as name, date of birth, and other Know Your Customer (KYC) related information.\n  * Each user has a unique user ID (integer) and a unique username (string). ",
-    "1-0": "Sign in and sign out",
-    "1-1": "*   User signs in with the username and password.\n  *   The password is hashed using a simple Python hashlib.\n  *   Each sign in generates a new user session token. And, each sign out deletes the user session token.",
-    "2-0": "Session management",
-    "2-1": "  *   When a user creates a new account or signs in, the client is provided with a bearer token. This bearer token is a UUID string and will expire after a certain period of time for user security.\n  *   The bearer token is stored in the token database, along with the user ID and expiration time.\n  *   Whenever the client makes an API call, they need to have the bearer token in the request header. The validity of the token is checked with every call.\n  *   The token is valid if it exists in the token database and if it has not expired.\n  *   If the token has expired, an unauthorized error is returned in the API call.\n  *   Each valid API call extends the expiration of the token. "
-  },
-  "cols": 2,
-  "rows": 3
-}
-[/block]
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Extend Functionality",
-    "h-1": "Description",
-    "0-0": "Session management",
-    "1-0": "Login and authentication",
-    "0-1": "The bearer token is just one way of doing session management. Other forms of authentication can be used to make server calls more secure.",
-    "1-1": "Login and authentication can be made more secure by incorporating two-factor authentication."
-  },
-  "cols": 2,
-  "rows": 2
-}
-[/block]
+| Implementation | Description |
+| ---------- | ---------- |
+| User registration |   * During registration, the user will choose a unique username and password, and provide information such as name, date of birth, and other Know Your Customer (KYC) related information.<br/>  * Each user has a unique user ID (integer) and a unique username (string).  |
+| Sign in and sign out | *   User signs in with the username and password.<br/>  *   The password is hashed using a simple Python hashlib.<br/>  *   Each sign in generates a new user session token. And, each sign out deletes the user session token. |
+| Session management |   *   When a user creates a new account or signs in, the client is provided with a bearer token. This bearer token is a UUID string and will expire after a certain period of time for user security.<br/>  *   The bearer token is stored in the token database, along with the user ID and expiration time.<br/>  *   Whenever the client makes an API call, they need to have the bearer token in the request header. The validity of the token is checked with every call.<br/>  *   The token is valid if it exists in the token database and if it has not expired.<br/>  *   If the token has expired, an unauthorized error is returned in the API call.<br/>  *   Each valid API call extends the expiration of the token.  |
+
+
+| Extend Functionality | Description |
+| ---------- | ---------- |
+| Session management | The bearer token is just one way of doing session management. Other forms of authentication can be used to make server calls more secure. |
+| Login and authentication | Login and authentication can be made more secure by incorporating two-factor authentication. |
 #### GitHub repository
 https://github.com/diem/reference-wallet/blob/master/backend/wallet/services/account.py
 
@@ -290,44 +242,20 @@ https://github.com/diem/reference-wallet/blob/master/backend/wallet/services/acc
 PubSub allows us to continually poll the blockchain and respond to events on-chain. Specifically, for the Reference Wallet, we’re listening to payments made to a VASPs’ public on-chain addresses.
 
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Implementation",
-    "h-1": "Description",
-    "0-0": "Pubsub module",
-    "0-1": "Our pubsub module is based on an open source project called pubsub_proxy, a lightweight wrapper around `pydiem`. For the Reference Wallet, we redirect all events delivered by pubsub_proxy directly to our wallet service’s on-chain module for internal processing.\n\nPubSub depends on the `PUBSUB_ADDR` environment variable."
-  },
-  "cols": 2,
-  "rows": 1
-}
-[/block]
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Extend Functionality",
-    "h-1": "Description",
-    "0-0": "Pubsub module",
-    "0-1": "Pubsub_proxy is designed to be extensible. You can extend BasePubSubClient to determine how to handle incoming payment events."
-  },
-  "cols": 2,
-  "rows": 1
-}
-[/block]
+| Implementation | Description |
+| ---------- | ---------- |
+| Pubsub module | Our pubsub module is based on an open source project called pubsub_proxy, a lightweight wrapper around `pydiem`. For the Reference Wallet, we redirect all events delivered by pubsub_proxy directly to our wallet service’s on-chain module for internal processing.<br/><br/>PubSub depends on the `PUBSUB_ADDR` environment variable. |
+
+
+| Extend Functionality | Description |
+| ---------- | ---------- |
+| Pubsub module | Pubsub_proxy is designed to be extensible. You can extend BasePubSubClient to determine how to handle incoming payment events. |
 ## Risk module
-[block:parameters]
-{
-  "data": {
-    "h-0": "Implementation",
-    "h-1": "Description",
-    "0-1": "The Reference Wallet has a very simple risk check that happens synchronously with each transaction; it is a mocked out API that is simply based on the amount of the transaction. In production, the VASP will need to determine the risk check that is necessary to comply with AML and fraud prevention.",
-    "0-0": "Risk module"
-  },
-  "cols": 2,
-  "rows": 1
-}
-[/block]
+
+| Implementation | Description |
+| ---------- | ---------- |
+| Risk module | The Reference Wallet has a very simple risk check that happens synchronously with each transaction; it is a mocked out API that is simply based on the amount of the transaction. In production, the VASP will need to determine the risk check that is necessary to comply with AML and fraud prevention. |
 ## Transaction workflows
 
 A VASP needs to be able to handle the following on-chain transactions:
@@ -336,33 +264,16 @@ A VASP needs to be able to handle the following on-chain transactions:
 * Send and receive funds externally to a user of another VASP.
 
 The Reference Wallet shows the workflow of each of these transaction types.
-[block:parameters]
-{
-  "data": {
-    "h-0": "Implementation",
-    "h-1": "Description",
-    "0-1": "Internal P2P transfer entails a simple balance check and storage update, and does not require any on-chain settlement.",
-    "1-1": "External P2P transfers are transactions between users in different VASP networks. This type of transaction requires an on-chain settlement. \n\nFor any amount less than the amount needed for compliance, a VASP can directly send the transaction on-chain without doing any KYC validation. This type of transaction uses `pydiem`.",
-    "0-0": "Internal P2P transfer",
-    "1-0": "External P2P Transfer"
-  },
-  "cols": 2,
-  "rows": 2
-}
-[/block]
 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Extend Functionality",
-    "h-1": "Description",
-    "0-1": "Currently the Reference Wallet only implements three types of transactions. However, as the scope increases, other types of transactions, such as merchant pull request flow, could be added to extend the functionality of the Reference Wallet.",
-    "0-0": "Types of transactions"
-  },
-  "cols": 2,
-  "rows": 1
-}
-[/block]
+| Implementation | Description |
+| ---------- | ---------- |
+| Internal P2P transfer | Internal P2P transfer entails a simple balance check and storage update, and does not require any on-chain settlement. |
+| External P2P Transfer | External P2P transfers are transactions between users in different VASP networks. This type of transaction requires an on-chain settlement. <br/><br/>For any amount less than the amount needed for compliance, a VASP can directly send the transaction on-chain without doing any KYC validation. This type of transaction uses `pydiem`. |
+
+
+| Extend Functionality | Description |
+| ---------- | ---------- |
+| Types of transactions | Currently the Reference Wallet only implements three types of transactions. However, as the scope increases, other types of transactions, such as merchant pull request flow, could be added to extend the functionality of the Reference Wallet. |
 ## Storage module
 
 The Reference Wallet uses SQL as its data store, and SQLAlchemy as the Python toolkit and object relational mapper. Storage is part of the Wallet module, and consists of models and utils. In `wallet/storage`, `models.py` defines the tables, and utils are divided into respective modules based on which object the util reads or modifies.

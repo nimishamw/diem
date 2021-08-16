@@ -34,22 +34,12 @@ When you submit a transaction to the DPN, you are cryptographically signing a tr
 ## Wallet architecture
 
 The Reference Wallet is structured into three main modules:
-[block:parameters]
-{
-  "data": {
-    "h-0": "Module",
-    "h-1": "Description",
-    "0-0": "Wallet",
-    "0-1": "The Wallet module manages the core functionality of a wallet such as account creation and management, balance updates, as well as the business and compliance logic of sending and receiving transactions. This module has been developed so that the Reference Wallet is custodial.",
-    "1-0": "Web app",
-    "1-1": "The Reference Wallet uses Flask as its web framework. The web app provides a RESTful API that is divided into user, account, CICO, and admin.",
-    "2-0": "PubSub",
-    "2-1": "PubSub allows you to continually poll the Diem Blockchain and respond to events on-chain. In the Reference Wallet, we listen to the event stream to track payments made to the public on-chain address of a Virtual Asset Service Provider (VASP) or a wallet developer."
-  },
-  "cols": 2,
-  "rows": 3
-}
-[/block]
+
+| Module | Description |
+| ---------- | ---------- |
+| Wallet | The Wallet module manages the core functionality of a wallet such as account creation and management, balance updates, as well as the business and compliance logic of sending and receiving transactions. This module has been developed so that the Reference Wallet is custodial. |
+| Web app | The Reference Wallet uses Flask as its web framework. The web app provides a RESTful API that is divided into user, account, CICO, and admin. |
+| PubSub | PubSub allows you to continually poll the Diem Blockchain and respond to events on-chain. In the Reference Wallet, we listen to the event stream to track payments made to the public on-chain address of a Virtual Asset Service Provider (VASP) or a wallet developer. |
 ## Diem Coin sourcing
 
 Generally, a custodial wallet service will be expected to buy and sell Diem Coins for fiat currency in the market from a variety of service providers. This type of service is beyond the scope of the Reference Wallet.
