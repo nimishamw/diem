@@ -36,22 +36,9 @@ Click <a href="/reference-wallet" target="_blank">here</a> for a full page versi
 ### User flows
 
 The image below details the different user flows for the Public Demo Wallet.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/1e00b40-userflows-demo-wallet.svg",
-        "userflows-demo-wallet.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ],
-      "caption": "Figure 1.0 Different user flows for the Public Demo Wallet"
-    }
-  ]
-}
-[/block]
+![Figure 1.0 Different user flows for the Public Demo Wallet](https://files.readme.io/1e00b40-userflows-demo-wallet.svg)
+<small className="figure">Figure 1.0 Different user flows for the Public Demo Wallet</small>
+
 ## Register and sign up 
 
 New users who want to use the Public Demo Wallet go through a simulated registration process. Users should enter a dummy username and password at signup and choose from a dummy identity during the sign up process.
@@ -116,22 +103,9 @@ Here are some of the things you can see and do using the home page:
 * A list of your most recent transactions.
 * Buttons to send or request funds and a button for different types of 'Transfer' requests, where you can add or withdraw funds, and convert your Diem Coin currency.
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/b49617d-wallet-home.svg",
-        "wallet-home.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ],
-      "caption": "Figure 2.0 Demo Wallet home page"
-    }
-  ]
-}
-[/block]
+![Figure 2.0 Demo Wallet home page](https://files.readme.io/b49617d-wallet-home.svg)
+<small className="figure">Figure 2.0 Demo Wallet home page</small>
+
 ## Manage payment methods and user settings
 
 You need at least one payment method or funding source for the rest of the demo.
@@ -141,22 +115,9 @@ You need at least one payment method or funding source for the rest of the demo.
    * Choose your preferred currency and preferred language. The currency you choose affects the base currency used in the currency exchange operations throughout the wallet.
    * View your username. 
 2. Click 'Save Settings'.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/f921157-modify-settings.svg",
-        "modify-settings.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ],
-      "caption": "Figure 2.1 Public Demo Wallet settings page"
-    }
-  ]
-}
-[/block]
+![Figure 2.1 Public Demo Wallet settings page](https://files.readme.io/f921157-modify-settings.svg)
+<small className="figure">Figure 2.1 Public Demo Wallet settings page</small>
+
 You can also add or manage your simulated payment methods when you try to add fake Diem Coins to your wallet. 
 [block:callout]
 {
@@ -166,22 +127,9 @@ You can also add or manage your simulated payment methods when you try to add fa
 }
 [/block]
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/1157496-language-settings.svg",
-        "language-settings.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 2.3 choose language"
-    }
-  ]
-}
-[/block]
+![Figure 2.3 choose language](https://files.readme.io/1157496-language-settings.svg)
+<small className="figure">Figure 2.3 choose language</small>
+
 ## Deposit to and withdraw from your wallet  
 
 You can simulate:
@@ -242,22 +190,9 @@ To see all your transactions:
 3. Click 'Home' to exit the 'All Transactions' page.
 
 Transactions may be internal (i.e., off-chain), within the wallet’s network (e.g., Diem Coins transfer between customers of the same wallet service), or external (i.e., on-chain) on the Diem Blockchain (e.g., Diem transfer to some external Diem address).
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/f874d54-execute-transactions.png",
-        "execute-transactions.png",
-        4001,
-        2251,
-        "#fefefe"
-      ],
-      "caption": "Figure 3.0 View list of transactions"
-    }
-  ]
-}
-[/block]
+![Figure 3.0 View list of transactions](https://files.readme.io/f874d54-execute-transactions.png)
+<small className="figure">Figure 3.0 View list of transactions</small>
+
 Each transaction consists of:
 
 * Direction (sent or received)
@@ -271,22 +206,9 @@ Each transaction consists of:
 Clicking a transaction in the transactions list will open a window with transaction details.
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/10e8613-check-transaction.png",
-        "check-transaction.png",
-        960,
-        540,
-        "#b5b5b8"
-      ],
-      "caption": "Figure 3.1 View transaction details"
-    }
-  ]
-}
-[/block]
+![Figure 3.1 View transaction details](https://files.readme.io/10e8613-check-transaction.png)
+<small className="figure">Figure 3.1 View transaction details</small>
+
 Each transaction consists of:
 
 * Direction (sent or received)

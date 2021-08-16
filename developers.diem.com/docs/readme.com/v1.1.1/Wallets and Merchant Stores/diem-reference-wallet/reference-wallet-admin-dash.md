@@ -47,22 +47,9 @@ The main page of the admin dashboard shows the total number of registered users 
 *   User management
 *   Administrators management
 *   Liquidity management
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/58972ba-admin-dash.png",
-        "admin-dash.png",
-        1000,
-        753,
-        "#fefefe"
-      ],
-      "caption": "Figure 1.0 Reference Wallet admin dashboard"
-    }
-  ]
-}
-[/block]
+![Figure 1.0 Reference Wallet admin dashboard](https://files.readme.io/58972ba-admin-dash.png)
+<small className="figure">Figure 1.0 Reference Wallet admin dashboard</small>
+
 ### Manage users and admins
 
 Manage users and admins by clicking on the user and admin management pages. Both these pages offer a list of users. Clicking “Block” button will force the user to be logged out immediately and prevent them from entering the system again.

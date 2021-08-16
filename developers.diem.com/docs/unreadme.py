@@ -23,10 +23,14 @@ to
 <small className="figure">Figure 1.1 Lifecycle of a Transaction</small>
 """
 
+from pathlib import Path
+import os
 import re
 import json
 
-IMAGE_BLOCK_RE = re.compile(r"(\[block:.*?])(.*?)(\[/block])", re.DOTALL | re.MULTILINE)
+IMAGE_BLOCK_RE = re.compile(r"(\[block:image])(.*?)(\[/block])", re.DOTALL | re.MULTILINE)
+
+BASE_PATH = "/Users/confidential/diem/diem/developers.diem.com/docs/readme.com/"
 
 
 def read(filename):
@@ -34,21 +38,31 @@ def read(filename):
         return f.read()
 
 
-def process_image_blocks(doc):
+def write(filename, doc):
+    with open(filename, "w") as f:
+        return f.write(doc)
+
+
+def process_image_blocks(doc, filepath):
+    image_block_count = 0
     while True:
         res = IMAGE_BLOCK_RE.search(doc)
         if not res:
-            return doc
-        data = json.loads(res.group(2))
-        if len(data["images"]) > 1:
-            print(data)
-            print("RUH ROH!")
-            exit(1)
+            return doc, image_block_count
 
-        image = data["images"][0]
-        url = image["image"][0]
-        image_name = image["image"][1]
-        caption = image.get("caption")
+        data = json.loads(res.group(2))
+        try:
+            if len(data["images"]) != 1:
+                print(data)
+                print("RUH ROH!")
+                exit(1)
+            image = data["images"][0]
+            url = image["image"][0]
+            image_name = image["image"][1]
+            caption = image.get("caption")
+        except Exception:
+            import pdb
+            pdb.set_trace()
 
         result = f"![{caption or image_name}]({url})"
         if caption:
@@ -57,11 +71,22 @@ def process_image_blocks(doc):
         doc = doc[:res.span()[0]] + result + doc[res.span()[1]:]
 
 
-filepath = "/Users/confidential/diem/diem/developers.diem.com/docs/readme.com/v1.1.1/Basics/basics-events.md"
+def process_doc(filepath):
+    doc = read(filepath)
+    (doc, image_block_count) = process_image_blocks(doc, filepath)
 
-doc = read(filepath)
+    if image_block_count > 0:
+        print(f"Processed: {filepath}")
+    if image_block_count > 0:
+        print(f"  - processed {image_block_count} image blocks")
+    write(filepath, doc)
 
-print(doc)
-doc = process_image_blocks(doc)
-print("=\n="*10)
-print(doc)
+
+def process_all_docs():
+    filepaths = list(Path(BASE_PATH).rglob("*.md"))
+    for filepath in filepaths:
+        process_doc(filepath)
+
+
+if __name__ == "__main__":
+    process_all_docs()

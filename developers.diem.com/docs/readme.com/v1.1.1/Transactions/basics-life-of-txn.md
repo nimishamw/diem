@@ -51,22 +51,9 @@ The raw transaction includes the following fields:
 In this section, we will describe the lifecycle of transaction T<sub>5</sub>, from when the client submits it to when it is committed to the Diem Blockchain.
 
 For the relevant steps, we've included a link to the corresponding inter-component interactions of the validator node. After you are familiar with all the steps in the lifecycle of the transaction, you may want to refer to the information on the corresponding inter-component interactions for each step.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/8070d33-validator-sequence.svg",
-        "validator-sequence.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ],
-      "caption": "Figure 1.0 Lifecycle of a transaction"
-    }
-  ]
-}
-[/block]
+![Figure 1.0 Lifecycle of a transaction](https://files.readme.io/8070d33-validator-sequence.svg)
+<small className="figure">Figure 1.0 Lifecycle of a transaction</small>
+
 
 [block:callout]
 {
@@ -162,22 +149,9 @@ The following are the core logical components of a Diem node used in the lifecyc
 * [Storage](#storage)
 
 ### JSON-RPC Service
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/01dae2e-json-rpc-service.svg",
-        "json-rpc-service.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.1 JSON-RPC Service"
-    }
-  ]
-}
-[/block]
+![Figure 1.1 JSON-RPC Service](https://files.readme.io/01dae2e-json-rpc-service.svg)
+<small className="figure">Figure 1.1 JSON-RPC Service</small>
+
 Any request made by a client goes to the JSON-RPC Service of a FullNode first. Then, the submitted transaction is forwarded to the validator FullNode, which then sends it to the validator node V<sub>X</sub>.
 
 
@@ -195,22 +169,9 @@ When a client performs a read query on the Diem Blockchain (for example, to get 
 
 
 ### Virtual Machine (VM)
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/d79a613-virtual-machine.svg",
-        "virtual-machine.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.2 Virtual machine"
-    }
-  ]
-}
-[/block]
+![Figure 1.2 Virtual machine](https://files.readme.io/d79a613-virtual-machine.svg)
+<small className="figure">Figure 1.2 Virtual machine</small>
+
 The [Move virtual machine](doc:move-introduction) (VM) verifies and executes transaction scripts written in Move bytecode.
 
 #### 1. Virtual Machine → Storage
@@ -238,22 +199,9 @@ For implementation details refer to the [Virtual Machine README](https://github.
 ### Mempool
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/cb7e36c-mempool.svg",
-        "mempool.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.3 Mempool"
-    }
-  ]
-}
-[/block]
+![Figure 1.3 Mempool](https://files.readme.io/cb7e36c-mempool.svg)
+<small className="figure">Figure 1.3 Mempool</small>
+
 Mempool is a shared buffer that holds the transactions that are “waiting” to be executed. When a new transaction is added to the mempool, the mempool shares this transaction with other validator nodes in the system. To reduce network consumption in the “shared mempool,” each validator is responsible for delivering its own transactions to other validators. When a validator receives a transaction from the mempool of another validator, the transaction is added to the mempool of the recipient validator.
 
 #### 1. JSON-RPC Service → Mempool
@@ -280,22 +228,9 @@ When mempool receives a transaction from other validators, mempool invokes <code
 For implementation details refer to the [Mempool README](https://github.com/diem/diem/tree/main/mempool).
 
 ### Consensus
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/a320388-consensus.svg",
-        "consensus.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.4 Consensus"
-    }
-  ]
-}
-[/block]
+![Figure 1.4 Consensus](https://files.readme.io/a320388-consensus.svg)
+<small className="figure">Figure 1.4 Consensus</small>
+
 The consensus component (consensus) is responsible for ordering blocks of transactions and agreeing on the results of execution by participating in the [consensus protocol](/docs/reference/glossary/#consensus-protocol) with other validators in the network.
 
 
@@ -322,22 +257,9 @@ If enough validators vote for the same execution result, the consensus component
 For implementation details refer to the [Consensus README](https://github.com/diem/diem/tree/main/consensus).
 
 ### Execution
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/45dc900-execution.svg",
-        "execution.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.5 Execution"
-    }
-  ]
-}
-[/block]
+![Figure 1.5 Execution](https://files.readme.io/45dc900-execution.svg)
+<small className="figure">Figure 1.5 Execution</small>
+
 The execution component coordinates the execution of a block of transactions and maintains a transient state that can be voted upon by consensus. If these transactions are successful, they are committed to storage.
 
 #### 1. Consensus → Execution
@@ -363,22 +285,9 @@ Execution takes the values from its “scratchpad” and sends them to storage f
 For implementation details refer to the [Execution README](https://github.com/diem/diem/tree/main/execution).
 
 ### Storage
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/bfadba0-storage.svg",
-        "storage.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.6 Storage"
-    }
-  ]
-}
-[/block]
+![Figure 1.6 Storage](https://files.readme.io/bfadba0-storage.svg)
+<small className="figure">Figure 1.6 Storage</small>
+
 The storage component persists agreed upon blocks of transactions and their execution results to the Diem Blockchain. A block of transactions (which includes transaction T<sub>N</sub>) will be saved via storage when:
 
 * There is agreement between more than a quorum (2f+1) of the validators participating in consensus on all of the following:

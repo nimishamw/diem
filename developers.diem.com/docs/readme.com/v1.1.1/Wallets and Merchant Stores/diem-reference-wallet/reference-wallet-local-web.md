@@ -60,22 +60,9 @@ The Reference Wallet simulates the account verification process by returning the
 ### User flows
 
 The image below details the different user flows for the local Reference Wallet web client.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/93b8870-userflows-local-wallet.svg",
-        "userflows-local-wallet.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ],
-      "caption": "Figure 1.0 User flows for the local web wallet"
-    }
-  ]
-}
-[/block]
+![Figure 1.0 User flows for the local web wallet](https://files.readme.io/93b8870-userflows-local-wallet.svg)
+<small className="figure">Figure 1.0 User flows for the local web wallet</small>
+
 ### Development
 
 You can read further technical documentation in the [Reference Wallet git repository](https://github.com/diem/reference-wallet). All web UI resources can be found [here](https://github.com/diem/reference-wallet/tree/master/frontend).
@@ -148,22 +135,9 @@ User actions available on the home page include:
 * Convert between Diem Coin currencies.
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/f8fb752-wallet-home.svg",
-        "wallet-home.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ],
-      "caption": "Figure 2.0 View home page"
-    }
-  ]
-}
-[/block]
+![Figure 2.0 View home page](https://files.readme.io/f8fb752-wallet-home.svg)
+<small className="figure">Figure 2.0 View home page</small>
+
 ## Modify settings
 
 On the Settings page, a user can sign out from the wallet, edit general preferences, and add payment methods.
@@ -180,22 +154,9 @@ The supported payment methods are:
 In addition, the page shows the email address of the active user. It is not possible to change the user’s email address.
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/e516f29-modify-settings.svg",
-        "modify-settings.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ],
-      "caption": "Figure 2.1 View local web wallet settings page"
-    }
-  ]
-}
-[/block]
+![Figure 2.1 View local web wallet settings page](https://files.readme.io/e516f29-modify-settings.svg)
+<small className="figure">Figure 2.1 View local web wallet settings page</small>
+
 
 [block:callout]
 {
@@ -206,22 +167,9 @@ In addition, the page shows the email address of the active user. It is not poss
 To change the wallet UI language, enter the Settings page and choose the desired language from the languages dropdown menu:
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/bf2a7f3-language-settings.svg",
-        "language-settings.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 2.2 Choose language in settings"
-    }
-  ]
-}
-[/block]
+![Figure 2.2 Choose language in settings](https://files.readme.io/bf2a7f3-language-settings.svg)
+<small className="figure">Figure 2.2 Choose language in settings</small>
+
 ## Execute transactions
 
 ### View transactions list
@@ -229,22 +177,9 @@ To change the wallet UI language, enter the Settings page and choose the desired
 Choosing a specific Diem Coin currency on the home page shows all the wallet transactions for that currency in descending order. Transactions may be internal (i.e., off-chain), within the wallet’s network (e.g., Diem deposit from a credit card), or external (i.e., on-chain) on the Diem Blockchain (e.g., Diem transfer to some external Diem address).
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/b1c4c37-execute-transactions.png",
-        "execute-transactions.png",
-        4001,
-        2251,
-        "#fefefe"
-      ],
-      "caption": "Figure 3.0 View transactions list"
-    }
-  ]
-}
-[/block]
+![Figure 3.0 View transactions list](https://files.readme.io/b1c4c37-execute-transactions.png)
+<small className="figure">Figure 3.0 View transactions list</small>
+
 Each transaction consists of:
 
 * Direction (sent or received)
@@ -258,22 +193,9 @@ Each transaction consists of:
 Clicking a transaction in the transactions list will open a window with transaction details.
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/6224cea-check-transaction.png",
-        "check-transaction.png",
-        960,
-        540,
-        "#b5b5b8"
-      ],
-      "caption": "Figure 3.1 View transaction details"
-    }
-  ]
-}
-[/block]
+![Figure 3.1 View transaction details](https://files.readme.io/6224cea-check-transaction.png)
+<small className="figure">Figure 3.1 View transaction details</small>
+
 Each transaction consists of:
 
 * Direction (sent or received)

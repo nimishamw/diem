@@ -50,22 +50,9 @@ There are also several events related to system-level operations, for example:
 * `NewBlockEvent` — when a new block of transactions is added to the Diem Blockchain
 
 ## Event concepts
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/b01f98b-events-fig1.svg",
-        "events-fig1.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.0 EventHandle and event streams in the Diem Framework"
-    }
-  ]
-}
-[/block]
+![Figure 1.0 EventHandle and event streams in the Diem Framework](https://files.readme.io/b01f98b-events-fig1.svg)
+<small className="figure">Figure 1.0 EventHandle and event streams in the Diem Framework</small>
+
 * **Event stream**: Events are grouped into “**event streams,**” which are append-only vectors of ContractEvent payloads. For example, an account can have a SentPaymentEvent stream and a ReceivePaymentEvent stream. The entries in an event stream are assigned sequence numbers beginning from zero.
 * **Event key**: Each event stream is associated with a key value, which is a globally unique 40-byte array that is defined when the stream is created. The event key for an account’s event stream will never be modified.
 * **EventHandle**: An EventHandle contains the event key and the number of events in the stream. This count is always equal to the biggest sequence number for the events in the stream. An EventHandle resource is typically embedded inside other Move resources to record related events. For example, every DiemAccount resource contains a `sent_events` EventHandle for a SentPaymentEvents stream and also a `received_events` EventHandle for a ReceivedPaymentEvents stream. Event streams are referenced from the StateStore via EventHandle Move resources.
@@ -83,22 +70,9 @@ There are several JSON-RPC API methods associated with events:
 ### Get `SentPaymentEvent` for an account
 
 This example demonstrates how to query a `SentPaymentEvent` for an account. In this example, account 0x996b67d has two event streams, with 3 sent payments and 2 received payments:
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/670f7d0-events-fig2.svg",
-        "events-fig2.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.1 Example event streams for a Diem Account"
-    }
-  ]
-}
-[/block]
+![Figure 1.1 Example event streams for a Diem Account](https://files.readme.io/670f7d0-events-fig2.svg)
+<small className="figure">Figure 1.1 Example event streams for a Diem Account</small>
+
 1. The first step is to find the event key for the account’s `SentPaymentEvent` stream. We can send a <a href="https://github.com/diem/diem/blob/main/json-rpc/docs/method_get_account.md" target="_blank">`get_account`</a> 
 query to the JSON-RPC endpoint to get the state of that <a href="https://github.com/diem/diem/blob/main/json-rpc/docs/type_account.md" target="_blank">`account`</a>, including two event keys: one for the `SentPaymentEvent` stream (the `sent_events_key` field) and one for the `ReceivedPaymentEvent` stream (the `received_events_key` field). The response will look like the following:
 ```json

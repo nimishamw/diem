@@ -25,39 +25,13 @@ The payment management page demonstrates the actions that a merchant can perform
 }
 [/block]
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/9c65c8e-merchant-payment-mgmt1.svg",
-        "merchant-payment-mgmt1.svg",
-        639,
-        872,
-        "#000000"
-      ],
-      "caption": "Figure 1.0 Payment management page with order details"
-    }
-  ]
-}
-[/block]
+![Figure 1.0 Payment management page with order details](https://files.readme.io/9c65c8e-merchant-payment-mgmt1.svg)
+<small className="figure">Figure 1.0 Payment management page with order details</small>
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/698831d-merchant-payment-mgmt2.svg",
-        "merchant-payment-mgmt2.svg",
-        702,
-        735,
-        "#000000"
-      ],
-      "caption": "Figure 1.1 Payment management page with cashout and refund buttons"
-    }
-  ]
-}
-[/block]
+
+![Figure 1.1 Payment management page with cashout and refund buttons](https://files.readme.io/698831d-merchant-payment-mgmt2.svg)
+<small className="figure">Figure 1.1 Payment management page with cashout and refund buttons</small>
+
 ### Payment payout
 This action simulates the conversion of Diem Coins into a fiat currency and the transfer to the merchant's bank account. The action focuses on demonstrating the actions involving Diem Coins and doesn’t perform any actual fiat transfers.
 

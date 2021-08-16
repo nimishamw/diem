@@ -50,21 +50,7 @@ Each Diem node comprises several logical components:
 * [State synchronizer](doc:basics-validator-nodes#state-synchronizer) 
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/d5f1bfa-validator.svg",
-        "validator.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ]
-    }
-  ]
-}
-[/block]
+![validator.svg](https://files.readme.io/d5f1bfa-validator.svg)
 ### Mempool
 
 Mempool is a validator node component that holds an in-memory buffer of transactions that have been submitted but not yet agreed upon and executed. This buffer is replicated between validator nodes. 

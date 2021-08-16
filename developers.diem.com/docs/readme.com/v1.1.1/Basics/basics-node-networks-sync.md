@@ -19,21 +19,7 @@ Depending on their configuration, Diem nodes can form different peer-to-peer sta
 
 Validator nodes and public FullNodes form a two-tiered architecture. A public FullNode network is not peer-to-peer, and it receives updates on new blocks only from the validator node it is connected to.
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/cbe5073-v-fn-network.svg",
-        "v-fn-network.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ]
-    }
-  ]
-}
-[/block]
+![v-fn-network.svg](https://files.readme.io/cbe5073-v-fn-network.svg)
 ### Separate network stacks
 For each type of Diem node, the Diem Payment Network (DPN) has a separate network stack. The advantages of having separate network stacks include:
 * Clean separation between the different networks.

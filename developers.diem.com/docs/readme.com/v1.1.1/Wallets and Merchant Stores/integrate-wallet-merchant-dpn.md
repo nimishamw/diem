@@ -32,22 +32,9 @@ Regulated VASP accounts are reserved for a <Glossary>Regulated VASP</Glossary> t
 Read the [accounts](doc:basics-accounts) page to learn more. 
 
 To create your VASP accounts:
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/71ef5d0-create-vasp-account.svg",
-        "create-vasp-account.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ],
-      "caption": "Figure 1.0 Creating your VASP account"
-    }
-  ]
-}
-[/block]
+![Figure 1.0 Creating your VASP account](https://files.readme.io/71ef5d0-create-vasp-account.svg)
+<small className="figure">Figure 1.0 Creating your VASP account</small>
+
 1. [**Generate keys**](doc:basics-accounts#generate-an-auth-key-and-account-address) 
       Generate an <Glossary>Ed25519</Glossary> keypair and associated authentication key for your on-chain Regulated VASP account.
 2. **Share account info**
@@ -139,21 +126,7 @@ To compute a transaction fee, you can choose the following gas values:
 If you're a Regulated VASP who wants to build and integrate your own merchant store, you will need to set up direct payments to receive payments and handle refunds. 
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/8a6c1c5-direct-payments.svg",
-        "direct-payments.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ]
-    }
-  ]
-}
-[/block]
+![direct-payments.svg](https://files.readme.io/8a6c1c5-direct-payments.svg)
 ### Share payment information at checkout
 
 When the DPN launches, we expect that wallets will support a basic set of payment flows that resemble peer-to-peer transactions. Accordingly, the initial range of merchant checkout options will be limited to direct payments, which are single point-in-time transactions with a known amount and currency type.

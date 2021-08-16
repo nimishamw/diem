@@ -45,22 +45,9 @@ Each of these resource dimensions can fluctuate independently of the other. Howe
 When you send a transaction, the transaction fee (in the specifed gas currency) for execution is the gas price multiplied by the VM's computed resource usage for that transaction. 
 
 At different times in the transaction flow, different aspects of resource usage are charged. The basics of the transaction flow and the gas-related logic are detailed in the following diagram:
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/7ecf095-using-gas.svg",
-        "using-gas.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ],
-      "caption": "FIGURE 1.0 Gas and Transaction Flow"
-    }
-  ]
-}
-[/block]
+![FIGURE 1.0 Gas and Transaction Flow](https://files.readme.io/7ecf095-using-gas.svg)
+<small className="figure">FIGURE 1.0 Gas and Transaction Flow</small>
+
 
 
 

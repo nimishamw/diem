@@ -414,85 +414,33 @@ Docs can be generated locally using SwaggerUI. Instructions for how to get that 
 User APIs handle user creation, and information management and updates.
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/76ffba2-service-api-user.svg",
-        "service-api-user.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.0 User APIs"
-    }
-  ]
-}
-[/block]
+![Figure 1.0 User APIs](https://files.readme.io/76ffba2-service-api-user.svg)
+<small className="figure">Figure 1.0 User APIs</small>
+
 #### Account
 
 Account APIs deal with an account’s address and transactions management.
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/c6c1530-service-api-account.svg",
-        "service-api-account.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.1 Account APIs"
-    }
-  ]
-}
-[/block]
+![Figure 1.1 Account APIs](https://files.readme.io/c6c1530-service-api-account.svg)
+<small className="figure">Figure 1.1 Account APIs</small>
+
 #### CICO
 
 CICO handles all cash-in and cash-out flows, including getting rates and executing a given quote.
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/b95ee3e-service-api-cico.svg",
-        "service-api-cico.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.2 CICO APIs"
-    }
-  ]
-}
-[/block]
+![Figure 1.2 CICO APIs](https://files.readme.io/b95ee3e-service-api-cico.svg)
+<small className="figure">Figure 1.2 CICO APIs</small>
+
 #### Admin
 
 Admin APIs fetch admin user account information and have debt settlement logic.
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/846c1e8-service-api-admin.svg",
-        "service-api-admin.svg",
-        267,
-        150,
-        "#ffffff"
-      ],
-      "caption": "Figure 1.3 Admin APIs"
-    }
-  ]
-}
-[/block]
+![Figure 1.3 Admin APIs](https://files.readme.io/846c1e8-service-api-admin.svg)
+<small className="figure">Figure 1.3 Admin APIs</small>
+
 ## Reference Wallet API Docs
 
 <iframe src="https://demo-wallet.diem.com/api/apidocs/" width="100%" height="800px"></iframe>

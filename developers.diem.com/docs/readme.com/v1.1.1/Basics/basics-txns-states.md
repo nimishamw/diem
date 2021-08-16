@@ -54,22 +54,9 @@ This versioned database allows validator nodes to:
 ## Transactions change state
 
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/34893b7-transactions.svg",
-        "transactions.svg",
-        267,
-        150,
-        "#f3f4fb"
-      ],
-      "caption": "FIGURE 1.0 TRANSACTIONS CHANGE STATE"
-    }
-  ]
-}
-[/block]
+![FIGURE 1.0 TRANSACTIONS CHANGE STATE](https://files.readme.io/34893b7-transactions.svg)
+<small className="figure">FIGURE 1.0 TRANSACTIONS CHANGE STATE</small>
+
 Figure 1.0 represents how executing transaction T<sub>N</sub> changes the state of the Diem Blockchain from S<sub>N-1</sub> to S<sub>N</sub>. 
 
 In the figure:
