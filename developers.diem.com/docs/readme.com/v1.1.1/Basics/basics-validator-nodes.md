@@ -31,13 +31,10 @@ The Diem Payment Network uses a Byzantine Fault Tolerance (BFT) consensus protoc
 
 A validator node communicates directly with other validator nodes over a hidden network. It may be configured to store either all or part of the historical data from the Diem Blockchain. <a href="doc:basics-fullnodes" target="_blank">FullNodes</a> are an external validation resource for finalized transaction history. They receive transactions from upstream nodes and then re-execute them locally (the same way a validator node executes transactions). FullNodes store the results of the re-execution to local storage. In doing so, they will notice and can provide evidence if there is any attempt to rewrite history. This helps to ensure that the validator nodes are not colluding on arbitrary transaction execution.
 
-[block:callout]
-{
-  "type": "info",
-  "body": "The DiemBFT consensus protocol provides fault tolerance of up to one-third of malicious validator nodes.",
-  "title": "<Glossary>DiemBFT</Glossary>"
-}
-[/block]
+<blockquote className="block_note block_note_info">
+ **Info:** The DiemBFT consensus protocol provides fault tolerance of up to one-third of malicious validator nodes. 
+</blockquote>
+
 ## Validator node components
 
 Each Diem node comprises several logical components:

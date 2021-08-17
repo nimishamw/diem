@@ -83,12 +83,11 @@ In this demo, the user data is sent to an external KYC provider to assess the us
 But, in a real-world scenario, such an external provider would undertake certain checks of the prospective user. Examples of such checks include sanctions screening, negative news screening, black-listed country screening, and document verification. Based on this information, the provider would assign a risk rating that would help the wallet provider decide whether to onboard the customer or whether certain controls (e.g., product or transaction limitations) may be appropriate in light of the user's risk.
 
 After a user has been onboarded, the wallet provider, pursuant to relevant laws and regulations, Diem Network standards, and its compliance program, must continue to assess the risk related to maintaining a business relationship with the user.
-[block:callout]
-{
-  "type": "warning",
-  "body": "The compliance processes depicted in this document are for demonstration purposes only and do not reflect the specific compliance obligations of VASPs under applicable regulatory frameworks, their compliance programs, and/or standards imposed by Diem Networks."
-}
-[/block]
+
+<blockquote className="block_note block_note_warning">
+ **Warning:** The compliance processes depicted in this document are for demonstration purposes only and do not reflect the specific compliance obligations of VASPs under applicable regulatory frameworks, their compliance programs, and/or standards imposed by Diem Networks. 
+</blockquote>
+
 #### Transaction monitoring
 
 Wallet providers generally must also conduct transaction monitoring on an ongoing basis to prevent their services from being used to conduct or facilitate illicit activity such as money laundering, terrorist financing, and/or violation of applicable sanctions. Transaction monitoring procedures must be designed to comply with relevant laws and regulations, Diem Network standards, and should be commensurate with a wallet provider’s risk profile.

@@ -12,15 +12,11 @@ You can run a local test validator network to test and develop against a Diem Bl
 
 You can also use the Diem CLI command dev to compile, publish, and execute Move programs on your local test validator network.
 
+<blockquote className="block_note block_note_info">
+ **Info:** Your local test network will not be connected to testnet or mainnet of the Diem Blockchain. 
+</blockquote>
 
-[block:callout]
-{
-  "type": "info",
-  "body": "Your local test network will not be connected to testnet or mainnet of the Diem Blockchain."
-}
-[/block]
 ## Getting Started
-
 
 You can run a local test validator network in two ways: using the Diem Core source code or Docker. The Diem Core source code is useful when testing modifications to the Diem Core code base. Docker is particularly useful when building services on top of the Diem Blockchain as there is no build overhead and the ledger state persists across restarts of the network by default.
 

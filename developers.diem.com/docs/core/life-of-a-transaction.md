@@ -50,9 +50,7 @@ In this section, we will describe the lifecycle of transaction T<sub>5</sub>, fr
 For the relevant steps, we've included a link to the corresponding inter-component interactions of the validator node. After you are familiar with all the steps in the lifecycle of the transaction, you may want to refer to the information on the corresponding inter-component interactions for each step.
 
 <blockquote className="block_note">
-
 **Note:** The arrows in all the visuals in this article originate on the component initiating an interaction/action and terminate on the component on which the action is being performed. The arrows do not represent data read, written, or returned.
-
 </blockquote>
 
 ![Figure 1.1 Lifecycle of a Transaction](/img/docs/validator-sequence.svg)

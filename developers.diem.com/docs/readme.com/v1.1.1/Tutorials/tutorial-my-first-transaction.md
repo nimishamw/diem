@@ -113,12 +113,10 @@ diem%
 
 If you have problems building the client and connecting to the testnet, refer to [Troubleshooting](#client-build-and-run).
 
-[block:callout]
-{
-  "type": "info",
-  "body": "If you would like to run a test validator network locally on your system, follow the instructions [here](doc:tutorial-run-local-validator-nw). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet."
-}
-[/block]
+<blockquote className="block_note block_note_info">
+ **Info:** If you would like to run a test validator network locally on your system, follow the instructions [here](doc:tutorial-run-local-validator-nw). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet. 
+</blockquote>
+
 ### Create accounts for Alice and Bob
 
 Once your client is connected to the testnet, you can run CLI commands to create new accounts.  We will walk you through creating accounts for two users (let's call them Alice and Bob).

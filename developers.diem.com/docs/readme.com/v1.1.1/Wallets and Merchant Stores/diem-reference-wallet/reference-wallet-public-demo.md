@@ -14,22 +14,16 @@ The Public Demo Wallet (demo wallet) allows you to try an online, public demo ve
 * Sending and receiving Diem Coins to and from another Diem wallet address.
 * Converting between the different Diem Coins.
 * Viewing transaction history.
-[block:callout]
-{
-  "type": "warning",
-  "body": "* This demo uses simulated user information.\n* This demo uses simulated fiat currency, Diem Coins, and other funds. The Public Demo Wallet does not use any real money. \n* This demo implementation is simplified, avoiding complexities of real-world, production-grade financial software."
-}
-[/block]
+
+<blockquote className="block_note block_note_warning">
+ **Warning:** * This demo uses simulated user information.
+<br/>* This demo uses simulated fiat currency, Diem Coins, and other funds. The Public Demo Wallet does not use any real money. 
+<br/>* This demo implementation is simplified, avoiding complexities of real-world, production-grade financial software. 
+</blockquote>
+
 ## Try the Public Demo Wallet
-[block:embed]
-{
-  "html": false,
-  "url": "https://demo-wallet.diem.com/login/",
-  "title": "Diem Reference Wallet",
-  "favicon": "https://demo-wallet.diem.com/favicon.png",
-  "iframe": true
-}
-[/block]
+
+<iframe src="https://demo-wallet.diem.com/login/" />
 
 Click <a href="/reference-wallet" target="_blank">here</a> for a full page version of this demo
 
@@ -63,12 +57,10 @@ To use most features of the Send, Request, and Transfer buttons, you must first:
 * Set a funding source. 
 * Deposit funds to your account. 
 
-[block:callout]
-{
-  "type": "warning",
-  "body": "Real-world user verification and risk management are beyond the scope of the Diem Reference Wallet and contain many opportunities for further development."
-}
-[/block]
+<blockquote className="block_note block_note_warning">
+ **Warning:** Real-world user verification and risk management are beyond the scope of the Diem Reference Wallet and contain many opportunities for further development. 
+</blockquote>
+
 Read more about the user verification [in the Risk section](doc:reference-wallet-set-up-modules#risk-module).
 
 ## Log in and log out
@@ -119,13 +111,10 @@ You need at least one payment method or funding source for the rest of the demo.
 <small className="figure">Figure 2.1 Public Demo Wallet settings page</small>
 
 You can also add or manage your simulated payment methods when you try to add fake Diem Coins to your wallet. 
-[block:callout]
-{
-  "type": "info",
-  "body": "The payment methods are for demonstration purposes only. The supplied information is not validated, and no real transactions are made using the configured credit cards and bank accounts. Users of the Public Demo Wallet will not be permitted to enter real credit card or bank account information.",
-  "title": "Simulated payment methods"
-}
-[/block]
+
+<blockquote className="block_note block_note_info">
+ **Info:** The payment methods are for demonstration purposes only. The supplied information is not validated, and no real transactions are made using the configured credit cards and bank accounts. Users of the Public Demo Wallet will not be permitted to enter real credit card or bank account information. 
+</blockquote>
 
 ![Figure 2.3 choose language](https://files.readme.io/1157496-language-settings.svg)
 <small className="figure">Figure 2.3 choose language</small>
@@ -135,13 +124,11 @@ You can also add or manage your simulated payment methods when you try to add fa
 You can simulate:
 * The purchase of fake Diem Coins using your dummy user’s credit card or bank account wire transfer. This deposits the purchased amount to your demo wallet.
 * The sale of fake Diem Coins by withdrawing from your demo wallet and applying it to your dummy user’s credit card or bank account. 
-[block:callout]
-{
-  "type": "info",
-  "body": "For safety and security, the Public Demo Wallet does not support the entry of actual credit card or bank account details.",
-  "title": "Payment Methods"
-}
-[/block]
+* 
+<blockquote className="block_note block_note_info">
+ **Info:** For safety and security, the Public Demo Wallet does not support the entry of actual credit card or bank account details. 
+</blockquote>
+
 To purchase simulated Diem Coins and deposit them to your Public Demo Wallet:
 
 
@@ -168,12 +155,11 @@ Your Home page shows your updated demo wallet balance.
 ## Convert funds to a different currency
 
 The Public Demo Wallet shows an example of a conversion page that you could use for your wallet. For the demo, the actual conversion is disabled.
-[block:callout]
-{
-  "type": "info",
-  "body": "In a production application, this function may be subject to regulatory and licensing obligations for the service providers involved. See Prospective VASPs to learn more."
-}
-[/block]
+
+<blockquote className="block_note block_note_info">
+ **Info:** In a production application, this function may be subject to regulatory and licensing obligations for the service providers involved. See Prospective VASPs to learn more. 
+</blockquote>
+
 To convert funds:
 
 1. From your Home page, click 'Transfer', then 'Convert'.

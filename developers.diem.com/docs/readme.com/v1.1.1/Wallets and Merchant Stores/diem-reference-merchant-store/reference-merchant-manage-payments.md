@@ -18,12 +18,10 @@ The payment management page demonstrates the actions that a merchant can perform
   * The Diem Blockchain transaction ID, if applicable
 * Payment payout
 * Payment refund
-[block:callout]
-{
-  "type": "info",
-  "body": "The following images (and the local reference merchant project) have payment management actions (payout and refund) currently disabled as part of the public merchant demo."
-}
-[/block]
+
+<blockquote className="block_note block_note_info">
+ **Info:** The following images (and the local reference merchant project) have payment management actions (payout and refund) currently disabled as part of the public merchant demo. 
+</blockquote>
 
 ![Figure 1.0 Payment management page with order details](https://files.readme.io/9c65c8e-merchant-payment-mgmt1.svg)
 <small className="figure">Figure 1.0 Payment management page with order details</small>

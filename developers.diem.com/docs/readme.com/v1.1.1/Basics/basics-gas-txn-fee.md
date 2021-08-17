@@ -21,13 +21,10 @@ When a client submits a transaction for execution to the Diem Blockchain, it con
 * `gas_currency`: This is the currency of the transaction fee.
 
 The transaction fee charged to the client will be at most `gas_price * max_gas_amount`.
-[block:callout]
-{
-  "type": "info",
-  "body": "The gas price, and hence the transaction fee, should rise-and-fall with contention in the DPN. At launch, we expect gas prices to be at or near zero. But in periods of high contention, you can prioritize transactions using the gas price, which will encourage sending only needed transactions during such times.",
-  "title": "Changes in gas price"
-}
-[/block]
+<blockquote className="block_note block_note_info">
+ **Info:** The gas price, and hence the transaction fee, should rise-and-fall with contention in the DPN. At launch, we expect gas prices to be at or near zero. But in periods of high contention, you can prioritize transactions using the gas price, which will encourage sending only needed transactions during such times. 
+</blockquote>
+
 ## Types of resource usage consumed
 
 For the VM to execute a transaction, the gas system needs to track the primary resources the DPN and VM use. These fall into three resource "dimensions":

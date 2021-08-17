@@ -18,12 +18,12 @@ We’ve also created a public, online demo version of the Reference Wallet (the 
 
 The Reference Wallet and Public Demo Wallet include various references to transacting in Diem Coins.  All such transactions are simulations and these simulated Diem Coins can be deactivated by the Diem Association at any time.  In addition, these simulated Diem Coins will not function, or in any way be usable or recognized, on <Glossary>mainnet</Glossary> .
 
-[block:callout]
-{
-  "type": "info",
-  "body": "Custodial wallet services like holding Diem Coins for customers, exchanging one type of Diem Coin for another, transferring customer Diem Coins to other users (whether in the same wallet or others), and exchanging Diem Coins for cash all potentially money transmission or money services business activities, depending on the state/federal jurisdictions involved.\n\nThe functions described in this document may require the service provider to be licensed in the jurisdictions in which it operates and, to operate on the Diem Payment Network, it will need to be a Regulated VASP reviewed and onboarded by Diem Networks."
-}
-[/block]
+<blockquote className="block_note block_note_info">
+ **Info:** Custodial wallet services like holding Diem Coins for customers, exchanging one type of Diem Coin for another, transferring customer Diem Coins to other users (whether in the same wallet or others), and exchanging Diem Coins for cash all potentially money transmission or money services business activities, depending on the state/federal jurisdictions involved.
+<br/>
+<br/>The functions described in this document may require the service provider to be licensed in the jurisdictions in which it operates and, to operate on the Diem Payment Network, it will need to be a Regulated VASP reviewed and onboarded by Diem Networks. 
+</blockquote>
+
 ## Prerequisities
 
 Before you get started with the Reference Wallet, get familiar with how [transactions are sent and received on the Diem Blockchain](doc:basics-life-of-txn).

@@ -19,15 +19,13 @@ The admin dashboard allows admin users to perform several administrative tasks s
 *   Adding new admin users
 *   Settling liquidity provider debt
 
+<blockquote className="block_note block_note_info">
+ **Info:** * You can use the admin credentials in the tutorial below only in your local web version of the Diem Reference Wallet.
+<br/>* The admin dashboard is not accessible in the mobile app. 
+<br/>* The admin user is not available for the public demo. 
+</blockquote>
 
-[block:callout]
-{
-  "type": "info",
-  "body": "* You can use the admin credentials in the tutorial below only in your local web version of the Diem Reference Wallet.\n* The admin dashboard is not accessible in the mobile app. \n* The admin user is not available for the public demo."
-}
-[/block]
 ## Log in
-
 
 To access the admin dashboard:
 1. On the log in page, click on 'Forgot Password'. 
@@ -37,7 +35,6 @@ To access the admin dashboard:
 5. Log in using the username `admin@lrw` and the new password you created. 
 
 You will be redirected to the main page of the admin dashboard, which is different from the main page of a regular user. 
-
 
 
 ## View the main page
