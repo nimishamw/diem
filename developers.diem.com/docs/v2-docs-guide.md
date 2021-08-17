@@ -98,7 +98,7 @@ function Example() {
 </MultiStepTabItem>
 <MultiStepTabItem value="py">
 
-```py
+```python
 def hello_world():
   print('Hello, world!')
 ```
@@ -291,7 +291,7 @@ function Example() {
 </MultiStepTabItem>
 <MultiStepTabItem value="py">
 
-```py
+```python
 def hello_world():
   print('Hello, world!')
 ```
@@ -412,7 +412,7 @@ function Example() {
 </MultiStepTabItem>
 <MultiStepTabItem value="py">
 
-```py
+```python
 def hello_world():
   print('Hello, world!')
 ```

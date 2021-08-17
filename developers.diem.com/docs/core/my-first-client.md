@@ -53,7 +53,7 @@ The first thing your client code will need to do is connect to the network.
 <Tabs groupId="syntax" defaultValue="python" values={syntax}>
 <TabItem value="python">
 
-```py
+```python
 client = testnet.create_client();
 ```
 

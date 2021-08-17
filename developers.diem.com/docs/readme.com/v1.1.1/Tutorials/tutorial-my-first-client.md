@@ -61,10 +61,7 @@ The first thing your client code will need to do is connect to the network.
 <Tabs groupId="syntax" defaultValue="python" values={syntax}>
 <TabItem value="python">
 
-<Tabs groupId="syntax" defaultValue="python" values={syntax}>
-<TabItem value="python">
-
-```py
+```python
 client = testnet.create_client();
 ```
 
@@ -99,7 +96,10 @@ print(f"Generated sender address: {utils.account_address_hex(sender_auth_key.acc
 <TabItem value="java">
 
 ```java
+// generate private key for sender account
 PrivateKey senderPrivateKey = new Ed25519PrivateKey(new Ed25519PrivateKeyParameters(new SecureRandom()));
+
+// generate auth key for sender account
 AuthKey senderAuthKey = AuthKey.ed24419(senderPrivateKey.publicKey());
 ```
 
