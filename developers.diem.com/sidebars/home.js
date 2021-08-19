@@ -16,7 +16,7 @@ const Sidebar = [
       items: [
         {
           type: 'ref',
-          id: 'readme.com/v1.1.1/Basics/basics-accounts',
+          id: 'readme.com/welcome-to-diem',
           customProps: {
             classNames: ['iconIndented'],
             icon: 'img/core-contributors.svg',
