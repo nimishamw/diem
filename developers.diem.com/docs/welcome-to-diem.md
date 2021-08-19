@@ -1,7 +1,6 @@
 ---
 id: welcome-to-diem
 disable_pagination: true
-sidebar_label: Home
 title: Welcome to Diem
 hide_title: true
 ---

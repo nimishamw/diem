@@ -17,6 +17,9 @@ module.exports = objectAssignDeep(universalConfig, {
       apiKey: 'f0c9dd5d95535c4b0d99aa1fbcb0e949',
       indexName: 'diem_developer_website',
     },
+    googleAnalytics: {
+      trackingID: 'UA-157097059-1',
+    },
     image: "/img/shared/share-logo.jpg",
     prism: {
       darkTheme: darkCodeTheme,
