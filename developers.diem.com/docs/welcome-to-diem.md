@@ -16,10 +16,10 @@ Explore the technical and economic concepts behind the Diem Payment Network, exp
 </NotificationBar>
 
 <MarketingModule
-  copy="Explore the official Diem Reference Wallet, with full functionality and interactive testnet connectivity"
-  cta="Try the Wallet"
-  ctaLink="/reference-wallet"
-  img="/img/marketing-module.jpg"
+copy="Explore the official Diem Reference Wallet, with full functionality and interactive testnet connectivity"
+cta="Try the Wallet"
+ctaLink="/reference-wallet"
+img="/img/marketing-module.jpg"
 />
 
 ### Topics

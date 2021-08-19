@@ -1,9 +1,10 @@
 ---
-id: glossary
-title: Glossary
-sidebar_label: Terminology
+title: "Terminology"
+slug: "glossary"
+hidden: true
+createdAt: "2021-02-04T01:04:01.066Z"
+updatedAt: "2021-03-02T01:38:24.557Z"
 ---
-
 ## A
 
 ---
@@ -284,7 +285,7 @@ These are FullNodes used by DPN Participants to forward transactions to the vali
 
 - **Move** is a new programming language that implements all the transactions on the Diem Blockchain.
 - It has two different kinds of code &mdash; [transaction scripts](#transaction-script) and [Move modules](#move-module).
-- For further information on Move, refer to the [Move technical paper](/docs/technical-papers/move-paper)
+- For further information on Move, refer to the [Move technical paper](/move/move-paper.md)
 
 ### Move Bytecode
 

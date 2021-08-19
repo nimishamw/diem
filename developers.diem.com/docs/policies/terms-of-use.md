@@ -1,8 +1,13 @@
 ---
-id: terms-of-use
-title: Diem Association Website Terms of Use
+title: "Diem Association Website Terms of Use"
+slug: "terms-of-use"
+hidden: false
+metadata: 
+  title: "Diem Association Website Terms of Use"
+  description: "Read the terms use for the Diem Association website."
+createdAt: "2021-02-04T01:03:54.015Z"
+updatedAt: "2021-02-04T01:03:54.015Z"
 ---
-
 These Terms of Use (“Terms”) govern the use of the Diem Association website and any other website or online service that links to these Terms (collectively, the “Website”). These terms constitute an agreement between you and Diem Association, so it is important that you review them carefully.
 
 ## Content
