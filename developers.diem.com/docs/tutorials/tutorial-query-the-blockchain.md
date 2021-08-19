@@ -2,11 +2,6 @@
 title: "Query the blockchain"
 slug: "tutorial-query-the-blockchain"
 hidden: false
-metadata: 
-  title: "Query the blockchain"
-  description: "Try different methods to query the Diem Blockchain"
-createdAt: "2021-02-11T01:42:12.216Z"
-updatedAt: "2021-04-21T21:55:19.421Z"
 ---
 The JSON-RPC service provides APIs for clients to query the Diem Blockchain. This tutorial will guide you through the different methods you can use. You can test these on testnet.
 

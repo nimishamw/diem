@@ -2,11 +2,6 @@
 title: "Contributor Covenant Code of Conduct"
 slug: "code-of-conduct"
 hidden: false
-metadata: 
-  title: "Contributor Covenant Code of Conduct"
-  description: "Read the code of conduct for all contributors."
-createdAt: "2021-02-04T01:03:54.021Z"
-updatedAt: "2021-02-04T01:03:54.021Z"
 ---
 ## Our Pledge
 

@@ -2,11 +2,6 @@
 title: "Set up and modules"
 slug: "reference-wallet-set-up-modules"
 hidden: false
-metadata: 
-  title: "Set up and modules"
-  description: "Set up the Diem Reference Wallet and learn more about the its development modules."
-createdAt: "2021-03-22T06:11:05.113Z"
-updatedAt: "2021-03-31T23:45:05.253Z"
 ---
 ## Set up the Reference Wallet
 

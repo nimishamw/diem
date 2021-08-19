@@ -2,11 +2,6 @@
 title: "Diem Reference Merchant Store"
 slug: "diem-reference-merchant-store"
 hidden: false
-metadata: 
-  title: "Diem Reference Merchant Store"
-  description: "Explore the Diem Reference Merchant Store and how you use it to test and develop merchant stores to work with the Diem Blockchain."
-createdAt: "2021-02-23T00:44:02.637Z"
-updatedAt: "2021-03-30T22:49:17.456Z"
 ---
 The Diem Reference Merchant project demonstrates the possible integration of Diem payments on an online shopping website. This project is meant to be a reference you can use while building your own merchant solution.
 

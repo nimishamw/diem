@@ -2,11 +2,6 @@
 title: "Validator nodes"
 slug: "basics-validator-nodes"
 hidden: false
-metadata: 
-  title: "Validator nodes"
-  description: "Discover how validator nodes run the DiemBFT consensus protocol to execute and store transactions on the Diem Blockchain."
-createdAt: "2021-02-23T00:17:19.743Z"
-updatedAt: "2021-05-21T21:29:45.242Z"
 ---
 A Diem node is a peer entity of the Diem ecosystem that tracks the <Glossary>state</Glossary> of the Diem Blockchain. Clients interact with the blockchain via Diem nodes. There are two types of nodes:
 * Validator nodes

@@ -2,11 +2,6 @@
 title: "Manage accounts"
 slug: "txns-manage-accounts"
 hidden: false
-metadata: 
-  title: "Manage accounts"
-  description: "Read how you can create a recovery account address, rotate your auth key, and add a currency to your account in the Diem Payment Network."
-createdAt: "2021-02-23T00:21:34.390Z"
-updatedAt: "2021-03-25T00:18:35.267Z"
 ---
 Once an account has been created, you can use different types of transactions to manage the following account administrative tasks:
 * [Create a recovery address account](doc:txns-manage-accounts#create-a-recovery-address-account)

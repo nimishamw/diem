@@ -2,11 +2,6 @@
 title: "Diem Reference Wallet"
 slug: "diem-reference-wallet"
 hidden: false
-metadata: 
-  title: "Diem Reference Wallet"
-  description: "Explore the Diem Reference Wallet and how you use it to test and develop wallets to work with the Diem Blockchain."
-createdAt: "2021-02-04T01:07:00.217Z"
-updatedAt: "2021-03-30T17:52:56.011Z"
 ---
 The Diem Reference Wallet (Reference Wallet) is a project we have developed to demonstrate and help developers learn how a wallet could work on the Diem Blockchain. 
 

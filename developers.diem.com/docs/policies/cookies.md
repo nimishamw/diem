@@ -2,11 +2,6 @@
 title: "Cookies Policy"
 slug: "cookies"
 hidden: false
-metadata: 
-  title: "Cookies Policy"
-  description: "Learn more about our cookies policy."
-createdAt: "2021-02-04T01:03:54.040Z"
-updatedAt: "2021-02-04T01:03:54.040Z"
 ---
 ## Cookies
  Our Data Policy explains our principles when it comes to the collection, processing, and storage of your information. This policy specifically explains how we, our partners, and users of our services deploy cookies, as well as the options you have to control them.

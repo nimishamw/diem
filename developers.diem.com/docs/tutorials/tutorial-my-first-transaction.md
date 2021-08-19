@@ -2,11 +2,6 @@
 title: "My first transaction"
 slug: "tutorial-my-first-transaction"
 hidden: false
-metadata: 
-  title: "My first transaction"
-  description: "Submit and execute your first transaction on the Diem Blockchain testnet."
-createdAt: "2021-02-10T22:17:13.755Z"
-updatedAt: "2021-03-25T18:54:34.220Z"
 ---
 This document will guide you through executing your first transaction on the Diem Blockchain's <Glossary>testnet</Glossary>. Before you proceed, we recommend that you read the following to familiarize yourself with the key concepts:
 

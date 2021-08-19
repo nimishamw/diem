@@ -2,11 +2,6 @@
 title: "CLI reference"
 slug: "cli-reference"
 hidden: false
-metadata: 
-  title: "CLI reference"
-  description: "Learn how to use the Diem command line interface (CLI) client to interact with the Diem Blockchain’s testnet."
-createdAt: "2021-02-10T23:52:37.516Z"
-updatedAt: "2021-03-30T23:27:03.381Z"
 ---
 This guide describes how to use the Diem command line interface (CLI) client to interact with the Diem Blockchain’s testnet. 
 
@@ -59,9 +54,7 @@ Once started with any of the three commands previously mentioned, the following 
 major_command subcommand [options]
 ```
 
-If you enter only the major command, it will show the help information for that command. Major commands can be any one of the following:
-
----
+If you enter only the major command, it will show the help information for that command. Major commands can be any one of the following:---
 
  #### `account | a` &mdash;  Account related operations. Subcommands include:
 
@@ -109,9 +102,7 @@ If you enter only the major command, it will show the help information for that 
           addc|addcb|ac|acb <account_address> <currency_code>
       Arguments:
           account_address - The account to add the currency to.
-          currency_code - Which currency to add. For example, `Coin2`.
-
----
+          currency_code - Which currency to add. For example, `Coin2`.---
 
 #### `<transfer | t> | <transferb | tb>` &mdash; Transfer coins from one account to another. Suffix 'b' is for blocking.
 
@@ -126,9 +117,7 @@ If you enter only the major command, it will show the help information for that 
           number_of_coins - The number of coins transferred to receiver account.
           currency_code - Which currency to transfer. For example, `Coin1`.
           gas_unit_price_in_micro_diems - The unit price to pay for gas.
-          max_gas_amount_in_micro_diems - Max units of gas user is willing to pay for this transaction.
-
----
+          max_gas_amount_in_micro_diems - Max units of gas user is willing to pay for this transaction.---
 
 #### `query | q` &mdash; Query data from destination chain. All query operations are blocking. Subcommands include:
 
@@ -190,9 +179,7 @@ If you enter only the major command, it will show the help information for that 
       Usage:
           account_resources|ar <account_ref_id>|<account_address>
       Arguments:
-          account_ref_id|account_address - The account to query resources from.
-
----
+          account_ref_id|account_address - The account to query resources from.---
 #### dev | d &mdash; Operations related to Move transaction scripts and modules.
 
 <blockquote className="block_note">
@@ -254,17 +241,11 @@ Subcommands include:
       Usage:
           add_to_script_allow_list|a <hash>
       Arguments:
-          hash - Hash of the custom script to allow.
+          hash - Hash of the custom script to allow.---
 
----
+**`info | i` &mdash; Print CLI config and client internal information.**---
 
-**`info | i` &mdash; Print CLI config and client internal information.**
-
----
-
-**`quit | q!` &mdash; Exits the CLI. No subcommand is required.**
-
----
+**`quit | q!` &mdash; Exits the CLI. No subcommand is required.**---
 
 **`help | h` &mdash; Prints help. No subcommand is required.**
 

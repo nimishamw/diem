@@ -2,11 +2,6 @@
 title: "Test the local web wallet"
 slug: "reference-wallet-local-web"
 hidden: false
-metadata: 
-  title: "Test the Local Web Wallet"
-  description: "Test the local web version of the Diem Reference Wallet."
-createdAt: "2021-02-04T01:06:53.661Z"
-updatedAt: "2021-03-30T22:12:54.214Z"
 ---
 ## Overview
 

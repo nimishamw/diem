@@ -2,8 +2,6 @@
 title: "Create accounts and mint"
 slug: "txns-create-accounts-mint"
 hidden: false
-createdAt: "2021-02-23T00:20:58.523Z"
-updatedAt: "2021-03-24T23:52:37.738Z"
 ---
 Depending on the type of network you are using, you can use transactions to:
 * [Create accounts and mint fake Diem Coins in testnet](doc:txns-create-accounts-mint#create-accounts-mint-in-testnet)

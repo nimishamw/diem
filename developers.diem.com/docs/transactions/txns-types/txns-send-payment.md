@@ -2,11 +2,6 @@
 title: "Send a payment"
 slug: "txns-send-payment"
 hidden: false
-metadata: 
-  title: "Send a payment"
-  description: "Learn how you can use transaction scripts to send payments to another account and to update your dual attestation information."
-createdAt: "2021-02-23T00:21:53.067Z"
-updatedAt: "2021-03-24T22:26:18.495Z"
 ---
 An account can send a payment to another account by sending a transaction. 
 

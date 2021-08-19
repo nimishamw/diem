@@ -2,11 +2,6 @@
 title: "Node networks and synchronization"
 slug: "basics-node-networks-sync"
 hidden: false
-metadata: 
-  title: "Node Networks and Synchronization"
-  description: "Explore the different types of node networks, and how a Diem node synchronizes to the latest state of the Diem Blockchain."
-createdAt: "2021-02-23T00:34:16.567Z"
-updatedAt: "2021-04-21T21:49:47.799Z"
 ---
 In this page, you will learn about:
 * Types of node networks

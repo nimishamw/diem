@@ -2,12 +2,8 @@
 title: "Terminology"
 slug: "glossary"
 hidden: true
-createdAt: "2021-02-04T01:04:01.066Z"
-updatedAt: "2021-03-02T01:38:24.557Z"
 ---
-## A
-
----
+## A---
 
 ### Accumulator Root Hash
 
@@ -40,9 +36,7 @@ updatedAt: "2021-03-02T01:38:24.557Z"
 - It is a piece of data stored in the user's account on the blockchain.
 - Users can rotate their signing key by rotating their authentication key.
 
-## B
-
----
+## B---
 
 ### Block
 
@@ -68,9 +62,7 @@ updatedAt: "2021-03-02T01:38:24.557Z"
 - In this configuration, N is typically set to 3f+1. Validators holding up to f votes will be allowed to be faulty &mdash; offline, malicious, slow, etc. As long as 2f+1 votes are held by [honest](#honest-validator) validators, they will be able to reach consensus on consistent decisions.
 - This implies that BFT consensus protocols can function correctly, even if up to one-third of the voting power is held by validators that are compromised or fail.
 
-## C
-
----
+## C---
 
 ### Client
 
@@ -96,9 +88,7 @@ A **client** is a piece of software that has the capability to interact with the
 - In a **custodial wallet** model, the wallet service takes custody of customers' funds and private keys.
 
 
-## D
-
----
+## D---
 
 ### Designated Dealer
 
@@ -148,9 +138,7 @@ A Diem node is a peer entity of the Diem network that tracks the state of the Di
 - See [testnet](#testnet).
 
 
-## E
-
----
+## E---
 
 ### Ed25519
 
@@ -187,9 +175,7 @@ A transaction ceases to be valid after its **expiration time**. If it is assumed
 
 then there is a guarantee that T_N will never be included in the blockchain.
 
-## F
-
----
+## F---
 
 ### Faucet
 
@@ -209,9 +195,7 @@ These are FullNodes used by DPN Participants to forward transactions to the vali
 
 
 
-## G
-
----
+## G---
 
 ### Gas
 
@@ -225,9 +209,7 @@ These are FullNodes used by DPN Participants to forward transactions to the vali
 - The price of gas required for a transaction depends on the current demand for usage of the network.
 - The gas cost is fixed at a point in time. Gas costs are denominated in gas units.
 
-## H
-
----
+## H---
 
 ### Honest (Validator)
 
@@ -239,9 +221,7 @@ These are FullNodes used by DPN Participants to forward transactions to the vali
 - DiemBFT, the Diem network's consensus algorithm, is based on HotStuff.
 - It simplifies the reasoning about safety, and it addresses some performance limitations of previous consensus protocols.
 
-## L
-
----
+## L---
 
 ### Leader
 
@@ -251,9 +231,7 @@ These are FullNodes used by DPN Participants to forward transactions to the vali
 
 
 
-## M
-
----
+## M---
 
 ### Maximum Gas Amount
 
@@ -308,26 +286,20 @@ These are FullNodes used by DPN Participants to forward transactions to the vali
 - The **Move virtual machine** executes transaction scripts written in [Move bytecode](#move-bytecode) to produce an [execution result](#execution-result). This result is used to update the blockchain **state**.
 - The virtual machine is part of a [validator](#validator).
 
-## N
-
----
+## N---
 
 ### Node
 
 - A **node** is a peer entity of the Diem network that tracks the state of the Diem Blockchain.
 - A Diem node consists of logical components. [Mempool](#mempool), [consensus](#consensus), and the [virtual machine](#virtual-machine) are examples of node components.
 
-## O
-
----
+## O---
 
 ### Open-Source Community
 
 - **Open-source community** is a term used for a group of developers who work on open-source software. If you're reading this glossary, then you are part of the Diem project's developer community.
 
-## P
-
----
+## P---
 
 ### Proof
 
@@ -335,9 +307,7 @@ These are FullNodes used by DPN Participants to forward transactions to the vali
 - Every operation in the Diem Blockchain can be verified cryptographically that it is indeed correct and that data has not been omitted.
 - For example, if a user queries the information within a particular executed transaction, they will be provided with a cryptographic proof that the data returned to them is correct.
 
-## R
-
----
+## R---
 
 ### Regulated VASP
 
@@ -359,9 +329,7 @@ Under the DPN Rules, a VASP is defined as a natural or legal person that as a bu
 
 - A **round number** is a shared counter used to select leaders during an [epoch](#epoch) of the consensus protocol.
 
-## S
-
----
+## S---
 
 ### Sequence Number
 
@@ -389,9 +357,7 @@ Under the DPN Rules, a VASP is defined as a natural or legal person that as a bu
 
 - **State root hash** is a [Merkle hash](https://en.wikipedia.org/wiki/Merkle_tree) over all keys and values the state of the Diem Blockchain at a given version.
 
-## T
-
----
+## T---
 
 ### testnet
 
@@ -420,9 +386,7 @@ Under the DPN Rules, a VASP is defined as a natural or legal person that as a bu
 - A single transaction script can send funds to multiple recipients and invoke procedures from several different modules.
 - A transaction script **is not** stored in the global state and cannot be invoked by other transaction scripts. It is a single-use program.
 
-## V
-
----
+## V---
 
 ### Validator
 
@@ -437,9 +401,7 @@ Under the DPN Rules, a VASP is defined as a natural or legal person that as a bu
 - The Diem Blockchain doesn't have an explicit notion of a block &mdash; it only uses blocks for batching and executing transactions.
 - A transaction at height 0 is the first transaction (genesis transaction), and a transaction at height 100 is the 101st transaction in the transaction store.
 
-## W
-
----
+## W---
 
 ### Well-Formed Transaction
 

@@ -2,8 +2,6 @@
 title: "Try the Public Demo Wallet"
 slug: "reference-wallet-public-demo"
 hidden: false
-createdAt: "2021-02-04T01:06:53.711Z"
-updatedAt: "2021-03-31T23:46:15.114Z"
 ---
 ## Introduction
 

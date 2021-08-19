@@ -2,11 +2,6 @@
 title: "Contribution guide"
 slug: "contributing"
 hidden: false
-metadata: 
-  title: "Contribution guide"
-  description: "Learn how you can contribute to the Diem project."
-createdAt: "2021-02-04T01:03:20.205Z"
-updatedAt: "2021-04-21T21:45:28.929Z"
 ---
 Our goal is to make contributing to the Diem project easy and transparent.
 

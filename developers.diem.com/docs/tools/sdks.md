@@ -2,8 +2,6 @@
 title: "SDKs"
 slug: "sdks"
 hidden: false
-createdAt: "2021-02-04T00:26:57.258Z"
-updatedAt: "2021-05-06T00:23:39.670Z"
 ---
 Our official SDKs are collections of development resources like libraries, code samples, and documentation curated to help you build your own projects on the Diem platform.
 

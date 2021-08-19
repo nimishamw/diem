@@ -2,11 +2,6 @@
 title: "Try the Public Demo Merchant Store"
 slug: "reference-merchant-public-demo"
 hidden: false
-metadata: 
-  title: "Try the Public Demo Merchant Store"
-  description: "Try the public, online demo of the Diem Reference Merchant store."
-createdAt: "2021-02-11T01:06:01.457Z"
-updatedAt: "2021-03-30T23:20:04.964Z"
 ---
 The Public Demo Merchant Store (demo store) allows you to try a merchant store running on the Diem testnet. It demonstrates a simple, common use case when working with Diem Coin currencies.
 

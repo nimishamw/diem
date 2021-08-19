@@ -2,11 +2,6 @@
 title: "My first client"
 slug: "tutorial-my-first-client"
 hidden: false
-metadata: 
-  title: "My first client"
-  description: "Build your first client for the Diem Blockchain using our official SDKs."
-createdAt: "2021-02-11T01:43:14.606Z"
-updatedAt: "2021-04-21T21:43:32.823Z"
 ---
 
 import Tabs from '@theme/Tabs';

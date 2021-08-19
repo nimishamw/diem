@@ -2,11 +2,6 @@
 title: "Accounts"
 id: "basics-accounts"
 hidden: false
-metadata: 
-  title: "Accounts"
-  description: "Understand how accounts, addresses, and resources work in the Diem Payment Network."
-createdAt: "2021-02-04T01:03:19.742Z"
-updatedAt: "2021-03-31T21:50:57.280Z"
 ---
 An account represents a resource on the Diem Blockchain that can send transactions. Each account is identified by a particular 16-byte account address and is a container for Move modules and Move resources. 
 

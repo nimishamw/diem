@@ -1,7 +1,7 @@
 ---
 title: "Release v1.2 Announcement"
 slug: "diem-core-v120"
-createdAt: "2021-04-26T23:15:00.000Z"
+
 hidden: false
 ---
 We're announcing the new release v1.2.0

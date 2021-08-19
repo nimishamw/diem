@@ -2,11 +2,6 @@
 title: "Coding guidelines"
 slug: "coding-guidelines"
 hidden: false
-metadata: 
-  title: "Coding guidelines"
-  description: "Explore the coding guidelines for the Diem Core Rust codebase."
-createdAt: "2021-02-04T01:03:19.848Z"
-updatedAt: "2021-04-01T17:37:27.276Z"
 ---
 This document describes the coding guidelines for the Diem Core Rust codebase.
 

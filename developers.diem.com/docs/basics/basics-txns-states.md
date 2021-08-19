@@ -2,11 +2,6 @@
 title: "Transactions and states"
 slug: "basics-txns-states"
 hidden: false
-metadata: 
-  title: "Transactions and states"
-  description: "Learn more about the fundamental concepts at the heart of the Diem Blockchain, transactions and states."
-createdAt: "2021-02-04T01:03:19.437Z"
-updatedAt: "2021-03-30T22:23:09.351Z"
 ---
 The two fundamental concepts at the heart of the Diem Blockchain are 
 

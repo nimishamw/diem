@@ -2,11 +2,6 @@
 title: "FullNodes"
 slug: "basics-fullnodes"
 hidden: false
-metadata: 
-  title: "FullNodes"
-  description: "Read about how FullNodes work in the Diem Blockchain and how you can use them."
-createdAt: "2021-03-01T15:47:55.321Z"
-updatedAt: "2021-03-31T21:38:05.798Z"
 ---
 A Diem node is a peer entity of the Diem ecosystem that tracks the <Glossary>state</Glossary> of the Diem Blockchain. Clients interact with the blockchain via Diem nodes. There are two types of nodes:
 * <a href="doc:basics-validator-nodes" target="_blank">Validator nodes</a>

@@ -2,11 +2,6 @@
 title: "Events"
 slug: "basics-events"
 hidden: false
-metadata: 
-  title: "Events"
-  description: "Read about the different types of events in the Diem Blockchain and how you can query for them"
-createdAt: "2021-02-04T01:03:19.432Z"
-updatedAt: "2021-04-21T21:53:34.905Z"
 ---
 Events are Move data that are emitted during the execution of a transaction on the Diem Blockchain. 
 

@@ -2,11 +2,6 @@
 title: "Use the admin dashboard"
 slug: "reference-wallet-admin-dash"
 hidden: false
-metadata: 
-  title: "Use the admin dashboard"
-  description: "Manage users, admins, and liquidity using the admin dashboard for the Diem Reference Wallet."
-createdAt: "2021-02-04T01:06:54.395Z"
-updatedAt: "2021-03-30T22:20:05.532Z"
 ---
 ## Overview
 

@@ -2,11 +2,6 @@
 title: "Privacy Policy"
 slug: "privacy-policy"
 hidden: false
-metadata: 
-  title: "Privacy Policy"
-  description: "Read our privacy policy here."
-createdAt: "2021-02-04T01:03:54.068Z"
-updatedAt: "2021-02-04T01:03:54.068Z"
 ---
 This website is owned and operated by the Diem Association (“Diem,” “us,” “our”). This Data Policy applies to the Diem Association website (“Website”). This Data Policy describes our practices for handling your information collected in connection with this Website.
 

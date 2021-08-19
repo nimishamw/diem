@@ -2,8 +2,6 @@
 title: "Maintainers"
 slug: "maintainers"
 hidden: true
-createdAt: "2021-05-27T04:19:31.874Z"
-updatedAt: "2021-05-27T06:07:02.380Z"
 ---
 ## Election of Maintainers
 The election of Maintainers, the launch of the DIP program, and an associated call for contributors reinforce the Diem Association’s commitment to transparency in the Diem project’s governance.

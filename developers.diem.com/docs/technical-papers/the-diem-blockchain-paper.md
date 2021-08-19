@@ -2,11 +2,6 @@
 title: "The Diem Blockchain"
 slug: "the-diem-blockchain-paper"
 hidden: false
-metadata: 
-  title: "The Diem Blockchain"
-  description: "Read the technical paper on the Diem Blockchain and how it works."
-createdAt: "2021-02-04T01:06:43.773Z"
-updatedAt: "2021-03-30T03:44:55.778Z"
 ---
 ***Note to readers: On December 1, 2020, the Libra Association was renamed to Diem Association. This report was published before the Association released White Paper v2.0 in April 2020, which included a number of key updates to the Libra payment system. Outdated links have been removed, but otherwise, this report has not been modified to incorporate the updates and should be read in that context. Features of the project as implemented may differ based on regulatory approvals or other considerations, and may evolve over time.***
 
@@ -19,7 +14,7 @@ The Diem protocol allows a set of replicas — referred to as validators — fro
 We use Move to define the core mechanisms of the blockchain, such as the currency and validator membership. These core mechanisms enable the creation of a unique governance mechanism that builds on the stability and reputation of existing institutions in the early days but transitions to a fully open system over time.
 
 ### Downloads
-<d-publication-link
+<PublicationLink
   image="https://diem-developers-components.netlify.app/images/diem-blockchain-pdf.png"
   doc-link="https://diem-developers-components.netlify.app/papers/the-diem-blockchain/2020-05-26.pdf"
   title="The Diem Blockchain"

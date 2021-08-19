@@ -2,11 +2,6 @@
 title: "Life of a transaction"
 slug: "basics-life-of-txn"
 hidden: false
-metadata: 
-  title: "Life of a transaction"
-  description: "Follow a transaction on its journey from being submitted to a Diem node to being committed to the Diem Blockchain."
-createdAt: "2021-02-09T17:16:29.655Z"
-updatedAt: "2021-03-31T23:39:27.137Z"
 ---
 To get a deeper understanding of the lifecycle of a Diem transaction (from an operational perspective), we will follow a transaction on its journey from being submitted to a Diem node to being committed to the Diem Blockchain. We will then “zoom-in” on the logical components of Diem nodes and take a look at its interactions with other components.
 

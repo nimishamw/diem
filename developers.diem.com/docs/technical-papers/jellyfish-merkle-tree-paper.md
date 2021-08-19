@@ -2,11 +2,6 @@
 title: "Jellyfish Merkle Tree"
 slug: "jellyfish-merkle-tree-paper"
 hidden: false
-metadata: 
-  title: "Jellyfish Merkle Tree"
-  description: "Read the technical paper to learn about the Jellyfish Merkle Tree (JMT)."
-createdAt: "2021-02-04T01:06:43.882Z"
-updatedAt: "2021-04-01T17:04:39.929Z"
 ---
 ## Abstract
 
@@ -14,7 +9,7 @@ This paper presents Jellyfish Merkle Tree (JMT), a space-and-computation-efficie
 
 ### Downloads
 
-<d-publication-link 
+<PublicationLink
   image="https://diem-developers-components.netlify.app/images/jellyfish-merkle-tree-pdf.png"
   doc-link="https://diem-developers-components.netlify.app/papers/jellyfish-merkle-tree/2021-01-14.pdf"
   title="Jellyfish Merkle Tree Paper"

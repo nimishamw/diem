@@ -2,11 +2,6 @@
 title: "Configure and run a public FullNode"
 slug: "configure-run-public-fullnode"
 hidden: false
-metadata: 
-  title: "Configure and run a public FullNode"
-  description: "Learn how you can configure and run a public FullNode."
-createdAt: "2021-02-23T00:36:09.690Z"
-updatedAt: "2021-06-08T21:59:48.632Z"
 ---
 You can run [FullNodes](doc:fullnodes) to verify the state and synchronize to the Diem Blockchain. FullNodes can be run by anyone. FullNodes replicate the full state of the blockchain by querying each other, or by querying the validators directly.
 

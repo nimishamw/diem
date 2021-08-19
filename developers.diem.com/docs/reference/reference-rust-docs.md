@@ -2,11 +2,6 @@
 title: "Rust docs"
 slug: "reference-rust-docs"
 hidden: false
-metadata: 
-  title: "Rust docs"
-  description: "Explore generated reference Rust documentation."
-createdAt: "2021-02-09T17:34:09.679Z"
-updatedAt: "2021-05-24T01:46:22.070Z"
 ---
 Reference documentation generated from project source can be found below
 

@@ -2,11 +2,6 @@
 title: "Integrate with the Diem Payment Network"
 slug: "integrate-wallet-merchant-dpn"
 hidden: false
-metadata: 
-  title: "Integrate with the Diem Payment Network"
-  description: "Integrate your wallet or merchant store with the DPN using this guide."
-createdAt: "2021-02-04T01:07:00.230Z"
-updatedAt: "2021-04-21T21:59:36.267Z"
 ---
 If you are a qualified <Glossary>Regulated VASP</Glossary>, use this guide to integrate your wallet or merchant store with the Diem Payment Network (DPN). 
 

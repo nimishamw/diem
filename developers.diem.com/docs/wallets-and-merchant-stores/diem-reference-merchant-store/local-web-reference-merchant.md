@@ -2,11 +2,6 @@
 title: "Test the local merchant store"
 slug: "local-web-reference-merchant"
 hidden: false
-metadata: 
-  title: "Test the local merchant store"
-  description: "Test the local web version of the Diem Reference Merchant project."
-createdAt: "2021-02-11T01:09:09.161Z"
-updatedAt: "2021-03-30T23:02:55.905Z"
 ---
 ## Overview
 

@@ -2,11 +2,6 @@
 title: "Run a local test validator network"
 slug: "tutorial-run-local-validator-nw"
 hidden: false
-metadata: 
-  title: "Run a local test validator network"
-  description: "Run a local test validator network to test and debug services you are building for the Diem Blockchain and to build and test Move module code changes."
-createdAt: "2021-02-11T01:41:47.378Z"
-updatedAt: "2021-04-21T21:23:59.356Z"
 ---
 You can run a local test validator network to test and develop against a Diem Blockchain, including Move changes. This network is not part of the Diem Ecosystem and is only for testing and development purposes.
 

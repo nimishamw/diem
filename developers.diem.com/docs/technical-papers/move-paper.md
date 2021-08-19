@@ -2,11 +2,6 @@
 title: "Move"
 slug: "move-paper"
 hidden: false
-metadata: 
-  title: "Move technical paper"
-  description: "Read the Move technical paper which contains details on the programming language for the Diem Blockchain."
-createdAt: "2021-02-04T01:06:43.769Z"
-updatedAt: "2021-05-25T22:11:51.882Z"
 ---
 ***Note to readers: On December 1, 2020, the Libra Association was renamed to Diem Association. This report was
 published before the Association released White Paper v2.0 in April 2020, which included a number of key updates to the
@@ -27,9 +22,8 @@ control policies. The safety and expressivity of Move have enabled us to impleme
 protocol in Move, including Diem coin, transaction processing, and validator management.
 
 ### Downloads
-
-  <d-publication-link
-    image="https://diem-developers-components.netlify.app/images/diem-move-language.png"
-    doc-link="https://diem-developers-components.netlify.app/papers/diem-move-a-language-with-programmable-resources/2020-05-26.pdf"
-    title="Move: A Language With Programmable Resourcess"
-  />
+<PublicationLink
+  image="https://diem-developers-components.netlify.app/images/diem-move-language.png"
+  doc-link="https://diem-developers-components.netlify.app/papers/diem-move-a-language-with-programmable-resources/2020-05-26.pdf"
+  title="Move: A Language With Programmable Resources"
+/>

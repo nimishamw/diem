@@ -2,11 +2,6 @@
 title: "Gas and transaction fees"
 slug: "basics-gas-txn-fee"
 hidden: false
-metadata: 
-  title: "Gas and transaction fees"
-  description: "Learn about gas and how it is used to specify a transaction fee in the Diem Payment Network"
-createdAt: "2021-02-04T01:03:19.669Z"
-updatedAt: "2021-03-22T05:01:42.635Z"
 ---
 When a transaction is executed in the Diem Payment Network (DPN), the network resources used are tracked and measured using gas. 
 

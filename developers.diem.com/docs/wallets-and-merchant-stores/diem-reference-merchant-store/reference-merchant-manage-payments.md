@@ -2,11 +2,6 @@
 title: "Manage payments"
 slug: "reference-merchant-manage-payments"
 hidden: false
-metadata: 
-  title: "Manage payments"
-  description: "Use the Diem Reference Merchant store's payment management page to simulate sending refunds and payouts to your bank account."
-createdAt: "2021-02-11T01:18:23.538Z"
-updatedAt: "2021-03-30T23:04:48.548Z"
 ---
 The payment management page demonstrates the actions that a merchant can perform on an existing payment. The page offers the following payment information and related actions:
 

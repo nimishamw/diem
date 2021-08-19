@@ -2,12 +2,8 @@
 title: "Proof"
 slug: "basics-merkle-proof"
 hidden: false
-metadata: 
-  title: "Proof"
-  description: "Learn how the Diem Blockchain provides proof of transaction history."
-createdAt: "2021-02-23T00:19:06.100Z"
-updatedAt: "2021-03-31T21:39:29.714Z"
 ---
+
 A proof is a way to verify the truth of data in the Diem Blockchain. 
 
 All data in the Diem Blockchain is stored in a single-version distributed database. A validator node's <a href="doc:basics-validator-nodes#storage" target="_blank">storage component</a> is used to persist agreed upon blocks of transactions and their execution results. The blockchain is represented as an ever-growing <Glossary>Merkle tree</Glossary>. A “leaf” is appended to the tree for each transaction executed on the blockchain. 

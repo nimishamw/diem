@@ -2,11 +2,6 @@
 title: "Test the local mobile wallet"
 slug: "reference-wallet-local-mob"
 hidden: false
-metadata: 
-  title: "Test the local mobile wallet"
-  description: "Test the local mobile version of the Diem Reference Wallet."
-createdAt: "2021-02-04T01:06:53.971Z"
-updatedAt: "2021-03-30T22:10:25.427Z"
 ---
 ## Overview
 
