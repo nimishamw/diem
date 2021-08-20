@@ -11,6 +11,6 @@ This paper presents Jellyfish Merkle Tree (JMT), a space-and-computation-efficie
 
 <PublicationLink
   image="https://diem-developers-components.netlify.app/images/jellyfish-merkle-tree-pdf.png"
-  doc-link="https://diem-developers-components.netlify.app/papers/jellyfish-merkle-tree/2021-01-14.pdf"
+  doc_link="https://diem-developers-components.netlify.app/papers/jellyfish-merkle-tree/2021-01-14.pdf"
   title="Jellyfish Merkle Tree Paper"
 />

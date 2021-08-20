@@ -16,6 +16,6 @@ We use Move to define the core mechanisms of the blockchain, such as the currenc
 ### Downloads
 <PublicationLink
   image="https://diem-developers-components.netlify.app/images/diem-blockchain-pdf.png"
-  doc-link="https://diem-developers-components.netlify.app/papers/the-diem-blockchain/2020-05-26.pdf"
+  doc_link="https://diem-developers-components.netlify.app/papers/the-diem-blockchain/2020-05-26.pdf"
   title="The Diem Blockchain"
 />

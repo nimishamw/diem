@@ -5,24 +5,35 @@ import BaseContainer from '../BaseContainer';
 import Link from 'src/components/Link';
 import {WithBackgroundImage} from 'diem-docusaurus-components';
 
+import useThemeContext from '@theme/hooks/useThemeContext';
+
 import classnames from 'classnames';
 import styles from './styles.module.css';
 
-const SDKCard = ({ bolded, docs, icon, iconDark, overlay, sdk, smallerImage, title, to }) => (
-  <BaseContainer className={styles.root} overlay={overlay} to={to}>
-    <div className={styles.left}>
-      <img className={styles.icon} src={icon} />
-    </div>
-    <div className={styles.right}>
-      <Link className={styles.sdk} href={sdk}>
+const SDKCard = ({bolded, docs, icon, iconDark, overlay, title, sdk, smallerImage, to}) => {
+  const {isDarkTheme} = useThemeContext();
+  icon = isDarkTheme ? iconDark : icon;
+  return (
+    <BaseContainer className={styles.root} to={to} overlay={overlay}>
+      <a href={sdk} className={styles.left}>
         <WithBackgroundImage
-          className={styles.buttonImage}
-          imageLight="img/document.svg"
-          imageDark="img/document-dark.svg"
+          className={styles.icon}
+          imageLight={icon}
+          imageDark={iconDark}
         />
-        <span className={styles.label}>SDK</span>
-      </Link>
-      {docs &&
+        <div className={classnames(styles.label, styles.underIconText)}>{title}</div>
+      </a>
+
+      <div className={styles.right}>
+        <Link className={styles.sdk} href={sdk}>
+          <WithBackgroundImage
+            className={styles.buttonImage}
+            imageLight="img/document.svg"
+            imageDark="img/document-dark.svg"
+          />
+          <span className={styles.label}>SDK</span>
+        </Link>
+        {docs &&
         <Link className={styles.docs} href={docs}>
           <WithBackgroundImage
             className={styles.buttonImage}
@@ -31,16 +42,18 @@ const SDKCard = ({ bolded, docs, icon, iconDark, overlay, sdk, smallerImage, tit
           />
           <span className={styles.label}>Docs</span>
         </Link>
-      }
-    </div>
-  </BaseContainer>
-);
+        }
+      </div>
+    </BaseContainer>
+  )
+}
 
 SDKCard.propTypes = {
   docs: PropTypes.string,
   icon: PropTypes.string.isRequired,
   iconDark: PropTypes.string,
   overlay: PropTypes.string,
+  title: PropTypes.string,
   sdk: PropTypes.string.isRequired,
   to: PropTypes.string,
 };
