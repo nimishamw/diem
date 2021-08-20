@@ -2,11 +2,6 @@
 title: "Standard library"
 slug: "move-standard-library"
 hidden: false
-metadata: 
-  title: "Standard library"
-  description: "Explore the Move standard library."
-createdAt: "2021-02-04T01:03:45.523Z"
-updatedAt: "2021-03-25T21:09:51.819Z"
 ---
 The Move standard library exposes interfaces that implement the following functionality:
 * [Basic operations on vectors](#vector).
@@ -279,22 +274,9 @@ Error categories are declared as constants in the `Errors` module and are global
 The lower 8 bits of the abort code hold the *error category*. The remaining 56 bits of the abort code hold the *error reason*.
 The reason should be a unique number relative to the module which raised the error and can be used to obtain more information about the error at hand. It should mostly be used for diagnostic purposes as error reasons may change over time if the module is updated.
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/3ec2962-standard-library-error-bits.png",
-        "standard-library-error-bits.png",
-        904,
-        148,
-        "#000000"
-      ],
-      "caption": "Error bits"
-    }
-  ]
-}
-[/block]
+![Error bits](https://files.readme.io/3ec2962-standard-library-error-bits.png)
+<small className="figure">Error bits</small>
+
 Since error categories are globally stable, these present the most stable API and should in general be what is used by clients to determine the messages they may present to users (whereas the reason is useful for diagnostic purposes). There are public functions in the `Errors` module for creating an abort code of each error category with a specific `reason` number (represented as a `u64`).
 
 ### Constants

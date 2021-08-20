@@ -2,11 +2,6 @@
 title: "Bool"
 slug: "move-primitives-bool"
 hidden: false
-metadata: 
-  title: "Bool"
-  description: "Learn more about the primitive type bool in Move."
-createdAt: "2021-02-04T01:03:45.286Z"
-updatedAt: "2021-06-11T17:25:47.379Z"
 ---
 `bool` is Move's primitive type for boolean `true` and `false` values.
 

@@ -29,10 +29,12 @@ function DocItem(props) {
       hide_title: hideTitle,
       hide_table_of_contents: hideTableOfContents,
       wider_content: widerContent,
+      no_pad_top: noPadTop,
     },
     metadata,
     toc,
   } = DocContent;
+  console.log("hideTableOfContents", hideTableOfContents);
   const { description, title, permalink, editUrl } = metadata;
 
   const metaTitle = title ? `${title} | ${siteTitle}` : siteTitle;
@@ -71,6 +73,7 @@ function DocItem(props) {
               styles.docItemContainer,
               classnames({
                 [styles.wider]: widerContent,
+                [styles.noPadTop]: noPadTop,
               })
             )}
           >

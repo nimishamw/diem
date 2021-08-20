@@ -7,11 +7,11 @@ The Public Demo Merchant Store (demo store) allows you to try a merchant store r
 
 The Public Demo Merchant Store is an online public demo of the Diem Reference Merchant project. 
 
-<blockquote className="block_note block_note_warning">
- **Warning:** * The products in the demo store are not real and you do not make actual purchases.
+<BlockQuote type="warning">
+ * The products in the demo store are not real and you do not make actual purchases.
 <br/>* The demo store’s checkout process focuses on payment, bypassing common steps such as asking for shipping details.
 <br/>* The demo store implementation is simplified, avoiding complexities of real-world merchant stores. For example, you can “buy” products without registration or authentication, and you can “pay” for products without authentication. 
-</blockquote>
+</BlockQuote>
 
 <iframe src="https://demo-merchant.diem.com/"></iframe>
 
@@ -26,7 +26,7 @@ The Public Demo Merchant Store is an online public demo of the Diem Reference Me
 The buttons "Cash Out" and "Refund", disabled here, are examples of payment management actions you could use when creating your merchant store.
 6. Close the Order Details tab or window and return to the demo’s browser tab or window.
 
-<blockquote className="block_note block_note_info">
- **Info:** * Direct payments under US$1,000 do not require any special AML procedures and are processed immediately.
+<BlockQuote type="info">
+* Direct payments under US$1,000 do not require any special AML procedures and are processed immediately.
 <br/>* Notice the payment ID link at the bottom of the dialog. It can be used to access the payment management page. 
-</blockquote>
+</BlockQuote>

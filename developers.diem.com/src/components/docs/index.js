@@ -1,8 +1,10 @@
+import BlockQuote from './BlockQuote';
 import BlogRedirect from './BlogRedirect';
 import Cards from './Cards';
 import Excerpt from './Excerpt';
 import Feedback from './Feedback';
 import Glossary from './Glossary';
+import LandingHeaderModule from './LandingHeaderModule';
 import MarketingModule from './MarketingModule';
 import MultiStepSnippet from './MultiStepSnippet';
 import MultiStepTabItem from './MultiStepTabItem';
@@ -14,11 +16,13 @@ import Spacer from './Spacer';
 import WaveBackground from './WaveBackground';
 
 export default {
+  BlockQuote,
   BlogRedirect,
   ...Cards,
   Excerpt,
   Feedback,
   Glossary,
+  LandingHeaderModule,
   MarketingModule,
   MultiStepSnippet,
   MultiStepTabItem,

@@ -6,6 +6,7 @@ import json
 IMAGE_BLOCK_RE = re.compile(r"(\[block:image])(.*?)(\[/block])", re.DOTALL | re.MULTILINE)
 PARAMS_BLOCK_RE = re.compile(r"(\[block:parameters])(.*?)(\[/block])", re.DOTALL | re.MULTILINE)
 CALLOUT_BLOCK_RE = re.compile(r"(\[block:callout])(.*?)(\[/block])", re.DOTALL | re.MULTILINE)
+HTML_BLOCK_RE = re.compile(r"(\[block:html])(.*?)(\[/block])", re.DOTALL | re.MULTILINE)
 
 BASE_PATH = "/Users/confidential/diem/diem/developers.diem.com/docs/move/"
 
@@ -113,13 +114,32 @@ def process_callout_blocks(doc, filepath):
         doc = doc[:res.span()[0]] + result + doc[res.span()[1]:]
 
 
+def process_html_blocks(doc, filepath):
+    html_block_count = 0
+    while True:
+        res = HTML_BLOCK_RE.search(doc)
+        if not res:
+            return doc, html_block_count
+
+        html_block_count += 1
+        try:
+            data = json.loads(res.group(2))
+            result = data["html"]
+        except Exception as e:
+            import pdb
+            pdb.set_trace()
+
+        doc = doc[:res.span()[0]] + result + doc[res.span()[1]:]
+
+
 def process_doc(filepath):
     doc = read(filepath)
     (doc, image_block_count) = process_image_blocks(doc, filepath)
     (doc, parameter_block_count) = process_parameter_blocks(doc, filepath)
     (doc, callout_block_count) = process_callout_blocks(doc, filepath)
+    (doc, html_block_count) = process_html_blocks(doc, filepath)
 
-    if image_block_count + parameter_block_count + callout_block_count > 0:
+    if image_block_count + parameter_block_count + callout_block_count + html_block_count > 0:
         print(f"Processed: {filepath}")
 
     if image_block_count > 0:
@@ -130,6 +150,9 @@ def process_doc(filepath):
 
     if callout_block_count > 0:
         print(f"  - processed {callout_block_count} callout blocks")
+
+    if html_block_count > 0:
+        print(f"  - processed {html_block_count} html blocks")
 
     write(filepath, doc)
 
@@ -142,8 +165,8 @@ def process_all_docs():
 
 if __name__ == "__main__":
     process_all_docs()
-    # fp = "/Users/confidential/diem/diem/developers.diem.com/docs/readme.com/v1.1.1/Basics/basics-gas-txn-fee.md"
-    # doc = read(fp)
-    # (doc, c) = process_callout_blocks(doc, fp)
-    # print(c)
-    # print(doc)
+    #fp = "/Users/confidential/diem/diem/developers.diem.com/docs/move/move-basic-concepts.md"
+    #doc = read(fp)
+    #(doc, c) = process_html_blocks(doc, fp)
+    #print(c)
+    #print(doc)

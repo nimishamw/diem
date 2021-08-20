@@ -182,9 +182,9 @@ If you enter only the major command, it will show the help information for that 
           account_ref_id|account_address - The account to query resources from.---
 #### dev | d &mdash; Operations related to Move transaction scripts and modules.
 
-<blockquote className="block_note">
+<BlockQuote type="note">
  **Note:** This command can only be used on a local network, it cannot be used on testnet.
-</blockquote>
+</BlockQuote>
 
 Subcommands include:
 

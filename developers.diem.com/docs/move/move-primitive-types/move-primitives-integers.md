@@ -2,11 +2,6 @@
 title: "Integers"
 slug: "move-primitives-integers"
 hidden: false
-metadata: 
-  title: "Integers"
-  description: "Read about the different integer types that Move supports and more."
-createdAt: "2021-02-04T01:03:45.585Z"
-updatedAt: "2021-03-25T20:07:46.353Z"
 ---
 Move supports three unsigned integer types: `u8`, `u64`, and `u128`. Values of these types range from 0 to a maximum that depends on the size of the type.
 

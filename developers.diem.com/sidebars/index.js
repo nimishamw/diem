@@ -12,6 +12,16 @@ const Sidebar = [
     },
   },
 
+  {
+    type: 'ref',
+    id: 'welcome-to-diem2',
+    customProps: {
+      classNames: ['home'],
+      icon: 'img/home.svg',
+      iconDark: 'img/home-dark.svg',
+    },
+  },
+
   category('Basics', [
     'basics/basics-txns-states',
     'basics/basics-validator-nodes',
@@ -65,7 +75,7 @@ const Sidebar = [
 
   category('Tools', [
     'tools/sdks',
-    standaloneLink('https://github.com/libra/libra/blob/master/json-rpc/json-rpc-spec.md', 'JSON-RPC API'),
+    standaloneLink('https://github.com/diem/diem/blob/main/json-rpc/json-rpc-spec.md', 'JSON-RPC API'),
     'tools/cli-reference',
     'tools/github-projects',
   ]),

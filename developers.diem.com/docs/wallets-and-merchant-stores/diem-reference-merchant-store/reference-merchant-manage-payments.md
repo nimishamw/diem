@@ -14,9 +14,9 @@ The payment management page demonstrates the actions that a merchant can perform
 * Payment payout
 * Payment refund
 
-<blockquote className="block_note block_note_info">
- **Info:** The following images (and the local reference merchant project) have payment management actions (payout and refund) currently disabled as part of the public merchant demo. 
-</blockquote>
+<BlockQuote type="info">
+The following images (and the local reference merchant project) have payment management actions (payout and refund) currently disabled as part of the public merchant demo. 
+</BlockQuote>
 
 ![Figure 1.0 Payment management page with order details](https://files.readme.io/9c65c8e-merchant-payment-mgmt1.svg)
 <small className="figure">Figure 1.0 Payment management page with order details</small>

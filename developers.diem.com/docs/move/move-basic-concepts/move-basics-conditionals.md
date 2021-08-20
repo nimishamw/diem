@@ -2,11 +2,6 @@
 title: "Conditionals"
 slug: "move-basics-conditionals"
 hidden: false
-metadata: 
-  title: "Conditionals"
-  description: "Read about conditional expressions in Move."
-createdAt: "2021-02-04T01:03:45.293Z"
-updatedAt: "2021-03-25T20:37:22.932Z"
 ---
 An `if` expression specifies that some code should only be evaluated if a certain condition is true. For example:
 

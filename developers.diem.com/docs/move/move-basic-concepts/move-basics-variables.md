@@ -2,11 +2,6 @@
 title: "Local variables and scope"
 slug: "move-basics-variables"
 hidden: false
-metadata: 
-  title: "Local variables and scope"
-  description: "Read about local variables and their scope, how to declare them, and more in Move."
-createdAt: "2021-02-04T01:03:45.349Z"
-updatedAt: "2021-03-25T20:32:08.401Z"
 ---
 Local variables in Move are lexically (statically) scoped. New variables are introduced with the keyword `let`, which will shadow any previous local with the same name. Locals are mutable and can be updated both directly and via a mutable reference.
 

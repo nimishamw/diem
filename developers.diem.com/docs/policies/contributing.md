@@ -5,9 +5,9 @@ hidden: false
 ---
 Our goal is to make contributing to the Diem project easy and transparent.
 
-<blockquote className="block_note">
+<BlockQuote type="warning">
 The Diem Core project is currently an early-stage prototype, it is undergoing rapid development. Before making any substantial contribution to the project, be sure to discuss it in the Discourse forum to ensure that it fits into the project roadmap.
-</blockquote>
+</BlockQuote>
 
 ## Contributor License Agreement
 

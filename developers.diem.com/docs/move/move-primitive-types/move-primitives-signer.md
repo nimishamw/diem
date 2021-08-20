@@ -2,11 +2,6 @@
 title: "Signer"
 slug: "move-primitives-signer"
 hidden: false
-metadata: 
-  title: "Signer"
-  description: "Understand signer, a built-in Move resource type, that is a capability that allows the holder to act on behalf of a particular address."
-createdAt: "2021-02-04T01:03:45.303Z"
-updatedAt: "2021-04-21T21:31:51.917Z"
 ---
 `signer` is a built-in Move resource type. A `signer` is a [capability](https://en.wikipedia.org/wiki/Object-capability_model) that allows the holder to act on behalf of a particular `address`. You can think of the native implementation as being:
 

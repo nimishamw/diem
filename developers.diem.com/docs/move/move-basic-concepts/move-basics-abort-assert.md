@@ -2,11 +2,6 @@
 title: "Abort and assert"
 slug: "move-basics-abort-assert"
 hidden: false
-metadata: 
-  title: "Abort and assert"
-  description: "Learn about return and abort, two control flow constructs that end execution in Move."
-createdAt: "2021-02-04T01:03:45.009Z"
-updatedAt: "2021-03-25T20:34:49.397Z"
 ---
 [`return`](doc:move-basics-functions) and `abort` are two control flow constructs that end execution, one for the current function and one for the entire transaction.
 

@@ -2,11 +2,6 @@
 title: "Move coding conventions"
 slug: "move-coding-conventions"
 hidden: false
-metadata: 
-  title: "Move coding conventions"
-  description: "Check out our recommended Move coding conventions."
-createdAt: "2021-02-04T01:03:45.054Z"
-updatedAt: "2021-03-25T19:49:33.005Z"
 ---
 This section lays out some basic coding conventions for Move that the Move team has found helpful. These are only recommendations, and you should feel free to use other formatting guidelines and conventions if you have a preference for them.
 

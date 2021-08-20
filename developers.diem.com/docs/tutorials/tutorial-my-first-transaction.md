@@ -108,9 +108,9 @@ diem%
 
 If you have problems building the client and connecting to the testnet, refer to [Troubleshooting](#client-build-and-run).
 
-<blockquote className="block_note block_note_info">
- **Info:** If you would like to run a test validator network locally on your system, follow the instructions [here](doc:tutorial-run-local-validator-nw). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet. 
-</blockquote>
+<BlockQuote type="info">
+If you would like to run a test validator network locally on your system, follow the instructions [here](doc:tutorial-run-local-validator-nw). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet. 
+</BlockQuote>
 
 ### Create accounts for Alice and Bob
 

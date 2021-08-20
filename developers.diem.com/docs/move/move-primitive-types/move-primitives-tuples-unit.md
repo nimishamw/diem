@@ -2,11 +2,6 @@
 title: "Tuples and unit"
 slug: "move-primitives-tuples-unit"
 hidden: false
-metadata: 
-  title: "Tuples and unit"
-  description: "Explore the Move primitive types, tuples and unit."
-createdAt: "2021-02-04T01:03:45.288Z"
-updatedAt: "2021-03-25T20:30:42.885Z"
 ---
 Move does not fully support tuples as one might expect coming from another language with them as a first-class value. However, in order to support multiple return values, Move has tuple-like expressions. These expressions do not result in a concrete value at runtime (there are no tuples in the bytecode), and as a result they are very limited: they can only appear in expressions (usually in the return position for a function); they cannot be bound to local variables; they cannot be stored in structs; and tuple types cannot be used to instantiate generics.
 

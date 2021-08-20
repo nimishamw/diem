@@ -2,11 +2,6 @@
 title: "Global storage - structure"
 slug: "move-global-storage-structure"
 hidden: false
-metadata: 
-  title: "Global storage - structure"
-  description: "Read about the structure of global storage in Move."
-createdAt: "2021-02-04T01:03:45.239Z"
-updatedAt: "2021-04-21T21:34:49.291Z"
 ---
 The purpose of Move programs is to [read from and write to](doc:move-global-storage-operators) tree-shaped persistent global storage. Programs cannot access the filesystem, network, or any other data outside of this tree.
 

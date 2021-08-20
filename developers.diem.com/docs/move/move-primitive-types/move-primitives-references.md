@@ -2,11 +2,6 @@
 title: "References"
 slug: "move-primitives-references"
 hidden: false
-metadata: 
-  title: "References"
-  description: "Learn about the types of Move references."
-createdAt: "2021-02-04T01:03:45.229Z"
-updatedAt: "2021-03-25T20:24:16.167Z"
 ---
 Move has two types of references: immutable `&` and mutable `&mut`. Immutable references are read only, and cannot modify the underlying value (or any of its fields). Mutable references allow for modifications via a write through that reference. Move's type system enforces an ownership discipline that prevents reference errors.
 

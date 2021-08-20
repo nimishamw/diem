@@ -1,36 +1,23 @@
 ---
 id: welcome-to-diem2
+title: Welcome to Diem 2
 disable_pagination: true
 hide_right_sidebar: true
+hide_table_of_contents: true
 hide_title: true
+wider_content: true
+no_pad_top: true
 ---
-<div></div>
-{/*
-<div className="md:pb-20">
-  <div className="grid lg:grid-cols-2 text-black">
 
-    <div className="order-last lg:order-first max-w-7xl mx-auto pt-8 pb-12 md:pb-24 lg:py-32 px-4 sm:px-6 lg:px-8">
-      <div className="lg:hidden w-48 py-5">
-        <img src="https://diem-developers-components.netlify.app/images/waves.svg" style={{width: "100%"}} alt=""/>
-      </div>
-      <h1 className="text-4xl tracking-tight sm:text-5xl lg:text-6xl">Diem Developers</h1>
-      <p className="mt-6 text-lg text-gray-700 max-w-3xl">Explore the technical and economic concepts behind the Diem
-        Payment Network.</p>
-      <div className="inline-flex rounded-md shadow mt-8">
-        <a href="/main/docs/"
-           className="no-underline inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-diem hover:bg-white hover:text-diem hover:border hover:border-diem">
-          Take me to Guides
-        </a>
-      </div>
 
-    </div>
-    <div className="relative hidden lg:block">
-      <img className="hidden w-full h-full lg:absolute inset-0 object-cover lg:object-contain lg:object-top lg:block"
-           src="https://diem-developers-components.netlify.app/images/developers-illustration.png" alt=""/>
-    </div>
-  </div>
-</div>
-*/}
+<LandingHeaderModule
+  title="Diem Developers"
+  copy="Explore the technical and economic concepts behind the Diem Payment Network"
+  cta="Take me to Guides"
+  ctaLink="/docs/basics/basics-txns-states"
+  img="/img/developers-illustration.png"
+  imgAlt="Diem Developers"
+/>
 
 ## **Learn about the Diem Blockchain**
 
@@ -147,9 +134,7 @@ hide_title: true
   imgAlt="Computer screen showing Diem wallet app"
 />
 
-
-<div className="mx-6 mb-10 bg-blue-50 border-gray-300 px-8 py-6 border">
-  <p>During the first phase of our rollout, only a limited number of approved organizations will be participating on the
-    network. To stay informed of updates, please sign up <a href="/main/docs/newsletter-form">here</a> to be notified.
-  </p>
-</div>
+<BlockQuote type="info">
+  During the first phase of our rollout, only a limited number of approved organizations will be participating on the
+  network. To stay informed of updates, please sign up <b><a href="newsletter_form">here</a></b> to be notified.
+</BlockQuote>

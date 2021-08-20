@@ -2,11 +2,6 @@
 title: "While and loop"
 slug: "move-basics-loops"
 hidden: false
-metadata: 
-  title: "While and loop"
-  description: "Learn about the two Move constructs for looping, while and loop."
-createdAt: "2021-02-04T01:03:45.129Z"
-updatedAt: "2021-03-25T19:48:44.923Z"
 ---
 Move offers two constructs for looping: `while` and `loop`.
 

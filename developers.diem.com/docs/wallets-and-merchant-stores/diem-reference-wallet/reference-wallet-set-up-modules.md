@@ -79,9 +79,9 @@ But, in a real-world scenario, such an external provider would undertake certain
 
 After a user has been onboarded, the wallet provider, pursuant to relevant laws and regulations, Diem Network standards, and its compliance program, must continue to assess the risk related to maintaining a business relationship with the user.
 
-<blockquote className="block_note block_note_warning">
- **Warning:** The compliance processes depicted in this document are for demonstration purposes only and do not reflect the specific compliance obligations of VASPs under applicable regulatory frameworks, their compliance programs, and/or standards imposed by Diem Networks. 
-</blockquote>
+<BlockQuote type="warning">
+ The compliance processes depicted in this document are for demonstration purposes only and do not reflect the specific compliance obligations of VASPs under applicable regulatory frameworks, their compliance programs, and/or standards imposed by Diem Networks. 
+</BlockQuote>
 
 #### Transaction monitoring
 

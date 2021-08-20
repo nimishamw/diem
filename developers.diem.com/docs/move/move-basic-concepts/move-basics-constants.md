@@ -2,11 +2,6 @@
 title: "Constants"
 slug: "move-basics-constants"
 hidden: false
-metadata: 
-  title: "Constants"
-  description: "Read about how constants are declared and used in Move."
-createdAt: "2021-02-04T01:03:45.270Z"
-updatedAt: "2021-03-25T20:52:44.444Z"
 ---
 Constants are a way of giving a name to shared, static values inside of a `module` or `script`.
 

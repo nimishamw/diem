@@ -2,11 +2,6 @@
 title: "Address"
 slug: "move-primitives-address"
 hidden: false
-metadata: 
-  title: "Address"
-  description: "Read about the Move primitive type, address, which is used to represent a location in global storage."
-createdAt: "2021-02-04T01:03:45.223Z"
-updatedAt: "2021-03-31T23:49:54.112Z"
 ---
 `address` is a built-in type in Move that is used to represent locations (sometimes called accounts) in global storage. An `address` value is a 128-bit (16 byte) identifier. At a given address, two things can be stored: [Modules](doc:move-modules-and-scripts) and [Resources](doc:move-basics-structs-and-resources). 
 

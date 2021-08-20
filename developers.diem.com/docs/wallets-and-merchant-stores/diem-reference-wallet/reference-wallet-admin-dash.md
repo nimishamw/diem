@@ -14,11 +14,11 @@ The admin dashboard allows admin users to perform several administrative tasks s
 *   Adding new admin users
 *   Settling liquidity provider debt
 
-<blockquote className="block_note block_note_info">
- **Info:** * You can use the admin credentials in the tutorial below only in your local web version of the Diem Reference Wallet.
+<BlockQuote type="info">
+* You can use the admin credentials in the tutorial below only in your local web version of the Diem Reference Wallet.
 <br/>* The admin dashboard is not accessible in the mobile app. 
 <br/>* The admin user is not available for the public demo. 
-</blockquote>
+</BlockQuote>
 
 ## Log in
 

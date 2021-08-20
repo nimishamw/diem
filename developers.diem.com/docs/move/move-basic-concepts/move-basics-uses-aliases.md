@@ -2,11 +2,6 @@
 title: "Uses and aliases"
 slug: "move-basics-uses-aliases"
 hidden: false
-metadata: 
-  title: "Uses and aliases"
-  description: "Learn how to create aliases in Move modules."
-createdAt: "2021-02-04T01:03:45.339Z"
-updatedAt: "2021-03-25T19:48:57.519Z"
 ---
 The `use` syntax can be used to create aliases to members in other modules. `use` can be used to create aliases that last either for the entire module, or for a given expression block scope.
 

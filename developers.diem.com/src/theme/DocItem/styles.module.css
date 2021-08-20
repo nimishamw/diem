@@ -17,6 +17,10 @@
   --doc-padding-right: 25px;
 }
 
+.docItemContainer.noPadTop {
+  --doc-padding-top: 0;
+}
+
 .docItemWrapper {
   color: var(--doc-primary);
   display: flex;

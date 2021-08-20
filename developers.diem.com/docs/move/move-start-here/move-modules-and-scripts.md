@@ -2,21 +2,23 @@
 title: "Modules and scripts"
 slug: "move-modules-and-scripts"
 hidden: false
-metadata: 
-  title: "Modules and scripts"
-  description: "Learn more about the two types of Move programs - modules and scripts."
-createdAt: "2021-02-04T01:03:45.551Z"
-updatedAt: "2021-03-25T19:58:39.864Z"
 ---
-Move has two different types of programs: ***Modules*** and ***Scripts***. Modules are libraries that define struct types along with functions that operate on these types. Struct types define the schema of Move's [global storage](doc:move-global-storage-structure), and module functions define the rules for updating storage. Modules themselves are also stored in global storage. Scripts are executable entrypoints similar to a `main` function in a conventional language. A script typically calls functions of a published module that perform updates to global storage. Scripts are ephemeral code snippets that are not published in global storage.
+Move has two different types of programs: ***Modules*** and ***Scripts***. Modules are libraries that define struct
+types along with functions that operate on these types. Struct types define the schema of
+Move's [global storage](doc:move-global-storage-structure), and module functions define the rules for updating storage.
+Modules themselves are also stored in global storage. Scripts are executable entrypoints similar to a `main` function in
+a conventional language. A script typically calls functions of a published module that perform updates to global
+storage. Scripts are ephemeral code snippets that are not published in global storage.
 
-A Move source file (or **compilation unit**) may contain multiple modules and scripts. However, publishing a module or executing a script are separate VM operations.
+A Move source file (or **compilation unit**) may contain multiple modules and scripts. However, publishing a module or
+executing a script are separate VM operations.
 
 ## Syntax
 
 ### Scripts
 
 A script has the following structure:
+
 ```
 script {
     <use>*
@@ -24,10 +26,13 @@ script {
     fun <identifier><[type parameters: constraint]*>([identifier: type]*) <function_body>
 }
 ```
-A `script` block must start with all of its [uses](doc:move-basics-uses-aliases)  declarations, followed by any [constants](doc:move-basics-constants) and (finally) the main
-[function](doc:move-basics-functions) declaration.
-The main function can have any name (i.e., it need not be called `main`), is the only function in a script block, can have any number of
-arguments, and must not return a value. Here is an example with each of these components:
+
+A `script` block must start with all of its [uses](doc:move-basics-uses-aliases)  declarations, followed by
+any [constants](doc:move-basics-constants) and (finally) the main
+[function](doc:move-basics-functions) declaration. The main function can have any name (i.e., it need not be
+called `main`), is the only function in a script block, can have any number of arguments, and must not return a value.
+Here is an example with each of these components:
+
 ```rust
 script {
     // Import the Debug module published at account address 0x1.
@@ -44,11 +49,13 @@ script {
 }
 ```
 
-Scripts have very limited power--they cannot declare struct types or access global storage. Their primary purpose is invoke module functions.
+Scripts have very limited power--they cannot declare struct types or access global storage. Their primary purpose is
+invoke module functions.
 
 ### Modules
 
 A Module has the following syntax:
+
 ```
 address <address_const> {
 module <identifier> {
@@ -58,6 +65,7 @@ module <identifier> {
 ```
 
 For example:
+
 ```rust
 address 0x42 {
 module Test {
@@ -76,7 +84,9 @@ module Test {
 }
 ```
 
-The `address 0x42` part specifies that the module will be published under the [account address](doc:move-primitives-address) 0x42 in [global storage](doc:move-global-storage-structure).
+The `address 0x42` part specifies that the module will be published under
+the [account address](move/move-primitive-types/move-primitives-address) 0x42
+in [global storage](move/move-global-storage/move-global-storage-structure).
 
 Multiple modules can be declared in a single `address` block:
 
@@ -86,14 +96,19 @@ module M { ... }
 module N { ... }
 }
 ```
-Module names can start with letters `a` to `z` or letters `A` to `Z`. After the first character, module names can contain underscores `_`, letters `a` to `z`, letters `A` to `Z`, or digits `0` to `9`.
+
+Module names can start with letters `a` to `z` or letters `A` to `Z`. After the first character, module names can
+contain underscores `_`, letters `a` to `z`, letters `A` to `Z`, or digits `0` to `9`.
+
 ```rust
 module my_module {}
 module FooBar42 {}
 ```
-Typically, module names start with an uppercase letter. A module named `MyModule` should be stored in a source file named `MyModule.move`.
 
+Typically, module names start with an uppercase letter. A module named `MyModule` should be stored in a source file
+named `MyModule.move`.
 
-All elements inside a `module` block can appear in any order.
-Fundamentally, a module is a collection of [`types`](doc:move-basics-structs-and-resources) and
-[`function`](doc:move-basics-functions). [Uses](doc:move-basics-uses-aliases) import types from other modules. [Constants](doc:move-basics-constants) define private constants that can be used in the functions of a module.
+All elements inside a `module` block can appear in any order. Fundamentally, a module is a collection
+of [`types`](doc:move-basics-structs-and-resources) and
+[`function`](doc:move-basics-functions). [Uses](doc:move-basics-uses-aliases) import types from other
+modules. [Constants](doc:move-basics-constants) define private constants that can be used in the functions of a module.

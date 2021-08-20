@@ -49,9 +49,9 @@ For the relevant steps, we've included a link to the corresponding inter-compone
 ![Figure 1.0 Lifecycle of a transaction](https://files.readme.io/8070d33-validator-sequence.svg)
 <small className="figure">Figure 1.0 Lifecycle of a transaction</small>
 
-<blockquote className="block_note block_note_warning">
- **Warning:** The arrows in all the visuals in this article originate on the component initiating an interaction/action and terminate on the component on which the action is being performed. The arrows do not represent data read, written, or returned. 
-</blockquote>
+<BlockQuote type="warning">
+ The arrows in all the visuals in this article originate on the component initiating an interaction/action and terminate on the component on which the action is being performed. The arrows do not represent data read, written, or returned. 
+</BlockQuote>
 
 The lifecycle of a transaction has five stages:
 

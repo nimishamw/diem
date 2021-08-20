@@ -18,9 +18,9 @@ The local web wallet is a web wallet interface provided as a demonstration of a 
 
 The main purpose is to demonstrate common use cases when working with Diem Coins and show options for further development. To illustrate key Diem wallet concepts, we’ve simplified the implementation and avoided some of the complexities of real world, production-grade financial software.
 
-<blockquote className="block_note block_note_danger">
- **Danger:** This code is to be used as a reference only. Never use this code in production! 
-</blockquote>
+<BlockQuote type="danger">
+ This code is to be used as a reference only. Never use this code in production! 
+</BlockQuote>
 
 ### Solutions stack
 
@@ -86,11 +86,11 @@ During registration, the local user is asked to provide information required for
 
 The account verification begins once the user completes registration. The user won’t be able to access the wallet until their account is verified.
 
-<blockquote className="block_note block_note_info">
- **Info:** Account verification demos the expected behavior of a hypothetical wallet. For the Reference Wallet local client, the verification succeeds automatically and the “pending” state is presented briefly to the user for demo purposes only. 
+<BlockQuote type="info">
+Account verification demos the expected behavior of a hypothetical wallet. For the Reference Wallet local client, the verification succeeds automatically and the “pending” state is presented briefly to the user for demo purposes only. 
 <br/>
 <br/>In addition, the identification document is always accepted and is not analyzed or stored by the backend. Real-world user verification and risk management are beyond the scope of the reference wallet and contain many opportunities for further development. 
-</blockquote>
+</BlockQuote>
 
 Read more about the user verification [in the Risk section](doc:reference-wallet-set-up-modules#risk-module).
 
@@ -150,9 +150,9 @@ In addition, the page shows the email address of the active user. It is not poss
 ![Figure 2.1 View local web wallet settings page](https://files.readme.io/e516f29-modify-settings.svg)
 <small className="figure">Figure 2.1 View local web wallet settings page</small>
 
-<blockquote className="block_note block_note_info">
- **Info:** The payment methods are for demonstration purposes only. The supplied information is not validated, and no real transactions are made using the configured credit cards and bank accounts. 
-</blockquote>
+<BlockQuote type="info">
+The payment methods are for demonstration purposes only. The supplied information is not validated, and no real transactions are made using the configured credit cards and bank accounts. 
+</BlockQuote>
 
 To change the wallet UI language, enter the Settings page and choose the desired language from the languages dropdown menu:
 
@@ -204,9 +204,9 @@ Users can deposit and withdraw Diem Coins to and from the Reference Wallet.
 When a user requests to deposit an amount of Diem Coin, the Reference Wallet simulates a purchase of Diem Coins using the user's credit card or bank account wire transfer.
 
 
-<blockquote className="block_note block_note_danger">
- **Danger:** For your safety and security, never use real credit card or bank account details. 
-</blockquote>
+<BlockQuote type="info">
+ For your safety and security, never use real credit card or bank account details. 
+</BlockQuote>
 
 To perform a deposit, follow these steps:
 
@@ -225,9 +225,9 @@ The Diem withdrawal process is performed by clicking “Transfer” and then “
 
 
 ### Convert between Diem currencies
-<blockquote className="block_note block_note_info">
- **Info:** In a production application, this action will need to be supported by a regulated VASP. 
-</blockquote>
+<BlockQuote type="info">
+In a production application, this action will need to be supported by a regulated VASP. 
+</BlockQuote>
 
 To convert from one Diem Coin currency to another:
 

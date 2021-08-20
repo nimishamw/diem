@@ -2,11 +2,6 @@
 title: "Equality"
 slug: "move-basics-equality"
 hidden: false
-metadata: 
-  title: "Equality"
-  description: "Read about the equality operations used in Move."
-createdAt: "2021-02-04T01:03:45.248Z"
-updatedAt: "2021-03-25T20:55:50.559Z"
 ---
 Move supports two equality operations `==` and `!=`
 

@@ -2,11 +2,6 @@
 title: "Global storage - operators"
 slug: "move-global-storage-operators"
 hidden: false
-metadata: 
-  title: "Global storage - operators"
-  description: "Learn how Move programs create, delete, and update resources in global storage."
-createdAt: "2021-02-04T01:03:45.299Z"
-updatedAt: "2021-03-25T21:04:33.413Z"
 ---
 Move programs can create, delete, and update [resources](doc:move-basics-structs-and-resources) in global storage using the following five instructions:
 

@@ -46,7 +46,7 @@ const CookieBanner = props => {
         We use necessary cookies to enable our site to work for users. To help us provide relevant content, analyze our traffic, and provide a variety of personalized features to users, we also use certain optional cookies.
       </p>
       <p>
-        By clicking “I accept,” you consent to the use of optional cookies on our website. You can also view our Cookie Policy for more information about the cookies we use on our website. <a href="https://libra.org/privacy/#cookies_policy">Read our Cookie Policy</a>.
+        By clicking “I accept,” you consent to the use of optional cookies on our website. You can also view our Cookie Policy for more information about the cookies we use on our website. <a href="https://diem.com/privacy/#cookies_policy">Read our Cookie Policy</a>.
       </p>
     </CookieConsent>
   );

@@ -2,11 +2,6 @@
 title: "Structs and resources"
 slug: "move-basics-structs-and-resources"
 hidden: false
-metadata: 
-  title: "Structs and resources"
-  description: "Learn more about structs, user-defined data structures containing typed fields, and resources, a kind of struct that cannot be copied and cannot be dropped, in Move."
-createdAt: "2021-02-04T01:03:45.357Z"
-updatedAt: "2021-03-25T20:52:26.471Z"
 ---
 A *struct* is a user-defined data structure containing typed fields. Structs can store any non-reference type, including other structs.
 
