@@ -1,52 +1,59 @@
 ---
 title: "Primitive types"
-slug: "move-primitive-types"
+id: move-primitive-types
 hidden: false
 ---
-<d-grid cols="2">
-    <d-overlay-card 
-        link="/main/docs/move-primitives-integers"
-        icon="https://diem-developers-components.netlify.app/images/integers-bool.svg" 
-        text="Integers"
-        hover-text="Move supports three unsigned integer types: u8, u64, and u128">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-bool"
-        icon="https://diem-developers-components.netlify.app/images/integers-bool.svg" 
-        text="Bool"
-        hover-text="Bool is Move's primitive type for boolean true and false values.">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-address"
-        icon="https://diem-developers-components.netlify.app/images/address.svg" 
-        text="Address"
-        hover-text="Address is a built-in type in Move that is used to represent locations
-        in global storage">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-vector"
-        icon="https://diem-developers-components.netlify.app/images/vector.svg" 
-        text="Vector"
-        hover-text="Vector&lt;T&gt; is the only primitive collection type provided by Move">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-signer"
-        icon="https://diem-developers-components.netlify.app/images/signer.svg" 
-        text="Signer"
-        hover-text="Signer is a built-in Move resource type. A signer is a capability that
-        allows the holder to act on behalf of a particular address">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-references"
-        icon="https://diem-developers-components.netlify.app/images/move-references.svg" 
-        text="References"
-        hover-text="Move has two types of references: immutable &amp; and mutable.">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-tuples-unit"
-        icon="https://diem-developers-components.netlify.app/images/tuples.svg" 
-        text="Tuples and Unit"
-        hover-text="In order to support multiple return values, Move has tuple-like
-        expressions. We can consider unit() to be an empty tuple">
-    </d-overlay-card>
-</d-grid>
+<CardsWrapper cardsPerRow={2}>
+    <OverlayCard
+        to="move-primitives-integers"
+        icon="img/integers-bool.svg"
+        iconDark="img/integers-bool-dark.svg" 
+        title="Integers"
+        description="Move supports three unsigned integer types: u8, u64, and u128"
+    />
+    <OverlayCard
+        to="move-primitives-bool"
+        icon="img/integers-bool.svg"
+        iconDark="img/integers-bool-dark.svg" 
+        title="Bool"
+        description="Bool is Move's primitive type for boolean true and false values."
+    />
+    <OverlayCard
+        to="move-primitives-address"
+        icon="img/address.svg"
+        iconDark="img/address-dark.svg" 
+        title="Address"
+        description="Address is a built-in type in Move that is used to represent locations
+        in global storage"
+    />
+    <OverlayCard
+        to="move-primitives-vector"
+        icon="img/vector.svg"
+        iconDark="img/vector-dark.svg" 
+        title="Vector"
+        description="Vector&lt;T&gt; is the only primitive collection type provided by Move"
+    />
+    <OverlayCard
+        to="move-primitives-signer"
+        icon="img/signer.svg"
+        iconDark="img/signer-dark.svg" 
+        title="Signer"
+        description="Signer is a built-in Move resource type. A signer is a capability that
+        allows the holder to act on behalf of a particular address"
+    />
+    <OverlayCard
+        to="move-primitives-references"
+        icon="img/move-references.svg"
+        iconDark="img/move-references-dark.svg" 
+        title="References"
+        description="Move has two types of references: immutable &amp; and mutable."
+    />
+    <OverlayCard
+        to="move-primitives-tuples-unit"
+        icon="img/tuples.svg"
+        iconDark="img/tuples-dark.svg" 
+        title="Tuples and Unit"
+        description="In order to support multiple return values, Move has tuple-like
+        expressions. We can consider unit() to be an empty tuple"
+    />
+</CardsWrapper>

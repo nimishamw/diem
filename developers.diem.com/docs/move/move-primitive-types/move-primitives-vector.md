@@ -1,6 +1,6 @@
 ---
 title: "Vector"
-slug: "move-primitives-vector"
+id: move-primitives-vector
 hidden: false
 ---
 `vector<T>` is the only primitive collection type provided by Move. A `vector<T>` is a homogenous collection of `T`'s that can grow or shrink by pushing/popping values off the "end".

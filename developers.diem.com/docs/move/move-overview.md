@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-slug: "move-overview"
+id: move-overview
 hidden: false
 ---
 Move is a next generation language for secure, sandboxed, and formally verified programming. Its first use case is for
@@ -9,188 +9,201 @@ use cases in mind outside a blockchain context as well.
 
 ### Start Here
 
-<d-grid cols="2">
-    <d-overlay-card 
-        link="/main/docs/move-introduction"
-        icon="https://diem-developers-components.netlify.app/images/introduction-to-move.svg" 
-        text="Introduction"
-        hover-text="Understand Move’s background, current status and architecture">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-modules-and-scripts"
-        icon="https://diem-developers-components.netlify.app/images/modules-and-scripts.svg" 
-        text="Modules and Scripts"
-        hover-text="Understand Move’s two different types of programs: Modules and Scripts">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-creating-coins"
-        icon="https://diem-developers-components.netlify.app/images/diem-coin-sourcing.svg" 
-        text="First Tutorial: Creating Coins"
-        hover-text="Play with Move directly as you create coins with the language">
-    </d-overlay-card>
-</d-grid>
+<CardsWrapper cardsPerRow={2}>
+    <OverlayCard
+        to="move-introduction"
+        icon="img/introduction-to-move.svg"
+        iconDark="img/introduction-to-move-dark.svg" 
+        title="Introduction"
+        description="Understand Move’s background, current status and architecture"
+    />
+    <OverlayCard
+        to="move-modules-and-scripts"
+        icon="img/modules-and-scripts.svg"
+        iconDark="img/modules-and-scripts-dark.svg" 
+        title="Modules and Scripts"
+        description="Understand Move’s two different types of programs: Modules and Scripts"
+    />
+    <OverlayCard
+        to="move-creating-coins"
+        icon="img/diem-coin-sourcing.svg"
+        iconDark="img/diem-coin-sourcing-dark.svg" 
+        title="First Tutorial: Creating Coins"
+        description="Play with Move directly as you create coins with the language"
+    />
+</CardsWrapper>
 
 ### Primitive Types
 
-<d-grid cols="2">
-    <d-overlay-card 
-        link="/main/docs/move-primitives-integers"
-        icon="https://diem-developers-components.netlify.app/images/integers-bool.svg" 
-        text="Integers"
-        hover-text="Move supports three unsigned integer types: u8, u64, and u128">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-bool"
-        icon="https://diem-developers-components.netlify.app/images/integers-bool.svg" 
-        text="Bool"
-        hover-text="Bool is Move's primitive type for boolean true and false values.">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-address"
-        icon="https://diem-developers-components.netlify.app/images/address.svg" 
-        text="Address"
-        hover-text="Address is a built-in type in Move that is used to represent locations
-        in global storage">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-vector"
-        icon="https://diem-developers-components.netlify.app/images/vector.svg" 
-        text="Vector"
-        hover-text="Vector&lt;T&gt; is the only primitive collection type provided by Move">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-signer"
-        icon="https://diem-developers-components.netlify.app/images/signer.svg" 
-        text="Signer"
-        hover-text="Signer is a built-in Move resource type. A signer is a capability that
-        allows the holder to act on behalf of a particular address">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-references"
-        icon="https://diem-developers-components.netlify.app/images/move-references.svg" 
-        text="References"
-        hover-text="Move has two types of references: immutable &amp; and mutable.">
-    </d-overlay-card>
-    <d-overlay-card 
-        link="/main/docs/move-primitives-tuples-unit"
-        icon="https://diem-developers-components.netlify.app/images/tuples.svg" 
-        text="Tuples and Unit"
-        hover-text="In order to support multiple return values, Move has tuple-like
-        expressions. We can consider unit() to be an empty tuple">
-    </d-overlay-card>
-</d-grid>
+<CardsWrapper cardsPerRow={2}>
+    <OverlayCard
+        to="move-primitives-integers"
+        icon="img/integers-bool.svg"
+        iconDark="img/integers-bool-dark.svg" 
+        title="Integers"
+        description="Move supports three unsigned integer types: u8, u64, and u128"
+    />
+    <OverlayCard
+        to="move-primitives-bool"
+        icon="img/integers-bool.svg"
+        iconDark="img/integers-bool-dark.svg" 
+        title="Bool"
+        description="Bool is Move's primitive type for boolean true and false values."
+    />
+    <OverlayCard
+        to="move-primitives-address"
+        icon="img/address.svg"
+        iconDark="img/address-dark.svg" 
+        title="Address"
+        description="Address is a built-in type in Move that is used to represent locations
+        in global storage"
+    />
+    <OverlayCard
+        to="move-primitives-vector"
+        icon="img/vector.svg"
+        iconDark="img/vector-dark.svg" 
+        title="Vector"
+        description="Vector&lt;T&gt; is the only primitive collection type provided by Move"
+    />
+    <OverlayCard
+        to="move-primitives-signer"
+        icon="img/signer.svg"
+        iconDark="img/signer-dark.svg" 
+        title="Signer"
+        description="Signer is a built-in Move resource type. A signer is a capability that
+        allows the holder to act on behalf of a particular address"
+    />
+    <OverlayCard
+        to="move-primitives-references"
+        icon="img/move-references.svg"
+        iconDark="img/move-references-dark.svg" 
+        title="References"
+        description="Move has two types of references: immutable &amp; and mutable."
+    />
+    <OverlayCard
+        to="move-primitives-tuples-unit"
+        icon="img/tuples.svg"
+        iconDark="img/tuples-dark.svg" 
+        title="Tuples and Unit"
+        description="In order to support multiple return values, Move has tuple-like
+        expressions. We can consider unit() to be an empty tuple"
+    />
+</CardsWrapper>
 
 ### Basic Concepts
 
-<d-grid cols="2">
-    <d-overlay-card 
-        link="/main/docs/move-basics-variables"
-        icon="https://diem-developers-components.netlify.app/images/local-variables-and-scopes.svg"
-        text="Local Variables and Scopes" 
-        hover-text="Local variables in Move are lexically (statically) scoped">
-    </d-overlay-card>
+<CardsWrapper cardsPerRow={2}>
+    <OverlayCard
+        to="move-basics-variables"
+        icon="img/local-variables-and-scopes.svg"
+        iconDark="img/local-variables-and-scopes-dark.svg"
+        title="Local Variables and Scopes" 
+        description="Local variables in Move are lexically (statically) scoped"
+    />
+    <OverlayCard
+        to="move-basics-abort-assert"
+        icon="img/abort-and-return.svg"
+        iconDark="img/abort-and-return-dark.svg" 
+        title="Abort &amp; Assert"
+        description="return and abort are two control flow constructs that end execution, one for the current function and one for the entire transaction"
+    />
+    <OverlayCard
+        to="move-basics-conditionals"
+        icon="img/conditionals.svg"
+        iconDark="img/conditionals-dark.svg" 
+        title="Conditionals" 
+        description="An if expression specifies that some code should only be evaluated if a certain condition is true"
+    />
+    <OverlayCard
+        to="move-basics-loops"
+        icon="img/loops.svg"
+        iconDark="img/loops-dark.svg" 
+        title="While and Loop"
+        description="Move offers two constructs for looping: while and loop"
+    />
+    <OverlayCard
+        to="move-basics-functions"
+        icon="img/functions.svg"
+        iconDark="img/functions-dark.svg" 
+        title="Functions" 
+        description="Function syntax in Move is shared between module functions and script functions"
+    />
+    <OverlayCard
+        to="move-basics-structs-and-resources"
+        icon="img/structs-and-resources.svg"
+        iconDark="img/structs-and-resources-dark.svg"
+        title="Structs and Resources" 
+        description="A struct is a user-defined data structure containing typed fields. A resource is a kind of struct that cannot be copied and cannot be dropped"
+    />
+    <OverlayCard
+        to="move-basics-constants"
+        icon="img/constants.svg"
+        iconDark="img/constants-dark.svg" 
+        title="Constants" 
+        description="Constants are a way of giving a name to shared, static values inside of a module or script"
+    />
+    <OverlayCard
+        to="move-basics-generics"
+        icon="img/generics.svg"
+        iconDark="img/generics-dark.svg" 
+        title="Generics" 
+        description="Generics can be used to define functions and structs over different input data types"
+    />
+    <OverlayCard
+        to="move-basics-equality"
+        icon="img/equality.svg"
+        iconDark="img/equality-dark.svg" 
+        title="Equality"
+        description="Move supports two equality operations == and !="
+    />
+    <OverlayCard
+        to="move-basics-uses-aliases"
+        icon="img/uses-and-aliases.svg"
+        iconDark="img/uses-and-aliases-dark.svg" 
+        title="Uses &amp; Aliases"
+        description="The use syntax can be used to create aliases to members in othermodules"
+    />
 
-    <d-overlay-card 
-        link="/main/docs/move-basics-abort-assert"
-        icon="https://diem-developers-components.netlify.app/images/abort-and-return.svg" 
-        text="Abort &amp; Assert"
-        hover-text="return and abort are two control flow constructs that end execution, one for the current function and one for the entire transaction">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-conditionals"
-        icon="https://diem-developers-components.netlify.app/images/conditionals.svg" 
-        text="Conditionals" 
-        hover-text="An if expression specifies that some code should only be evaluated if a certain condition is true">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-loops"
-        icon="https://diem-developers-components.netlify.app/images/loops.svg" 
-        text="While and Loop"
-        hover-text="Move offers two constructs for looping: while and loop">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-functions"
-        icon="https://diem-developers-components.netlify.app/images/functions.svg" 
-        text="Functions" 
-        hover-text="Function syntax in Move is shared between module functions and script functions">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-structs-and-resources"
-        icon="https://diem-developers-components.netlify.app/images/structs-and-resources.svg"
-        text="Structs and Resources" 
-        hover-text="A struct is a user-defined data structure containing typed fields. A resource is a kind of struct that cannot be copied and cannot be dropped">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-constants"
-        icon="https://diem-developers-components.netlify.app/images/constants.svg" 
-        text="Constants" 
-        hover-text="Constants are a way of giving a name to shared, static values inside of a module or script">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-generics"
-        icon="https://diem-developers-components.netlify.app/images/generics.svg" 
-        text="Generics" 
-        hover-text="Generics can be used to define functions and structs over different input data types">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-equality"
-        icon="https://diem-developers-components.netlify.app/images/equality.svg" 
-        text="Equality"
-        hover-text="Move supports two equality operations == and !=">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-uses-aliases"
-        icon="https://diem-developers-components.netlify.app/images/uses-and-aliases.svg" 
-        text="Uses &amp; Aliases"
-        hover-text="The use syntax can be used to create aliases to members in othermodules">
-    </d-overlay-card>
-
-</d-grid>
+</CardsWrapper>
 
 ### Global Storage
 
-<d-grid cols="2">
-    <d-overlay-card 
-        link="/main/docs/move-global-storage-structure"
-        icon="https://diem-developers-components.netlify.app/images/intro-to-global-storage.svg"
-        text="Global Storage Structure"
-        hover-text="The purpose of Move programs is to read from and write to persistent global storage">
-    </d-overlay-card>
-
-    <d-overlay-card 
+<CardsWrapper cardsPerRow={2}>
+    <OverlayCard
+        to="move-global-storage-structure"
+        icon="img/intro-to-global-storage.svg"
+        iconDark="img/intro-to-global-storage-dark.svg"
+        title="Global Storage Structure"
+        description="The purpose of Move programs is to read from and write to persistent global storage"
+    />
+    <OverlayCard
          link="/main/docs/move-global-storage-operators"
-        icon="https://diem-developers-components.netlify.app/images/intro-to-global-storage.svg"
-        text="Global Storage Operators"
-        hover-text="Move programs can create, delete, and update resources in global storage using five instructions">
-    </d-overlay-card>
+        icon="img/intro-to-global-storage.svg"
+        iconDark="img/intro-to-global-storage-dark.svg"
+        title="Global Storage Operators"
+        description="Move programs can create, delete, and update resources in global storage using five instructions"
+    />
 
-</d-grid>
+</CardsWrapper>
 
 ### Reference
 
-<d-grid cols="2">
-    <d-overlay-card 
-        link="/main/docs/move-standard-library"
-        icon="https://diem-developers-components.netlify.app/images/standard-library.svg"
-        text="Standard Library"
-        hover-text="The Move standard library exposes interfaces that implement
+<CardsWrapper cardsPerRow={2}>
+    <OverlayCard
+        to="move-standard-library"
+        icon="img/standard-library.svg"
+        iconDark="img/standard-library-dark.svg"
+        title="Standard Library"
+        description="The Move standard library exposes interfaces that implement
         functionality on vectors, option types, error codes and fixed-point
-        numbers">
-    </d-overlay-card>
+        numbers"
+    />
+    <OverlayCard
+        to="move-coding-conventions"
+        icon="img/coding-conventions.svg"
+        iconDark="img/coding-conventions-dark.svg"
+        title="Coding Conventions"
+        description="There are basic coding conventions when writing Move code"
+    />
 
-    <d-overlay-card 
-        link="/main/docs/move-coding-conventions"
-        icon="https://diem-developers-components.netlify.app/images/coding-conventions.svg"
-        text="Coding Conventions"
-        hover-text="There are basic coding conventions when writing Move code">
-    </d-overlay-card>
-
-</d-grid>
+</CardsWrapper>

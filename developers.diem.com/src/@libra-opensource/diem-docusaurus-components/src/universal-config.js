@@ -19,7 +19,7 @@ module.exports = {
               to: "https://www.diem.com/vision/",
             },
             {
-              label: "Association",
+              label: "About Us",
               to: "https://www.diem.com/association/",
             },
             {
@@ -91,7 +91,7 @@ module.exports = {
           to: "https://www.diem.com/vision/",
         },
         {
-          label: "Association",
+          label: "About Us",
           to: "https://www.diem.com/association/",
         },
         {

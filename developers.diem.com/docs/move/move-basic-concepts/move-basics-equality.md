@@ -1,6 +1,6 @@
 ---
 title: "Equality"
-slug: "move-basics-equality"
+id: move-basics-equality
 hidden: false
 ---
 Move supports two equality operations `==` and `!=`

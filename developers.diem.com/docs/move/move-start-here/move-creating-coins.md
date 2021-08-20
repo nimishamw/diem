@@ -1,6 +1,6 @@
 ---
 title: "Creating coins"
-slug: "move-creating-coins"
+id: move-creating-coins
 hidden: false
 ---
 Move is a language about resources. Resources are special types of values that cannot be copied or forgotten about; they

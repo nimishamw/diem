@@ -163,10 +163,44 @@ def process_all_docs():
         process_doc(filepath)
 
 
+"""
+    category('Diem Reference Wallet', [
+      'wallets-and-merchant-stores/diem-reference-wallet',
+      'wallets-and-merchant-stores/diem-reference-wallet/reference-wallet-admin-dash',
+      'wallets-and-merchant-stores/diem-reference-wallet/reference-wallet-local-mob',
+      'wallets-and-merchant-stores/diem-reference-wallet/reference-wallet-local-web',
+      'wallets-and-merchant-stores/diem-reference-wallet/reference-wallet-public-demo',
+      'wallets-and-merchant-stores/diem-reference-wallet/reference-wallet-set-up-modules',
+    ]),
+"""
+
+
+def category_izer(full_path, remove_prefix):
+    filepaths = list(Path(full_path).rglob("*.md"))
+
+    hierarchy = {}
+
+    for filepath in filepaths:
+        relpath = str(filepath).replace(remove_prefix, "")
+        node = hierarchy
+        for elem in relpath.split("/"):
+            if ".md" in elem:
+                node["docs"].append(relpath.replace(".md", ""))
+            else:
+                if elem not in node:
+                    node[elem] = {"docs": []}
+                node = node[elem]
+
+    print(json.dumps(hierarchy, indent="  "))
+
+
+
 if __name__ == "__main__":
-    process_all_docs()
-    #fp = "/Users/confidential/diem/diem/developers.diem.com/docs/move/move-basic-concepts.md"
-    #doc = read(fp)
-    #(doc, c) = process_html_blocks(doc, fp)
-    #print(c)
-    #print(doc)
+    category_izer("/Users/confidential/diem/diem/developers.diem.com/docs/move",
+                  "/Users/confidential/diem/diem/developers.diem.com/docs/")
+    # process_all_docs()
+    # fp = "/Users/confidential/diem/diem/developers.diem.com/docs/move/move-basic-concepts.md"
+    # doc = read(fp)
+    # (doc, c) = process_html_blocks(doc, fp)
+    # print(c)
+    # print(doc)

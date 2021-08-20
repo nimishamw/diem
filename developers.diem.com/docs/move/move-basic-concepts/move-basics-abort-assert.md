@@ -1,6 +1,6 @@
 ---
 title: "Abort and assert"
-slug: "move-basics-abort-assert"
+id: move-basics-abort-assert
 hidden: false
 ---
 [`return`](doc:move-basics-functions) and `abort` are two control flow constructs that end execution, one for the current function and one for the entire transaction.

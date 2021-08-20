@@ -1,6 +1,6 @@
 ---
 title: "Standard library"
-slug: "move-standard-library"
+id: move-standard-library
 hidden: false
 ---
 The Move standard library exposes interfaces that implement the following functionality:

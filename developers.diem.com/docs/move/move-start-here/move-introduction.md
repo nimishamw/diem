@@ -1,6 +1,6 @@
 ---
 title: "Move introduction"
-slug: "move-introduction"
+id: move-introduction
 hidden: false
 ---
 Welcome to Move, a next generation language for secure, sandboxed, and formally verified programming. Its first use case

@@ -1,6 +1,6 @@
 ---
 title: "Constants"
-slug: "move-basics-constants"
+id: move-basics-constants
 hidden: false
 ---
 Constants are a way of giving a name to shared, static values inside of a `module` or `script`.

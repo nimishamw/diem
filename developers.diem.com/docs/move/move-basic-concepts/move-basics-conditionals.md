@@ -1,6 +1,6 @@
 ---
 title: "Conditionals"
-slug: "move-basics-conditionals"
+id: move-basics-conditionals
 hidden: false
 ---
 An `if` expression specifies that some code should only be evaluated if a certain condition is true. For example:

@@ -1,6 +1,6 @@
 ---
 title: "Uses and aliases"
-slug: "move-basics-uses-aliases"
+id: move-basics-uses-aliases
 hidden: false
 ---
 The `use` syntax can be used to create aliases to members in other modules. `use` can be used to create aliases that last either for the entire module, or for a given expression block scope.

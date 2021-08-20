@@ -1,6 +1,6 @@
 ---
 title: "Generics"
-slug: "move-basics-generics"
+id: move-basics-generics
 hidden: false
 createdAt: "2021-02-04T01:03:45.301Z"
 updatedAt: "2021-02-04T01:03:45.301Z"

@@ -1,76 +1,78 @@
 ---
 title: "Basic concepts"
-slug: "move-basic-concepts"
+id: move-basic-concepts
 hidden: false
 ---
-<d-grid cols="2">
-    <d-overlay-card 
-        link="/main/docs/move-basics-variables"
-        icon="https://diem-developers-components.netlify.app/images/local-variables-and-scopes.svg"
-        text="Local Variables and Scopes" 
-        hover-text="Local variables in Move are lexically (statically) scoped">
-    </d-overlay-card>
 
-    <d-overlay-card 
-        link="/main/docs/move-basics-abort-assert"
-        icon="https://diem-developers-components.netlify.app/images/abort-and-return.svg" 
-        text="Abort &amp; Assert"
-        hover-text="return and abort are two control flow constructs that end execution, one for the current function and one for the entire transaction">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-conditionals"
-        icon="https://diem-developers-components.netlify.app/images/conditionals.svg" 
-        text="Conditionals" 
-        hover-text="An if expression specifies that some code should only be evaluated if a certain condition is true">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-loops"
-        icon="https://diem-developers-components.netlify.app/images/loops.svg" 
-        text="While and Loop"
-        hover-text="Move offers two constructs for looping: while and loop">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-functions"
-        icon="https://diem-developers-components.netlify.app/images/functions.svg" 
-        text="Functions" 
-        hover-text="Function syntax in Move is shared between module functions and script functions">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-structs-and-resources"
-        icon="https://diem-developers-components.netlify.app/images/structs-and-resources.svg"
-        text="Structs and Resources" 
-        hover-text="A struct is a user-defined data structure containing typed fields. A resource is a kind of struct that cannot be copied and cannot be dropped">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-constants"
-        icon="https://diem-developers-components.netlify.app/images/constants.svg" 
-        text="Constants" 
-        hover-text="Constants are a way of giving a name to shared, static values inside of a module or script">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-generics"
-        icon="https://diem-developers-components.netlify.app/images/generics.svg" 
-        text="Generics" 
-        hover-text="Generics can be used to define functions and structs over different input data types">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-equality"
-        icon="https://diem-developers-components.netlify.app/images/equality.svg" 
-        text="Equality"
-        hover-text="Move supports two equality operations == and !=">
-    </d-overlay-card>
-
-    <d-overlay-card 
-        link="/main/docs/move-basics-uses-aliases"
-        icon="https://diem-developers-components.netlify.app/images/uses-and-aliases.svg" 
-        text="Uses &amp; Aliases"
-        hover-text="The use syntax can be used to create aliases to members in othermodules">
-    </d-overlay-card>
-</d-grid>
+<CardsWrapper cardsPerRow={2}>
+    <OverlayCard
+        to="move-basics-variables"
+        icon="img/local-variables-and-scopes.svg"
+        iconDark="img/local-variables-and-scopes-dark.svg"
+        title="Local Variables and Scopes" 
+        description="Local variables in Move are lexically (statically) scoped"
+    />
+    <OverlayCard
+        to="move-basics-abort-assert"
+        icon="img/abort-and-return.svg"
+        iconDark="img/abort-and-return-dark.svg" 
+        title="Abort &amp; Assert"
+        description="return and abort are two control flow constructs that end execution, one for the current function and one for the entire transaction"
+    />
+    <OverlayCard
+        to="move-basics-conditionals"
+        icon="img/conditionals.svg"
+        iconDark="img/conditionals-dark.svg" 
+        title="Conditionals" 
+        description="An if expression specifies that some code should only be evaluated if a certain condition is true"
+    />
+    <OverlayCard
+        to="move-basics-loops"
+        icon="img/loops.svg"
+        iconDark="img/loops-dark.svg" 
+        title="While and Loop"
+        description="Move offers two constructs for looping: while and loop"
+    />
+    <OverlayCard
+        to="move-basics-functions"
+        icon="img/functions.svg"
+        iconDark="img/functions-dark.svg" 
+        title="Functions" 
+        description="Function syntax in Move is shared between module functions and script functions"
+    />
+    <OverlayCard
+        to="move-basics-structs-and-resources"
+        icon="img/structs-and-resources.svg"
+        iconDark="img/structs-and-resources-dark.svg"
+        title="Structs and Resources" 
+        description="A struct is a user-defined data structure containing typed fields. A resource is a kind of struct that cannot be copied and cannot be dropped"
+    />
+    <OverlayCard
+        to="move-basics-constants"
+        icon="img/constants.svg"
+        iconDark="img/constants-dark.svg" 
+        title="Constants" 
+        description="Constants are a way of giving a name to shared, static values inside of a module or script"
+    />
+    <OverlayCard
+        to="move-basics-generics"
+        icon="img/generics.svg"
+        iconDark="img/generics-dark.svg" 
+        title="Generics" 
+        description="Generics can be used to define functions and structs over different input data types"
+    />
+    <OverlayCard
+        to="move-basics-equality"
+        icon="img/equality.svg"
+        iconDark="img/equality-dark.svg" 
+        title="Equality"
+        description="Move supports two equality operations == and !="
+    />
+    <OverlayCard
+        to="move-basics-uses-aliases"
+        icon="img/uses-and-aliases.svg"
+        iconDark="img/uses-and-aliases-dark.svg" 
+        title="Uses &amp; Aliases"
+        description="The use syntax can be used to create aliases to members in othermodules"
+    />
+</CardsWrapper>

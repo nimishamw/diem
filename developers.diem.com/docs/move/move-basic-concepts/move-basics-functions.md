@@ -1,6 +1,6 @@
 ---
 title: "Functions"
-slug: "move-basics-functions"
+id: move-basics-functions
 hidden: false
 ---
 Function syntax in Move is shared between module functions and script functions. Functions inside of modules are reusable, whereas script functions are only used once to invoke a transaction.

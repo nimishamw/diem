@@ -1,6 +1,6 @@
 ---
 title: "Modules and scripts"
-slug: "move-modules-and-scripts"
+id: move-modules-and-scripts
 hidden: false
 ---
 Move has two different types of programs: ***Modules*** and ***Scripts***. Modules are libraries that define struct

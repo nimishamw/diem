@@ -1,6 +1,6 @@
 ---
 title: "While and loop"
-slug: "move-basics-loops"
+id: move-basics-loops
 hidden: false
 ---
 Move offers two constructs for looping: `while` and `loop`.
