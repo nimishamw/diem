@@ -90,7 +90,6 @@ small-tablet-breakpoint-max-query,
 large-tablet-breakpoint-query and (max-width: calc(custom-bp-large - 1px)) {
   .root {
     --content-width: auto;
-    flex-direction: column-reverse;
   }
 }
 
@@ -123,10 +122,10 @@ large-tablet-breakpoint-query and (max-width: calc( custom-bp-large - 1px )) {
 }
 
 @media
-small-tablet-breakpoint-max-query,
-large-tablet-breakpoint-query and (max-width: calc( custom-bp-large - 1px )) {
+small-tablet-breakpoint-max-query and (max-width: calc( custom-bp-small - 1px )) {
   .root img {
     width: 0;
+    display: none;
   }
 }
 

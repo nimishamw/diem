@@ -17,6 +17,11 @@
   --doc-padding-right: 25px;
 }
 
+.docItemContainer.thinner {
+  --doc-padding-left: 80px;
+  --doc-padding-right: 80px;
+}
+
 .docItemContainer.noPadTop {
   --doc-padding-top: 0;
 }

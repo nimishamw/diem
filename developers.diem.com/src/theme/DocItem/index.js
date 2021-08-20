@@ -29,6 +29,7 @@ function DocItem(props) {
       hide_title: hideTitle,
       hide_table_of_contents: hideTableOfContents,
       wider_content: widerContent,
+      thinner_content: thinnerContent,
       no_pad_top: noPadTop,
     },
     metadata,
@@ -73,6 +74,7 @@ function DocItem(props) {
               styles.docItemContainer,
               classnames({
                 [styles.wider]: widerContent,
+                [styles.thinner]: thinnerContent,
                 [styles.noPadTop]: noPadTop,
               })
             )}
