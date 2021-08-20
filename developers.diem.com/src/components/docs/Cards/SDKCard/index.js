@@ -5,17 +5,13 @@ import BaseContainer from '../BaseContainer';
 import Link from 'src/components/Link';
 import {WithBackgroundImage} from 'diem-docusaurus-components';
 
-import useThemeContext from '@theme/hooks/useThemeContext';
-
 import classnames from 'classnames';
 import styles from './styles.module.css';
 
 const SDKCard = ({bolded, docs, icon, iconDark, overlay, title, sdk, smallerImage, to}) => {
-  const {isDarkTheme} = useThemeContext();
-  icon = isDarkTheme ? iconDark : icon;
   return (
     <BaseContainer className={styles.root} to={to} overlay={overlay}>
-      <a href={sdk} className={styles.left}>
+      <a href={sdk} className={styles.left} title={`${title} SDK`}>
         <WithBackgroundImage
           className={styles.icon}
           imageLight={icon}
@@ -25,7 +21,7 @@ const SDKCard = ({bolded, docs, icon, iconDark, overlay, title, sdk, smallerImag
       </a>
 
       <div className={styles.right}>
-        <Link className={styles.sdk} href={sdk}>
+        <Link className={styles.sdk} href={sdk} title={`${title} SDK`}>
           <WithBackgroundImage
             className={styles.buttonImage}
             imageLight="img/document.svg"
@@ -34,7 +30,7 @@ const SDKCard = ({bolded, docs, icon, iconDark, overlay, title, sdk, smallerImag
           <span className={styles.label}>SDK</span>
         </Link>
         {docs &&
-        <Link className={styles.docs} href={docs}>
+        <Link className={styles.docs} href={docs} title={`${title} docs`}>
           <WithBackgroundImage
             className={styles.buttonImage}
             imageLight="img/roadmap.png"
