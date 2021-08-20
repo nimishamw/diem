@@ -45,7 +45,7 @@ The Diem Reference Merchant implementation makes several assumptions for simplic
 
 The main purpose of this implementation is to demonstrate common use cases when working with Diem Coin currencies, and to show directions for further development. To make the important concepts more clear for the readers, the implementation is deliberately simplified and avoids some of the complexities of real world, production-grade financial software.
 
-<BlockQuote type="info">
+<BlockQuote type="danger">
  This code is to be used as a reference only. Never use this code in production! 
 </BlockQuote>
 

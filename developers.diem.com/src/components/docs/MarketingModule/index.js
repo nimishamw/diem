@@ -5,20 +5,35 @@ import styles from './styles.module.css';
 import Arrow from 'img/marketing-arrow.svg';
 
 const MarketingModule = ({copy, cta, ctaLink, img, imgAlt, title}) => (
-  <div className={styles.root}>
-    <div className={styles.content}>
-      <p>{copy}</p>
-      {cta &&
-      <a className={styles.cta} href={ctaLink}>
-        <span className={styles.join}>{cta}</span>
-        <span className={styles.arrow}>
+  <a className={styles.cta} href={ctaLink}>
+
+    <div className={styles.root}>
+
+      <div className={styles.grid}>
+
+        <div className={styles.leftTop}>
+          <div className={styles.ctaTop}>{cta}</div>
+          <h2 className={styles.title}>{title}</h2>
+          <p className={styles.copy}>{copy}</p>
+        </div>
+
+        <div className={styles.leftBottom}>
+          <div className={styles.arrowHolder}>
+            <span className={styles.arrow}>
             <Arrow/>
           </span>
-      </a>
-      }
+          </div>
+        </div>
+
+      </div>
+
+      <div className={styles.imgHolder}>
+        <img src={img} alt={imgAlt}/>
+      </div>
+
     </div>
-    <img alt={imgAlt || "Marketing Module Image"} src={img}/>
-  </div>
+  </a>
+
 );
 
 MarketingModule.propTypes = {

@@ -204,7 +204,7 @@ Users can deposit and withdraw Diem Coins to and from the Reference Wallet.
 When a user requests to deposit an amount of Diem Coin, the Reference Wallet simulates a purchase of Diem Coins using the user's credit card or bank account wire transfer.
 
 
-<BlockQuote type="info">
+<BlockQuote type="danger">
  For your safety and security, never use real credit card or bank account details. 
 </BlockQuote>
 
