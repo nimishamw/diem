@@ -3,18 +3,8 @@ const {category, standaloneLink} = require("./components");
 
 const Sidebar = [
   {
-    type: 'doc',
-    id: 'welcome-to-diem',
-    customProps: {
-      classNames: ['home'],
-      icon: 'img/home.svg',
-      iconDark: 'img/home-dark.svg',
-    },
-  },
-
-  {
     type: 'ref',
-    id: 'welcome-to-diem2',
+    id: 'welcome-to-diem',
     customProps: {
       classNames: ['home'],
       icon: 'img/home.svg',

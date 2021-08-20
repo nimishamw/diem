@@ -18,8 +18,8 @@
 }
 
 .docItemContainer.thinner {
-  --doc-padding-left: 80px;
-  --doc-padding-right: 80px;
+  max-width: 1100px;
+  --doc-card-3-per-row: 307px;
 }
 
 .docItemContainer.noPadTop {
