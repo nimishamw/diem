@@ -5,7 +5,7 @@ hidden: false
 ---
 <CardsWrapper cardsPerRow={2}>
     <OverlayCard
-        to="move-standard-library"
+        to="/docs/move/move-reference/move-standard-library"
         icon="img/standard-library.svg"
         iconDark="img/standard-library-dark.svg"
         title="Standard Library"
@@ -14,7 +14,7 @@ hidden: false
         numbers"
     />
     <OverlayCard
-        to="move-coding-conventions"
+        to="/docs/move/move-reference/move-coding-conventions"
         icon="img/coding-conventions.svg"
         iconDark="img/coding-conventions-dark.svg"
         title="Coding Conventions"

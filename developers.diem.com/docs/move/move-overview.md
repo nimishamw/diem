@@ -11,21 +11,21 @@ use cases in mind outside a blockchain context as well.
 
 <CardsWrapper cardsPerRow={2}>
     <OverlayCard
-        to="move-introduction"
+        to="/docs/move/move-start-here/move-introduction"
         icon="img/introduction-to-move.svg"
         iconDark="img/introduction-to-move-dark.svg" 
         title="Introduction"
         description="Understand Move’s background, current status and architecture"
     />
     <OverlayCard
-        to="move-modules-and-scripts"
+        to="/docs/move/move-start-here/move-modules-and-scripts"
         icon="img/modules-and-scripts.svg"
         iconDark="img/modules-and-scripts-dark.svg" 
         title="Modules and Scripts"
         description="Understand Move’s two different types of programs: Modules and Scripts"
     />
     <OverlayCard
-        to="move-creating-coins"
+        to="/docs/move/move-start-here/move-creating-coins"
         icon="img/diem-coin-sourcing.svg"
         iconDark="img/diem-coin-sourcing-dark.svg" 
         title="First Tutorial: Creating Coins"
@@ -37,21 +37,21 @@ use cases in mind outside a blockchain context as well.
 
 <CardsWrapper cardsPerRow={2}>
     <OverlayCard
-        to="move-primitives-integers"
+        to="/docs/move/move-primitive-types/move-primitives-integers"
         icon="img/integers-bool.svg"
         iconDark="img/integers-bool-dark.svg" 
         title="Integers"
         description="Move supports three unsigned integer types: u8, u64, and u128"
     />
     <OverlayCard
-        to="move-primitives-bool"
+        to="/docs/move/move-primitive-types/move-primitives-bool"
         icon="img/integers-bool.svg"
         iconDark="img/integers-bool-dark.svg" 
         title="Bool"
         description="Bool is Move's primitive type for boolean true and false values."
     />
     <OverlayCard
-        to="move-primitives-address"
+        to="/docs/move/move-primitive-types/move-primitives-address"
         icon="img/address.svg"
         iconDark="img/address-dark.svg" 
         title="Address"
@@ -59,14 +59,14 @@ use cases in mind outside a blockchain context as well.
         in global storage"
     />
     <OverlayCard
-        to="move-primitives-vector"
+        to="/docs/move/move-primitive-types/move-primitives-vector"
         icon="img/vector.svg"
         iconDark="img/vector-dark.svg" 
         title="Vector"
         description="Vector&lt;T&gt; is the only primitive collection type provided by Move"
     />
     <OverlayCard
-        to="move-primitives-signer"
+        to="/docs/move/move-primitive-types/move-primitives-signer"
         icon="img/signer.svg"
         iconDark="img/signer-dark.svg" 
         title="Signer"
@@ -74,14 +74,14 @@ use cases in mind outside a blockchain context as well.
         allows the holder to act on behalf of a particular address"
     />
     <OverlayCard
-        to="move-primitives-references"
+        to="/docs/move/move-primitive-types/move-primitives-references"
         icon="img/move-references.svg"
         iconDark="img/move-references-dark.svg" 
         title="References"
         description="Move has two types of references: immutable &amp; and mutable."
     />
     <OverlayCard
-        to="move-primitives-tuples-unit"
+        to="/docs/move/move-primitive-types/move-primitives-tuples-unit"
         icon="img/tuples.svg"
         iconDark="img/tuples-dark.svg" 
         title="Tuples and Unit"
@@ -94,103 +94,101 @@ use cases in mind outside a blockchain context as well.
 
 <CardsWrapper cardsPerRow={2}>
     <OverlayCard
-        to="move-basics-variables"
+        to="/docs/move/move-basic-concepts/move-basics-variables"
         icon="img/local-variables-and-scopes.svg"
         iconDark="img/local-variables-and-scopes-dark.svg"
         title="Local Variables and Scopes" 
         description="Local variables in Move are lexically (statically) scoped"
     />
     <OverlayCard
-        to="move-basics-abort-assert"
+        to="/docs/move/move-basic-concepts/move-basics-abort-assert"
         icon="img/abort-and-return.svg"
         iconDark="img/abort-and-return-dark.svg" 
         title="Abort &amp; Assert"
         description="return and abort are two control flow constructs that end execution, one for the current function and one for the entire transaction"
     />
     <OverlayCard
-        to="move-basics-conditionals"
+        to="/docs/move/move-basic-concepts/move-basics-conditionals"
         icon="img/conditionals.svg"
         iconDark="img/conditionals-dark.svg" 
         title="Conditionals" 
         description="An if expression specifies that some code should only be evaluated if a certain condition is true"
     />
     <OverlayCard
-        to="move-basics-loops"
+        to="/docs/move/move-basic-concepts/move-basics-loops"
         icon="img/loops.svg"
         iconDark="img/loops-dark.svg" 
         title="While and Loop"
         description="Move offers two constructs for looping: while and loop"
     />
     <OverlayCard
-        to="move-basics-functions"
+        to="/docs/move/move-basic-concepts/move-basics-functions"
         icon="img/functions.svg"
         iconDark="img/functions-dark.svg" 
         title="Functions" 
         description="Function syntax in Move is shared between module functions and script functions"
     />
     <OverlayCard
-        to="move-basics-structs-and-resources"
+        to="/docs/move/move-basic-concepts/move-basics-structs-and-resources"
         icon="img/structs-and-resources.svg"
         iconDark="img/structs-and-resources-dark.svg"
         title="Structs and Resources" 
         description="A struct is a user-defined data structure containing typed fields. A resource is a kind of struct that cannot be copied and cannot be dropped"
     />
     <OverlayCard
-        to="move-basics-constants"
+        to="/docs/move/move-basic-concepts/move-basics-constants"
         icon="img/constants.svg"
         iconDark="img/constants-dark.svg" 
         title="Constants" 
         description="Constants are a way of giving a name to shared, static values inside of a module or script"
     />
     <OverlayCard
-        to="move-basics-generics"
+        to="/docs/move/move-basic-concepts/move-basics-generics"
         icon="img/generics.svg"
         iconDark="img/generics-dark.svg" 
         title="Generics" 
         description="Generics can be used to define functions and structs over different input data types"
     />
     <OverlayCard
-        to="move-basics-equality"
+        to="/docs/move/move-basic-concepts/move-basics-equality"
         icon="img/equality.svg"
         iconDark="img/equality-dark.svg" 
         title="Equality"
         description="Move supports two equality operations == and !="
     />
     <OverlayCard
-        to="move-basics-uses-aliases"
+        to="/docs/move/move-basic-concepts/move-basics-uses-aliases"
         icon="img/uses-and-aliases.svg"
         iconDark="img/uses-and-aliases-dark.svg" 
         title="Uses &amp; Aliases"
         description="The use syntax can be used to create aliases to members in othermodules"
     />
-
 </CardsWrapper>
 
 ### Global Storage
 
 <CardsWrapper cardsPerRow={2}>
     <OverlayCard
-        to="move-global-storage-structure"
+        to="/docs/move/move-global-storage/move-global-storage-structure"
         icon="img/intro-to-global-storage.svg"
         iconDark="img/intro-to-global-storage-dark.svg"
         title="Global Storage Structure"
         description="The purpose of Move programs is to read from and write to persistent global storage"
     />
     <OverlayCard
-         link="/main/docs/move-global-storage-operators"
+         link="/docs/move/move-global-storage/move-global-storage-operators"
         icon="img/intro-to-global-storage.svg"
         iconDark="img/intro-to-global-storage-dark.svg"
         title="Global Storage Operators"
         description="Move programs can create, delete, and update resources in global storage using five instructions"
     />
-
 </CardsWrapper>
 
 ### Reference
 
 <CardsWrapper cardsPerRow={2}>
     <OverlayCard
-        to="move-standard-library"
+        to="/docs/move/move-reference/move-standard-library"
         icon="img/standard-library.svg"
         iconDark="img/standard-library-dark.svg"
         title="Standard Library"
@@ -199,11 +197,10 @@ use cases in mind outside a blockchain context as well.
         numbers"
     />
     <OverlayCard
-        to="move-coding-conventions"
+        to="/docs/move/move-reference/move-coding-conventions"
         icon="img/coding-conventions.svg"
         iconDark="img/coding-conventions-dark.svg"
         title="Coding Conventions"
         description="There are basic coding conventions when writing Move code"
     />
-
 </CardsWrapper>

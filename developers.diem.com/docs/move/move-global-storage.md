@@ -5,14 +5,14 @@ hidden: false
 ---
 <CardsWrapper cardsPerRow={2}>
     <OverlayCard
-        to="move-global-storage-structure"
+        to="/docs/move/move-global-storage/move-global-storage-structure"
         icon="img/intro-to-global-storage.svg"
         iconDark="img/intro-to-global-storage-dark.svg"
         title="Global Storage Structure"
         description="The purpose of Move programs is to read from and write to a persistent global storage"
     />
     <OverlayCard
-        to="move-global-storage-operators"
+        to="/docs/move/move-global-storage/move-global-storage-operators"
         icon="img/intro-to-global-storage.svg"
         iconDark="img/intro-to-global-storage-dark.svg"
         title="Global Storage Operators"

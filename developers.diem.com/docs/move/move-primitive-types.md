@@ -5,21 +5,21 @@ hidden: false
 ---
 <CardsWrapper cardsPerRow={2}>
     <OverlayCard
-        to="move-primitives-integers"
+        to="/docs/move/move-primitive-types/move-primitives-integers"
         icon="img/integers-bool.svg"
         iconDark="img/integers-bool-dark.svg" 
         title="Integers"
         description="Move supports three unsigned integer types: u8, u64, and u128"
     />
     <OverlayCard
-        to="move-primitives-bool"
+        to="/docs/move/move-primitive-types/move-primitives-bool"
         icon="img/integers-bool.svg"
         iconDark="img/integers-bool-dark.svg" 
         title="Bool"
         description="Bool is Move's primitive type for boolean true and false values."
     />
     <OverlayCard
-        to="move-primitives-address"
+        to="/docs/move/move-primitive-types/move-primitives-address"
         icon="img/address.svg"
         iconDark="img/address-dark.svg" 
         title="Address"
@@ -27,14 +27,14 @@ hidden: false
         in global storage"
     />
     <OverlayCard
-        to="move-primitives-vector"
+        to="/docs/move/move-primitive-types/move-primitives-vector"
         icon="img/vector.svg"
         iconDark="img/vector-dark.svg" 
         title="Vector"
         description="Vector&lt;T&gt; is the only primitive collection type provided by Move"
     />
     <OverlayCard
-        to="move-primitives-signer"
+        to="/docs/move/move-primitive-types/move-primitives-signer"
         icon="img/signer.svg"
         iconDark="img/signer-dark.svg" 
         title="Signer"
@@ -42,14 +42,14 @@ hidden: false
         allows the holder to act on behalf of a particular address"
     />
     <OverlayCard
-        to="move-primitives-references"
+        to="/docs/move/move-primitive-types/move-primitives-references"
         icon="img/move-references.svg"
         iconDark="img/move-references-dark.svg" 
         title="References"
         description="Move has two types of references: immutable &amp; and mutable."
     />
     <OverlayCard
-        to="move-primitives-tuples-unit"
+        to="/docs/move/move-primitive-types/move-primitives-tuples-unit"
         icon="img/tuples.svg"
         iconDark="img/tuples-dark.svg" 
         title="Tuples and Unit"
