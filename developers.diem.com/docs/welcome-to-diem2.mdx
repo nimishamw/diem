@@ -4,68 +4,7 @@ disable_pagination: true
 hide_right_sidebar: true
 hide_title: true
 ---
-
-<div className="md:pb-20">
-  <div className="grid lg:grid-cols-2 text-black">
-
-    <div className="order-last lg:order-first max-w-7xl mx-auto pt-8 pb-12 md:pb-24 lg:py-32 px-4 sm:px-6 lg:px-8">
-      <div className="lg:hidden w-48 py-5">
-        <img src="https://diem-developers-components.netlify.app/images/waves.svg" style={{width: "100%"}} alt=""/>
-      </div>
-      <h1 className="text-4xl tracking-tight sm:text-5xl lg:text-6xl">Diem Developers</h1>
-      <p className="mt-6 text-lg text-gray-700 max-w-3xl">Explore the technical and economic concepts behind the Diem
-        Payment Network.</p>
-      <div className="inline-flex rounded-md shadow mt-8">
-        <a href="/main/docs/"
-           className="no-underline inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-diem hover:bg-white hover:text-diem hover:border hover:border-diem">
-          Take me to Guides
-        </a>
-      </div>
-
-    </div>
-    <div className="relative hidden lg:block">
-      <img className="hidden w-full h-full lg:absolute inset-0 object-cover lg:object-contain lg:object-top lg:block"
-           src="https://diem-developers-components.netlify.app/images/developers-illustration.png" alt=""/>
-    </div>
-  </div>
-</div>
-<CardsWrapper cardsPerRow={3}>
-  <OverlayCard
-    description="Protocol Overview, Transaction Types, Nodes, Accounts"
-    icon="img/core-contributors.svg"
-    iconDark="img/core-contributors-dark.svg"
-    title="Core Concepts"
-    to="/docs/core/overview"
-  />
-  <OverlayCard
-    description="Requirements, Configuration, Running a Local Network"
-    icon="img/node-operators.svg"
-    iconDark="img/node-operators-dark.svg"
-    title="Nodes"
-    to="/docs/node/overview"
-  />
-  <OverlayCard
-    description="Integration, Reference Wallet"
-    icon="img/wallet-app.svg"
-    iconDark="img/wallet-app-dark.svg"
-    title="Wallets"
-    to="/docs/wallet-app/overview"
-  />
-  <OverlayCard
-    description="Integration, Reference Merchant"
-    icon="img/docs/merchant-solutions.svg"
-    iconDark="img/docs/merchant-solutions-dark.svg"
-    title="Merchants"
-    to="/docs/merchant/overview"
-  />
-  <OverlayCard
-    description="Key Components, Writing Modules, Testing & Debugging"
-    icon="img/move.svg"
-    iconDark="img/move-dark.svg"
-    title="Move"
-    to="/docs/move/overview"
-  />
-</CardsWrapper>
+<div></div>
 {/*
 <div className="md:pb-20">
   <div className="grid lg:grid-cols-2 text-black">
@@ -91,280 +30,126 @@ hide_title: true
     </div>
   </div>
 </div>
+*/}
 
-<div className="mb-20 px-6 space-y-20">
+## **Learn about the Diem Blockchain**
 
-  <div className="mt-6">
-    <h2 className="text-3xl text-gray-900">
-      Learn about the Diem Blockchain
-    </h2>
-    <div className="mt-6">
-      <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12 lg:grid-cols-3">
+<CardsWrapper cardsPerRow={3}>
+  <OverlayCard
+    title="Transactions and states"
+    description="Learn about how the fundamentals of the Diem Blockchain work"
+    icon="img/transaction-workflows.svg"
+    iconDark="img/transaction-workflows-dark.svg"
+    to="/docs/basics/basics-txns-states"
+  />
+  <OverlayCard
+    title="Validator nodes"
+    description="Explore Diem nodes and their components"
+    icon="img/diem-nodes.svg"
+    iconDark="img/diem-nodes-dark.svg"
+    to="/docs/basics/basics-validator-nodes"
+  />
+  <OverlayCard
+    title="Accounts"
+    description="Read about accounts and account resources"
+    icon="img/accounts.svg"
+    iconDark="img/accounts-dark.svg"
+    to="/docs/basics/basics-accounts"
+  />
 
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/basics-txns-states">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">Transactions and states</div>
-              <p className="text-sm mt-2">
-                Learn about how the fundamentals of the Diem Blockchain work.
-              </p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/transaction-workflows.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"/>
-          </div>
-        </a>
-
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/basics-validator-nodes">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">Validator nodes</div>
-              <p className="text-sm mt-2">
-                Explore Diem nodes and their components.
-              </p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/diem-nodes.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"/>
-          </div>
-        </a>
-
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/basics-accounts">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">Accounts</div>
-              <p className="text-sm mt-2">
-                Read about accounts and account resources
-              </p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/accounts.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"/>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </div>
-
-  <div className="mt-6">
-    <h2 className="text-3xl text-gray-900">
-      Start building on the Diem Blockchain
-    </h2>
-
-    <div className="mt-6">
-      <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12 lg:grid-cols-3">
-
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/overview">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">SDKs</div>
-              <p className="text-sm mt-2">Use our SDKs to build on the Diem Blockchain.</p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/backend.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"/>
-          </div>
-        </a>
-
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/tutorial-my-first-client">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">My first client</div>
-              <p className="text-sm mt-2">Develop your first client using our SDKs.</p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/my-first-client.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"/>
-          </div>
-        </a>
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="https://github.com/diem/diem/blob/master/json-rpc/json-rpc-spec.md">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">JSON-RPC specifications</div>
-              <p className="text-sm mt-2">Read the JSON-RPC specifications.</p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/json-rpc-api.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2">
-              <div
-                className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"/>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </div>
-
-  <div className="mt-6">
-    <h2 className="text-3xl text-gray-900">
-      Build a Wallet or Merchant Store
-    </h2>
-    <div className="mt-6">
-      <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12 lg:grid-cols-3">
-
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/integrate-wallet-merchant-dpn">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">Integration guide</div>
-              <p className="text-sm mt-2">
-                Integrate your wallet or merchant store with the DPN
-              </p>
-            </div>
-            <img
-              src="https://diem-developers-components.netlify.app/images/integrate-your-merchant-store-with-the-lpn.svg"
-              className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"/>
-          </div>
-        </a>
-
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/try-our-mini-wallet">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">Mini Wallet</div>
-              <p className="text-sm mt-2">
-                Try our Mini Wallet running on Diem testnet
-              </p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/introduction-to-wallets.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"/>
-          </div>
-        </a>
-
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/reference-merchant-public-demo">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">
-                Public Demo Merchant Store
-              </div>
-              <p className="text-sm mt-2">
-                Try our Public Demo Merchant Store running on Diem testnet.
-              </p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/reference-merchant-store-setup.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"/>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </div>
-
-  <div className="mt-6">
-    <h2 className="text-3xl text-gray-900">
-      Write Smart Contracts
-    </h2>
-    <div className="mt-6">
-      <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12 lg:grid-cols-3">
-
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/move-introduction">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">Move introduction</div>
-              <p className="text-sm mt-2">
-                Write Move programs that securely and flexibly manage and transfer assets.
-              </p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/introduction-to-move.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"></div>
-          </div>
-        </a>
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/move-modules-and-scripts">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">Modules and scripts</div>
-              <p className="text-sm mt-2">
-                Learn about Move modules and scripts
-              </p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/modules-and-scripts.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"></div>
-          </div>
-        </a>
-
-        <a className="block shadow-md border border-gray-50 bg-white no-underline group"
-           href="/main/docs/move-creating-coins">
-          <div className="relative h-full py-12 pl-28 pr-4 overflow-hidden">
-            <div className="z-10">
-              <div className="font-semibold">Create coins</div>
-              <p className="text-sm mt-2">
-                Try creating coins using Move.
-              </p>
-            </div>
-            <img src="https://diem-developers-components.netlify.app/images/diem-coin-sourcing.svg"
-                 className="w-12 h-12 p-0 m-0 transform -translate-y-1/2 -translate-x-1/2 absolute left-10 top-1/2"/>
-            <div
-              className="rounded-full opacity-10 transition transition-opacity duration-300 group-hover:opacity-30 blend-mode bg-diem-green-light w-60 h-60 absolute top-1/2 right-full transform translate-x-20 -translate-y-1/2"/>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </div>
-</div>
+</CardsWrapper>
 
 
-<div className="mb-16 px-6 space-y-20">
-  <a
-    className="block bg-white shadow-md border border-gray-50 overflow-hidden no-underline hover:no-underline hover:shadow-lg"
-    href="/main/docs/diem-reference-wallet">
-    <div className="lg:flex items-stretch">
-      <div className="grid flex-grow">
-        <div className="p-8">
-          <div className="uppercase tracking-wide text-sm text-diem font-bold py-1">Try it out</div>
-          <h2 className="m-0 mt-1 text-lg mt-3 leading-tight font-medium text-black hover:underline">The Official Diem
-            Reference Wallet</h2>
-          <p className="mt-2 text-gray-500">Explore the official Diem Reference Wallet, with full functionality and
-            interactive testnet connectivity</p>
-        </div>
-        <div className="p-8 hidden lg:block">
-          <p className="mt-2 flex justify-end">
-            <div className="flex bg-diem w-12 h-12 rounded-full items-center justify-center fill-white stroke-white">
-              <svg width="15" height="16" viewBox="0 0 15 16" xmlns="http://www.w3.org/2000/svg">
-                <g stroke-width="1.5" fill-rule="evenodd" stroke-linecap="square">
-                  <path d="M6.86 14.5L13.5 8 6.86 1.5M12.944 8.087H.774"></path>
-                </g>
-              </svg>
-            </div>
-          </p>
-        </div>
-      </div>
-      <div className="md:flex-shrink-0 w-full lg:w-1/3">
-        <img className="m-0 object-cover w-full h-full"
-             src="https://diem-developers-components.netlify.app/images/marketing-module.jpg"
-             alt="Computer screen showing Diem wallet app"/>
-      </div>
-    </div>
-  </a>
-</div>
+## **Start building on the Diem Blockchain**
+
+<CardsWrapper cardsPerRow={3}>
+  <OverlayCard
+    title="SDKs"
+    description="Use our SDKs to build on the Diem Blockchain"
+    icon="img/backend.svg"
+    iconDark="img/backend-dark.svg"
+    to="/docs/tools/sdks"
+  />
+  <OverlayCard
+    title="My first client"
+    description="Develop your first client using our SDKs"
+    icon="img/my-first-client.svg"
+    iconDark="img/my-first-client-dark.svg"
+    to="/docs/tutorials/tutorial-my-first-client"
+  />
+  <OverlayCard
+    title="JSON-RPC specifications"
+    description="Read the JSON-RPC specifications"
+    icon="img/json-rpc-api.svg"
+    iconDark="img/json-rpc-api-dark.svg"
+    to="https://github.com/diem/diem/blob/main/json-rpc/json-rpc-spec.md"
+  />
+</CardsWrapper>
+
+## **Build a Wallet or Merchant Store**
+
+<CardsWrapper cardsPerRow={3}>
+  <OverlayCard
+    title="Integration guide"
+    description="Integrate your wallet or merchant store with the DPN"
+    icon="img/integrate-your-merchant-store-with-the-lpn.svg"
+    iconDark="img/integrate-your-merchant-store-with-the-lpn-dark.svg"
+    to="/docs/wallets-and-merchant-stores/integrate-wallet-merchant-dpn"
+  />
+  <OverlayCard
+    title="Mini Wallet"
+    description="Try our Mini Wallet running on Diem testnet"
+    icon="img/introduction-to-wallets.svg"
+    iconDark="img/introduction-to-wallets-dark.svg"
+    to="/docs/wallets-and-merchant-stores/try-our-mini-wallet"
+  />
+  <OverlayCard
+    title="Public Demo Merchant Store"
+    description="Try our Public Demo Merchant Store running on Diem testnet"
+    icon="img/reference-merchant-store-setup.svg"
+    iconDark="img/reference-merchant-store-setup-dark.svg"
+    to="/docs/wallets-and-merchant-stores/reference-merchant-public-demo"
+  />
+</CardsWrapper>
+
+## **Write Smart Contracts**
+
+<CardsWrapper cardsPerRow={3}>
+  <OverlayCard
+    title="Move introduction"
+    description="Write Move programs that securely and flexibly manage and transfer assets"
+    icon="img/introduction-to-move.svg"
+    iconDark="img/introduction-to-move-dark.svg"
+    to="/docs/move/move-introduction"
+  />
+  <OverlayCard
+    title="Modules and scripts"
+    description="Learn about Move modules and scripts"
+    icon="img/modules-and-scripts.svg"
+    iconDark="img/modules-and-scripts-dark.svg"
+    to="/docs/move/move-modules-and-scripts"
+  />
+  <OverlayCard
+    title="Create coins"
+    description="Try creating coins using Move"
+    icon="img/diem-coin-sourcing.svg"
+    iconDark="img/diem-coin-sourcing-dark.svg"
+    to="/docs/move/move-creating-coin"
+  />
+</CardsWrapper>
+
+<MarketingModule
+  title="The Official Diem Reference Wallet"
+  copy="Explore the official Diem Reference Wallet, with full functionality and interactive testnet connectivity"
+  cta="Try it out"
+  ctaLink="/docs/wallets-and-merchant-stores/diem-reference-wallet"
+  img="/img/marketing-module.jpg"
+  imgAlt="Computer screen showing Diem wallet app"
+/>
+
 
 <div className="mx-6 mb-10 bg-blue-50 border-gray-300 px-8 py-6 border">
   <p>During the first phase of our rollout, only a limited number of approved organizations will be participating on the
     network. To stay informed of updates, please sign up <a href="/main/docs/newsletter-form">here</a> to be notified.
   </p>
 </div>
-*/}
