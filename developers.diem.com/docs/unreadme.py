@@ -7,7 +7,7 @@ IMAGE_BLOCK_RE = re.compile(r"(\[block:image])(.*?)(\[/block])", re.DOTALL | re.
 PARAMS_BLOCK_RE = re.compile(r"(\[block:parameters])(.*?)(\[/block])", re.DOTALL | re.MULTILINE)
 CALLOUT_BLOCK_RE = re.compile(r"(\[block:callout])(.*?)(\[/block])", re.DOTALL | re.MULTILINE)
 
-BASE_PATH = "/Users/confidential/diem/diem/developers.diem.com/docs/readme.com/"
+BASE_PATH = "/Users/confidential/diem/diem/developers.diem.com/docs/move/"
 
 
 def read(filename):
