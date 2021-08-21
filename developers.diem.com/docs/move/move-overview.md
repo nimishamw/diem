@@ -176,7 +176,7 @@ use cases in mind outside a blockchain context as well.
         description="The purpose of Move programs is to read from and write to persistent global storage"
     />
     <OverlayCard
-         link="/docs/move/move-global-storage/move-global-storage-operators"
+        to="/docs/move/move-global-storage/move-global-storage-operators"
         icon="img/intro-to-global-storage.svg"
         iconDark="img/intro-to-global-storage-dark.svg"
         title="Global Storage Operators"
