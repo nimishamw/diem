@@ -3,13 +3,13 @@ title: "Events"
 slug: "basics-events"
 hidden: false
 ---
-Events are Move data that are emitted during the execution of a transaction on the Diem Blockchain. 
+Events are Move data that are emitted during the execution of a transaction on the Diem Blockchain.
 
 For example, whenever a payment transaction is sent or received on-chain, the transaction will emit the relevant data using the `SentPaymentEvent` and `ReceivedPaymentEvent`. This data is stored in the EventStore, which is part of the Diem Blockchain’s ledger state. You can query the EventStore to get proof of executed transactions on-chain.
 
 ## Introduction
 
-Events are grouped into **event streams** based on event type. The Diem Framework uses different types of events for payments, minting/burning, and system operations. A detailed list of the event types accessible from JSON-RPC is available in the <a href="https://github.com/diem/diem/blob/main/json-rpc/docs/type_event.md" target="_blank">JSON-RPC documentation</a>.
+Events are grouped into **event streams** based on event type. The Diem Framework uses different types of events for payments, minting/burning, and system operations. A detailed list of the event types accessible from JSON-RPC is available in the [JSON-RPC documentation](https://github.com/diem/diem/blob/main/json-rpc/docs/type_event.md).
 
 ### Payment transaction events
 
@@ -22,7 +22,7 @@ Both `SentPaymentEvent` and `ReceivedPaymentEvent` have the same structure:
 
 | Field Name | Type                                                         | Description                                                  |
 | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| amount     | <a href="https://github.com/diem/diem/blob/main/json-rpc/docs/type_amount.md)" target="_blank">Amount</a> | Amount received from the sender of the transaction           |
+| amount     | [Amount](https://github.com/diem/diem/blob/main/json-rpc/docs/type_amount.md) | Amount received from the sender of the transaction           |
 | sender     | string                                                       | Hex-encoded address of the account whose balance was debited to perform this deposit. If the deposited funds came from a mint transaction, the sender address will be 0x0...0. |
 | receiver   | string                                                       | Hex-encoded address of the account whose balance was credited by this deposit.<br /> |
 | metadata   | string                                                       | An optional field that can contain extra metadata for the event. This information can be used by an off-chain API to implement a sub-addressing scheme for a wallet. |
@@ -45,7 +45,7 @@ There are also several events related to system-level operations, for example:
 * `NewBlockEvent` — when a new block of transactions is added to the Diem Blockchain
 
 ## Event concepts
-![Figure 1.0 EventHandle and event streams in the Diem Framework](https://files.readme.io/b01f98b-events-fig1.svg)
+![Figure 1.0 EventHandle and event streams in the Diem Framework](/img/docs/events-fig1.svg)
 <small className="figure">Figure 1.0 EventHandle and event streams in the Diem Framework</small>
 
 * **Event stream**: Events are grouped into “**event streams,**” which are append-only vectors of ContractEvent payloads. For example, an account can have a SentPaymentEvent stream and a ReceivePaymentEvent stream. The entries in an event stream are assigned sequence numbers beginning from zero.
@@ -65,11 +65,11 @@ There are several JSON-RPC API methods associated with events:
 ### Get `SentPaymentEvent` for an account
 
 This example demonstrates how to query a `SentPaymentEvent` for an account. In this example, account 0x996b67d has two event streams, with 3 sent payments and 2 received payments:
-![Figure 1.1 Example event streams for a Diem Account](https://files.readme.io/670f7d0-events-fig2.svg)
+![Figure 1.1 Example event streams for a Diem Account](/img/docs/events-fig2.svg)
 <small className="figure">Figure 1.1 Example event streams for a Diem Account</small>
 
-1. The first step is to find the event key for the account’s `SentPaymentEvent` stream. We can send a <a href="https://github.com/diem/diem/blob/main/json-rpc/docs/method_get_account.md" target="_blank">`get_account`</a> 
-query to the JSON-RPC endpoint to get the state of that <a href="https://github.com/diem/diem/blob/main/json-rpc/docs/type_account.md" target="_blank">`account`</a>, including two event keys: one for the `SentPaymentEvent` stream (the `sent_events_key` field) and one for the `ReceivedPaymentEvent` stream (the `received_events_key` field). The response will look like the following:
+1. The first step is to find the event key for the account’s `SentPaymentEvent` stream. We can send a [`get_account`](https://github.com/diem/diem/blob/main/json-rpc/docs/method_get_account.md)
+query to the JSON-RPC endpoint to get the state of that [`account`](https://github.com/diem/diem/blob/main/json-rpc/docs/type_account.md), including two event keys: one for the `SentPaymentEvent` stream (the `sent_events_key` field) and one for the `ReceivedPaymentEvent` stream (the `received_events_key` field). The response will look like the following:
 ```json
 {
   "diem_chain_id" : 2,
@@ -84,7 +84,7 @@ query to the JSON-RPC endpoint to get the state of that <a href="https://github.
   "diem_ledger_version" : 1303433
 }
 ```
-2. The next step is to use the <a href="https://github.com/diem/diem/blob/main/json-rpc/docs/method_get_events.md" target="_blank">`get_events`</a> API method to fetch the event details. In the JSON-RPC query, we can specify to fetch one event beginning with sequence number 2 from the `sent_events_key` event stream. The response will look like the following:
+2. The next step is to use the [`get_events`](https://github.com/diem/diem/blob/main/json-rpc/docs/method_get_events.md) API method to fetch the event details. In the JSON-RPC query, we can specify to fetch one event beginning with sequence number 2 from the `sent_events_key` event stream. The response will look like the following:
 ```json
 {
   "id": 1,
