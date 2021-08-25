@@ -3,7 +3,7 @@ title: "Address"
 id: move-primitives-address
 hidden: false
 ---
-`address` is a built-in type in Move that is used to represent locations (sometimes called accounts) in global storage. An `address` value is a 128-bit (16 byte) identifier. At a given address, two things can be stored: [Modules](doc:move-modules-and-scripts) and [Resources](doc:move-basics-structs-and-resources). 
+`address` is a built-in type in Move that is used to represent locations (sometimes called accounts) in global storage. An `address` value is a 128-bit (16 byte) identifier. At a given address, two things can be stored: [Modules](/docs/move/move-start-here/move-modules-and-scripts) and [Resources](/docs/move/move-basic-concepts/move-basics-structs-and-resources). 
 
 Although an `address` is a 128 bit integer under the hood, Move addresses are intentionally opaque---they cannot be created from integers, they do not support arithmetic operations, and they cannot be modified. Even though there might be interesting programs that would use such a feature (e.g., pointer arithmetic in C fills a similar niche), Move does not allow this dynamic behavior because it has been designed from the ground up to support static verification.
 
@@ -26,10 +26,10 @@ let a4: address = 0x0000000000000000000000000000000A;
 
 The primary purpose of `address` values are to interact with the global storage operations.
 
-`address` values are used with the `exists`, `borrow_global`, `borrow_global_mut`, and `move_from` [operations](doc:move-global-storage-operators).
+`address` values are used with the `exists`, `borrow_global`, `borrow_global_mut`, and `move_from` [operations](/docs/move/move-global-storage/move-global-storage-operators).
 
-The only global storage operation that *does not* use `address` is `move_to`, which uses [`signer`](doc:move-primitives-signer).
+The only global storage operation that *does not* use `address` is `move_to`, which uses [`signer`](/docs/move/move-primitive-types/move-primitives-signer).
 
 ## Ownership
 
-As with the other scalar values built-in to the language, `address` values are implicitly copyable, meaning they can be copied without an explicit instruction such as [`copy`](doc:move-basics-equality).
+As with the other scalar values built-in to the language, `address` values are implicitly copyable, meaning they can be copied without an explicit instruction such as [`copy`](/docs/move/move-basic-concepts/move-basics-equality).

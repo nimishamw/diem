@@ -102,7 +102,7 @@ Comparison operations do not abort.
 
 ### Equality
 
-Like all [copyable](doc:move-basics-equality) types in Move, all integer types support the "equal" and "not equal" operations. Both arguments need to be of the same type. If you need to compare integers of different types, you will need to [cast](#casting) one of them first.
+Like all [copyable](/docs/move/move-basic-concepts/move-basics-equality) types in Move, all integer types support the "equal" and "not equal" operations. Both arguments need to be of the same type. If you need to compare integers of different types, you will need to [cast](#casting) one of them first.
 
 Equality operations do not abort.
 
@@ -133,4 +133,4 @@ For example:
 
 ## Ownership
 
-As with the other builtin scalar types, integer values are implicitly copyable, meaning they can be copied without an explicit instruction such as [`copy`](doc:move-basics-equality).
+As with the other builtin scalar types, integer values are implicitly copyable, meaning they can be copied without an explicit instruction such as [`copy`](/docs/move/move-basic-concepts/move-basics-equality).

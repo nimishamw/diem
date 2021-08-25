@@ -12,7 +12,7 @@ The Move standard library exposes interfaces that implement the following functi
 ## Vector
 
 The `Vector` module defines a number of operations over the primitive
-[`vector`](doc:move-primitives-vector) type. The module is published under the
+[`vector`](/docs/move/move-primitive-types/move-primitives-vector) type. The module is published under the
 core code address at `0x1` and consists of a number of native functions, as
 well as functions defined in Move. The API for this module is as follows.
 
@@ -20,7 +20,7 @@ well as functions defined in Move. The API for this module is as follows.
 
 ---------------------------------------------------------------------------
 
-Create an empty [`vector`](doc:move-primitives-vector).
+Create an empty [`vector`](/docs/move/move-primitive-types/move-primitives-vector).
 The `Element` type can be both a `resource` or `copyable` type.
 ```rust
     native public fun empty<Element>(): vector<Element>;
@@ -36,20 +36,20 @@ Create a vector of length `1` containing the passed in `element`.
 Destroy (deallocate) the vector `v`. Will abort if `v` is non-empty.
 *Note*: The emptiness restriction is due to the fact that `Element` can be a
 resource type, and destruction of a non-empty vector would violate
-[resource conservation](doc:move-basics-structs-and-resources).
+[resource conservation](/docs/move/move-basic-concepts/move-basics-structs-and-resources).
 ```rust
     native public fun destroy_empty<Element>(v: vector<Element>);
 ```
 ---------------------------------------------------------------------------
 
-Acquire an [immutable reference](doc:move-primitives-references) to the `i`th element of the vector `v`.  Will abort if
+Acquire an [immutable reference](/docs/move/move-primitive-types/move-primitives-references) to the `i`th element of the vector `v`.  Will abort if
 the index `i` is out of bounds for the vector `v`.
 ```rust
     native public fun borrow<Element>(v: &vector<Element>, i: u64): &Element;
 ```
 ---------------------------------------------------------------------------
 
-Acquire a [mutable reference](doc:move-primitives-references)
+Acquire a [mutable reference](/docs/move/move-primitive-types/move-primitives-references)
 to the `i`th element of the vector `v`.  Will abort if
 the index `i` is out of bounds for the vector `v`.
 ```rust

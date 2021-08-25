@@ -8,6 +8,8 @@ PARAMS_BLOCK_RE = re.compile(r"(\[block:parameters])(.*?)(\[/block])", re.DOTALL
 CALLOUT_BLOCK_RE = re.compile(r"(\[block:callout])(.*?)(\[/block])", re.DOTALL | re.MULTILINE)
 HTML_BLOCK_RE = re.compile(r"(\[block:html])(.*?)(\[/block])", re.DOTALL | re.MULTILINE)
 
+DOC_LINK_RE = re.compile(r"(doc:[\w\-#]+)", re.DOTALL | re.MULTILINE)
+
 BASE_PATH = "/Users/confidential/diem/diem/developers.diem.com/docs/move/"
 
 
@@ -194,10 +196,59 @@ def category_izer(full_path, remove_prefix):
     print(json.dumps(hierarchy, indent="  "))
 
 
+def fix_readme_link_in_doc(doc, relpath, slug_to_path):
+    doc_link_count = 0
+    while True:
+        res = DOC_LINK_RE.search(doc)
+        if not res:
+            return doc, doc_link_count
+
+        doc_link_count += 1
+        try:
+            _, slug = res.group(0).split(":")
+            slug_anchor = slug.split("#")
+            anchor = ""
+            if len(slug_anchor) == 2:
+                slug, anchor = slug_anchor
+            else:
+                slug = slug_anchor[0]
+
+            result = slug_to_path[slug]
+            if anchor:
+                result = f"{result}#{anchor}"
+
+        except Exception as e:
+            print("Err for: ", relpath)
+            import pdb
+            #pdb.set_trace()
+            raise e
+
+        doc = doc[:res.span()[0]] + result + doc[res.span()[1]:]
+
+
+def fix_readme_links(full_path, remove_prefix):
+    filepaths = list(Path(full_path).rglob("*.md"))
+
+    # Get a mapping of all slugs
+    slug_to_path = {}
+    for filepath in filepaths:
+        relpath = str(filepath).replace(remove_prefix, "").replace(".md", "")
+        slug_to_path[relpath.split("/")[-1]] = relpath
+    print(json.dumps(slug_to_path, indent="  "))
+
+    filepaths = list(Path(full_path).rglob("*.md"))
+
+    for filepath in filepaths:
+        doc = read(filepath)
+        doc, c = fix_readme_link_in_doc(doc, filepath, slug_to_path)
+        if c > 0:
+            print(f"{filepath}: processed {c} links")
+            write(filepath, doc)
+
 
 if __name__ == "__main__":
-    category_izer("/Users/confidential/diem/diem/developers.diem.com/docs/move",
-                  "/Users/confidential/diem/diem/developers.diem.com/docs/")
+    fix_readme_links("/Users/confidential/diem/diem/developers.diem.com/docs/",
+                     "/Users/confidential/diem/diem/developers.diem.com")
     # process_all_docs()
     # fp = "/Users/confidential/diem/diem/developers.diem.com/docs/move/move-basic-concepts.md"
     # doc = read(fp)

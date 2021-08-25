@@ -274,7 +274,7 @@ module.
 The `burn` function uses pattern matching to unpack the `Coin` into just its internal value. This essentially destroys
 the resource and returns a normal `u64` value. We return the value of the coin to let the caller know how much money
 just disappeared. (
-see [structs and resources](doc:move-basics-structs-and-resources#destroying-structs-via-pattern-matching)).
+see [structs and resources](/docs/move/move-basic-concepts/move-basics-structs-and-resources#destroying-structs-via-pattern-matching)).
 
 Now we can write a slightly more complicated script that tests our `Coin` module. We'll mint a coin, display its value,
 and then burn it. Add this code to `src/scripts/test-burn.move`:

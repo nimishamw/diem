@@ -31,7 +31,7 @@ The raw transaction includes the following fields:
 
 | Fields | Description |
 | ------ | ----------- |
-| <Glossary>account address</Glossary> | Alice's account address |
+| <gi ary>account address</Glossary> | Alice's account address |
 | Move Module | A module (or program) that indicates the actions to be performed on Alice's behalf. In this case, it contains:  <br />- A Move bytecode peer-to-peer <Glossary>transaction script</Glossary>. <br />- A list of inputs to the script (for this example the list would contain Bob's account address and the payment amount in Diem Coins). |
 | <Glossary>maximum gas amount</Glossary> | The maximum gas amount Alice is willing to pay for this transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation. |
 | <Glossary>gas price</Glossary> (in microdiem/gas units) | The amount in Diem Coins Alice is willing to pay per unit of gas, to execute the transaction. |
@@ -50,7 +50,7 @@ For the relevant steps, we've included a link to the corresponding inter-compone
 <small className="figure">Figure 1.0 Lifecycle of a transaction</small>
 
 <BlockQuote type="warning">
- The arrows in all the visuals in this article originate on the component initiating an interaction/action and terminate on the component on which the action is being performed. The arrows do not represent data read, written, or returned. 
+ The arrows in all the visuals in this article originate on the component initiating an interaction/action and terminate on the component on which the action is being performed. The arrows do not represent data read, written, or returned.
 </BlockQuote>
 
 The lifecycle of a transaction has five stages:
@@ -87,7 +87,7 @@ We've described what happens in each stage below, along with links to the corres
 | Description                                                  | Diem Node Component Interactions         |
 | ------------------------------------------------------------ | ---------------------------------------- |
 | 6. **Consensus → Mempool**: &mdash; As validator V<sub>1</sub> is a proposer/leader for this transaction, it will pull a block of transactions from its mempool and replicate this block as a proposal to other validator nodes via its consensus component. | [1. Consensus](#1-consensus-→-mempool), [3. Mempool](#3-consensus-→-mempool) |
-| 7. **Consensus → Other Validators**: The consensus component of V<sub>1</sub> is responsible for coordinating agreement among all validators on the order of transactions in the proposed block. Refer to our technical paper [State Machine Replication in the Diem Blockchain](doc:state-machine-replication-paper) for details of our proposed consensus protocol DiemBFT. | [2. Consensus](#2-consensus-→-other-validators)                     |
+| 7. **Consensus → Other Validators**: The consensus component of V<sub>1</sub> is responsible for coordinating agreement among all validators on the order of transactions in the proposed block. Refer to our technical paper [State Machine Replication in the Diem Blockchain](/docs/technical-papers/state-machine-replication-paper) for details of our proposed consensus protocol DiemBFT. | [2. Consensus](#2-consensus-→-other-validators)                     |
 
 
 
@@ -121,8 +121,8 @@ In the [previous section](#lifecycle-of-the-transaction), we described the typic
 * Are interested in eventually contributing to the Diem Core software.
 
 You can learn more about the different types of Diem nodes here:
-* [Validator nodes](doc:basics-validator-nodes) 
-* [FullNodes](doc:fullnodes) 
+* [Validator nodes](/docs/basics/basics-validator-nodes)
+* [FullNodes](/docs/basics/basics-fullnodes)
 
 For our narrative, we will assume that a client submits a transaction T<sub>N</sub> to a validator V<sub>X</sub>. For each validator component, we will describe each of its inter-component interactions in subsections under the respective component's section. Note that subsections describing the inter-component interactions are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and some are relevant to clients querying the blockchain (queries for existing information on the blockchain).
 
@@ -164,7 +164,7 @@ When a client performs a read query on the Diem Blockchain (for example, to get 
 ![Figure 1.2 Virtual machine](https://files.readme.io/d79a613-virtual-machine.svg)
 <small className="figure">Figure 1.2 Virtual machine</small>
 
-The [Move virtual machine](doc:move-introduction) (VM) verifies and executes transaction scripts written in Move bytecode.
+The [Move virtual machine](/docs/move/move-start-here/move-introduction) (VM) verifies and executes transaction scripts written in Move bytecode.
 
 #### 1. Virtual Machine → Storage
 

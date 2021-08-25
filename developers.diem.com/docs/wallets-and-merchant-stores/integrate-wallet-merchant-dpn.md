@@ -24,13 +24,13 @@ Regulated VASP accounts are reserved for a <Glossary>Regulated VASP</Glossary> t
 
   * **ChildVASP accounts**: The **ChildVASP account** is the child of your ParentVASP account. A ChildVASP account stores the address of its ParentVASP. You can have any number of ChildVASP accounts. They can help in maintaining a structured on-chain presence (e.g., separate cold/warm/hot accounts). You do not need to have ChildVASP accounts. 
 
-Read the [accounts](doc:basics-accounts) page to learn more. 
+Read the [accounts](/docs/basics/basics-accounts) page to learn more. 
 
 To create your VASP accounts:
 ![Figure 1.0 Creating your VASP account](https://files.readme.io/71ef5d0-create-vasp-account.svg)
 <small className="figure">Figure 1.0 Creating your VASP account</small>
 
-1. [**Generate keys**](doc:basics-accounts#generate-an-auth-key-and-account-address) 
+1. [**Generate keys**](/docs/basics/basics-accounts#generate-an-auth-key-and-account-address) 
       Generate an <Glossary>Ed25519</Glossary> keypair and associated authentication key for your on-chain Regulated VASP account.
 2. **Share account info**
       Share the following with the Diem Networks Treasury offline: your public key, the initial [currency of your choice](#choose-currencies), `XUS` or `ALL`, and a human-readable VASP name to use on-chain. Diem Networks will need to check if the human name is a unique value. 
@@ -48,7 +48,7 @@ To create your VASP accounts:
 
 When you are creating your ParentVASP account, you will need to choose at least one Diem Coin currency. The Diem Coin currency that is currently available on the DPN is `XUS`(a USD stablecoin). 
 
-When there is more than one [Diem Coin currency](doc:basics-accounts#currencies) available, you can share with the DPN which one you would like to associate with your account. You can also request the DPN to choose all the Diem Coin currencies available. 
+When there is more than one [Diem Coin currency](/docs/basics/basics-accounts#currencies) available, you can share with the DPN which one you would like to associate with your account. You can also request the DPN to choose all the Diem Coin currencies available. 
 
 You can add new Diem Coin currencies to an existing account via the [`add_currency_to_account` transaction script](https://github.com/diem/diem/blob/main/language/diem-framework/transaction_scripts/doc/transaction_script_documentation.md#script-add_currency_to_account). You can add all currencies offered on the DPN to your ChildVASP accounts by using the `add_all_currencies` flag in the account creation scripts.
 
@@ -57,7 +57,7 @@ When available, at the Move level, each Diem Coin currency will be a different g
 
 ## Submit a Transaction
 
-When you submit a transaction to the DPN, you are cryptographically signing a transaction script and then waiting (by listening to the event stream) for consensus from validators. Learn more about the [lifecycle of a transaction](doc:basics-life-of-txn).
+When you submit a transaction to the DPN, you are cryptographically signing a transaction script and then waiting (by listening to the event stream) for consensus from validators. Learn more about the [lifecycle of a transaction](/docs/transactions/basics-life-of-txn).
 
 Once you have your ParentVASP account, you can start interacting with the DPN. Before you submit your first transaction, you will need to:
 
@@ -66,11 +66,11 @@ Once you have your ParentVASP account, you can start interacting with the DPN. B
 * [**Choose Gas Values**](#choose-gas-values): The gas values that determine the computational resources used and the fees you will incur for each transaction.
 
 ### How to interact with the DPN
-The first step to submitting transactions to the DPN is determining how to connect and interact with it. The guidance for this differs slightly based on if you are a [validator node](doc:basics-validator-nodes) operator or not.
+The first step to submitting transactions to the DPN is determining how to connect and interact with it. The guidance for this differs slightly based on if you are a [validator node](/docs/basics/basics-validator-nodes) operator or not.
 
 If you are not a validator node operator, you can do one of the following:
 
-* Communicate with a validator operator or owner of a validator node to obtain dedicated access to the validator network, using either a [FullNode](doc:fullnodes) or the JSON-RPC endpoint of a FullNode.
+* Communicate with a validator operator or owner of a validator node to obtain dedicated access to the validator network, using either a [FullNode](/docs/basics/basics-fullnodes) or the JSON-RPC endpoint of a FullNode.
 * Leverage the public FullNode network deploying your own FullNode with a JSON-RPC endpoint.
 * Access a public JSON-RPC endpoint.
 * Use your own private FullNode for faster access to the blockchain state. This allows you to monitor your submitted transactions more closely. Private FullNodes also provide additional redundancy, which means that you can fall back on the well-maintained public network whenever your private FullNode is unavailable. 
@@ -96,7 +96,7 @@ When an account submits a transaction for execution, **gas** is used to:
 *   Limit the number of resources used during execution.
 *   Charge a transaction fee based on the amount of resources used for execution.
 
-Learn more about using gas to specify a transaction fee [here](doc:basics-gas-txn-fee#introduction) 
+Learn more about using gas to specify a transaction fee [here](/docs/basics/basics-gas-txn-fee#introduction) 
 
 To compute a transaction fee, you can choose the following gas values: 
 
@@ -133,7 +133,7 @@ More information about payment request URI serialization can be found [here](htt
 
 Once the end user's wallet sends you, a merchant service provider, the payment, you can check the transaction to connect it to a checkout session, confirm the payment, and signal the confirmation to the end user. 
 
-You can do this by interfacing with a FullNode to track emitted [events](doc:basics-events) for your on-chain accounts. If you see that you have received a payment, you can examine the accompanying subaddress to route the payment internally. Since the subaddress will be unique for each transaction, you can determine who the buyer (end user who sent you the payment) was. In other words, you can connect the payment received to a checkout session and signal that the payment is confirmed to the end user.
+You can do this by interfacing with a FullNode to track emitted [events](/docs/basics/basics-events) for your on-chain accounts. If you see that you have received a payment, you can examine the accompanying subaddress to route the payment internally. Since the subaddress will be unique for each transaction, you can determine who the buyer (end user who sent you the payment) was. In other words, you can connect the payment received to a checkout session and signal that the payment is confirmed to the end user.
 
 
 ### Handle refunds
@@ -160,13 +160,13 @@ This script requires the following:
 
 ## Query the blockchain
 
-Each transaction is designed to emit any number of [events](doc:basics-events) as a list. An aborting transaction never emits events, so you can use events to confirm if a transaction has been successfully executed.
+Each transaction is designed to emit any number of [events](/docs/basics/basics-events) as a list. An aborting transaction never emits events, so you can use events to confirm if a transaction has been successfully executed.
 
 For example, a peer-to-peer payment transaction emits a `SentPayment` event for the sender’s account and a `ReceivedPayment` event for the recipient account. The `SentPayment` event allows the sender to confirm that the payment was sent from their account, while a `ReceivedPayment `event allows the recipient to confirm that a payment was received in their account. Events are persisted on the Diem Blockchain and you (as a Regulated VASP) can use these events to answer your queries.
 
 More information on event structures, and how they can be queried and the surrounding data in the JSON responses can be found [here](https://github.com/diem/diem/blob/main/json-rpc/json-rpc-spec.md).
 
-To check for new transactions posted to your account, you need to [query the blockchain](doc:tutorial-query-the-blockchain) using the JSON-RPC endpoints.
+To check for new transactions posted to your account, you need to [query the blockchain](/docs/tutorials/tutorial-query-the-blockchain) using the JSON-RPC endpoints.
 
 * If you are sending the transaction, you query for the transaction’s sequence number.
 * If you are receiving the transaction, you query for the ReceivedPaymentEvent event.

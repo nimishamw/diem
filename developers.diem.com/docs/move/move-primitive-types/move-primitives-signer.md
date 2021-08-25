@@ -58,4 +58,4 @@ The `0x1::Signer` standard library module provides two utility functions over `s
 | `Signer::borrow_address(&signer): &address` | Return a reference to the `address` wrapped by this `&signer`
 
 
-In addition, the `move_to<T>(&signer, T)` [global storage operator](doc:move-global-storage-operators) requires a `&signer` argument to publish a resource `T` under `signer.address`'s account. This ensures that only an authenticated user can elect to publish a resource under their `address`.
+In addition, the `move_to<T>(&signer, T)` [global storage operator](/docs/move/move-global-storage/move-global-storage-operators) requires a `&signer` argument to publish a resource `T` under `signer.address`'s account. This ensures that only an authenticated user can elect to publish a resource under their `address`.

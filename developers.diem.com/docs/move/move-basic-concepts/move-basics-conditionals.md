@@ -45,7 +45,7 @@ if (condition) true_branch // implied default: else ()
 if (condition) true_branch else ()
 ```
 
-Commonly, [`if` expressions](doc:move-basics-conditionals) are used in conjunction with expression blocks.
+Commonly, [`if` expressions](/docs/move/move-basic-concepts/move-basics-conditionals) are used in conjunction with expression blocks.
 ```rust
 let maximum = if (x > y) x else y;
 if (maximum < 10) {

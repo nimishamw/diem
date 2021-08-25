@@ -79,7 +79,7 @@ After the name, functions can have type parameters
 fun id<T>(x: T): T { x }
 fun example<T1: copyable, T2>(x: T1, y: T2): (T1, T1, T2) { (copy x, x, y) }
 ```
-For more details, see [Move generics](doc:move-basics-generics).
+For more details, see [Move generics](/docs/move/move-basic-concepts/move-basics-generics).
 
 ### Parameters
 
@@ -215,7 +215,7 @@ script {
 }
 ```
 
-As mentioned in the [tuples section](doc:move-primitives-tuples-unit), these tuple "values" are virtual and do not exist at runtime. So for a function that returns unit `()`, it will not be returning any value at all during execution.
+As mentioned in the [tuples section](/docs/move/move-primitive-types/move-primitives-tuples-unit), these tuple "values" are virtual and do not exist at runtime. So for a function that returns unit `()`, it will not be returning any value at all during execution.
 
 ### Function body
 
@@ -230,7 +230,7 @@ fun example(): u64 {
 
 See [the section below for more information on returns](#returning-values)
 
-For more information on expression blocks, see [Move variables](doc:move-basics-variables).
+For more information on expression blocks, see [Move variables](/docs/move/move-basic-concepts/move-basics-variables).
 
 
 ### Native Functions
@@ -308,7 +308,7 @@ script {
     }
 }
 ```
-For more details, see [Move generics](doc:move-basics-generics).
+For more details, see [Move generics](/docs/move/move-basic-concepts/move-basics-generics).
 
 
 ## Returning values
@@ -319,7 +319,7 @@ fun add(x: u64, y: u64): u64 {
     x + y
 }
 ```
-[As mentioned above](#function-body), the function's body is an [expression block](doc:move-basics-variables). The expression block can sequence various statements, and the final expression in the block will be be the value of that block
+[As mentioned above](#function-body), the function's body is an [expression block](/docs/move/move-basic-concepts/move-basics-variables). The expression block can sequence various statements, and the final expression in the block will be be the value of that block
 ```rust=
 fun double_and_add(x: u64, y: u64): u64 {
     let double_x = x * 2;

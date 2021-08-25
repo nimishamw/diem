@@ -26,6 +26,6 @@ Literals for `bool` are either `true` or `false`.
 
 `bool` values are used in several of Move's control-flow constructs:
 
-- [`if (bool) { ... } `](doc:move-basics-conditionals) 
-- [`while(bool) { .. }`](doc:move-basics-loops) 
-- [`assert(bool, u64)`](doc:move-basics-abort-assert)
+- [`if (bool) { ... } `](/docs/move/move-basic-concepts/move-basics-conditionals) 
+- [`while(bool) { .. }`](/docs/move/move-basic-concepts/move-basics-loops) 
+- [`assert(bool, u64)`](/docs/move/move-basic-concepts/move-basics-abort-assert)

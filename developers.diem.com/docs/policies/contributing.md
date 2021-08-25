@@ -27,7 +27,7 @@ $ cargo xtest
 
 ## Coding Guidelines
 
-For detailed guidance on how to contribute to the Diem Core codebase refer to [Coding Guidelines](doc:coding-guidelines).
+For detailed guidance on how to contribute to the Diem Core codebase refer to [Coding Guidelines](/docs/policies/coding-guidelines).
 
 ## Documentation
 
@@ -46,8 +46,8 @@ To submit your pull request:
 7. Submit your pull request.
 
 ## Code of Conduct
-Please refer to the [Code of Conduct](doc:code-of-conduct), which describes the expectations for interactions within the community.
+Please refer to the [Code of Conduct](/docs/policies/code-of-conduct), which describes the expectations for interactions within the community.
 
 ## Issues
 
-Diem uses [GitHub issues](https://github.com/diem/diem/issues) to track bugs. Please include necessary information and instructions to reproduce your issue. Security-related bugs should be reported using our [security procedures](doc:security).
+Diem uses [GitHub issues](https://github.com/diem/diem/issues) to track bugs. Please include necessary information and instructions to reproduce your issue. Security-related bugs should be reported using our [security procedures](/docs/reference/security).

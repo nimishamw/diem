@@ -6,8 +6,8 @@ hidden: false
 This document will guide you through executing your first transaction on the Diem Blockchain's <Glossary>testnet</Glossary>. Before you proceed, we recommend that you read the following to familiarize yourself with the key concepts:
 
 
-* [Basics](doc:basics-txns-states)
-* [Life of a transaction](doc:basics-life-of-txn) 
+* [Basics](/docs/basics/basics-txns-states)
+* [Life of a transaction](/docs/transactions/basics-life-of-txn) 
 
 We provide a command line interface (CLI) client to interact with the Diem Blockchain.
 
@@ -109,7 +109,7 @@ diem%
 If you have problems building the client and connecting to the testnet, refer to [Troubleshooting](#client-build-and-run).
 
 <BlockQuote type="info">
-If you would like to run a test validator network locally on your system, follow the instructions [here](doc:tutorial-run-local-validator-nw). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet. 
+If you would like to run a test validator network locally on your system, follow the instructions [here](/docs/tutorials/tutorial-run-local-validator-nw). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet. 
 </BlockQuote>
 
 ### Create accounts for Alice and Bob
@@ -320,7 +320,7 @@ To troubleshoot the transfer command, refer to [Troubleshooting](#the-transfer-c
 
 `diem% transferb 0 1 10 XUS`
 
-Refer to [Life of a transaction](doc:basics-life-of-txn) for an understanding of the lifecycle of a transaction from submission to execution and storage.
+Refer to [Life of a transaction](/docs/transactions/basics-life-of-txn) for an understanding of the lifecycle of a transaction from submission to execution and storage.
 
 #### Query sequence number after transfer
 
@@ -673,7 +673,7 @@ Latest account state is:
 
 ## Life of a transaction
 
-Once you have executed your first transaction, you may refer to the document [Life of a transaction](doc:basics-life-of-txn) for:
+Once you have executed your first transaction, you may refer to the document [Life of a transaction](/docs/transactions/basics-life-of-txn) for:
 
 * A look "under the hood" at the lifecycle of a transaction from submission to execution.
 * An understanding of the interactions between each logical component of a Diem validator as transactions get submitted and executed in the Diem ecosystem.

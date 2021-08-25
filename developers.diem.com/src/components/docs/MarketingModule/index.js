@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from "@docusaurus/Link";
 
 import styles from './styles.module.css';
 import Arrow from 'img/marketing-arrow.svg';
 
 const MarketingModule = ({copy, cta, ctaLink, img, imgAlt, title}) => (
-  <a className={styles.cta} href={ctaLink}>
+  <Link className={styles.cta} href={ctaLink}>
 
     <div className={styles.root}>
 
@@ -32,7 +33,7 @@ const MarketingModule = ({copy, cta, ctaLink, img, imgAlt, title}) => (
       </div>
 
     </div>
-  </a>
+  </Link>
 
 );
 

@@ -59,7 +59,7 @@ To use most features of the Send, Request, and Transfer buttons, you must first:
  Real-world user verification and risk management are beyond the scope of the Diem Reference Wallet and contain many opportunities for further development. 
 </BlockQuote>
 
-Read more about the user verification [in the Risk section](doc:reference-wallet-set-up-modules#risk-module).
+Read more about the user verification [in the Risk section](/docs/wallets-and-merchant-stores/diem-reference-wallet/reference-wallet-set-up-modules#risk-module).
 
 ## Log in and log out
 
