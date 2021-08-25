@@ -3,9 +3,9 @@ title: "Abort and assert"
 id: move-basics-abort-assert
 hidden: false
 ---
-[`return`](doc:move-basics-functions) and `abort` are two control flow constructs that end execution, one for the current function and one for the entire transaction.
+[`return`](/docs/move/move-basic-concepts/move-basics-functions) and `abort` are two control flow constructs that end execution, one for the current function and one for the entire transaction.
 
-More information on [`return` can be found in the linked section](doc:move-basics-functions).
+More information on [`return` can be found in the linked section](/docs/move/move-basic-concepts/move-basics-functions).
 
 
 ## `abort`
@@ -18,7 +18,7 @@ The `abort` expression halts execution the current function and reverts all chan
 
 Luckily, in Move transactions are all or nothing, meaning any changes to global storage are made all at once only if the transaction succeeds. Because of this transactional commitment of changes, after an abort there is no need to worry about backing out changes. While this approach is lacking in flexibility, it is incredibly simple and predictable.
 
-Similar to [`return`](doc:move-basics-functions), `abort` is useful for exiting control flow when some condition cannot be met.
+Similar to [`return`](/docs/move/move-basic-concepts/move-basics-functions), `abort` is useful for exiting control flow when some condition cannot be met.
 
 In this example, the function will pop two items off of the vector, but will abort early if the vector does not have two items
 ```rust=

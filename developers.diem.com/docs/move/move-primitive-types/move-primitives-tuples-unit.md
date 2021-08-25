@@ -7,7 +7,7 @@ Move does not fully support tuples as one might expect coming from another langu
 
 Similarly, unit `()` is a type created by the Move source language in order to be expression based. The unit value `()` does not result in any runtime value. We can consider unit`()` to be an empty tuple, and any restrictions that apply to tuples also apply to unit.
 
-It might feel weird to have tuples in the language at all given these restrictions. But one of the most common use cases for tuples in other languages is for functions to allow functions to return multiple values. Some languages work around this by forcing the users to write structs that contain the multiple return values. However in Move, you cannot put references inside of [structs](doc:move-basics-structs-and-resources). This required Move to support multiple return values. These multiple return values are all pushed on the stack at the bytecode level. At the source level, these multiple return values are represented using tuples.
+It might feel weird to have tuples in the language at all given these restrictions. But one of the most common use cases for tuples in other languages is for functions to allow functions to return multiple values. Some languages work around this by forcing the users to write structs that contain the multiple return values. However in Move, you cannot put references inside of [structs](/docs/move/move-basic-concepts/move-basics-structs-and-resources). This required Move to support multiple return values. These multiple return values are all pushed on the stack at the bytecode level. At the source level, these multiple return values are represented using tuples.
 
 
 ## Literals
@@ -90,7 +90,7 @@ module Example {
 }
 ```
 
-For more details, see [Move variables](doc:move-basics-variables).
+For more details, see [Move variables](/docs/move/move-basic-concepts/move-basics-variables).
 
 ## Subtyping
 

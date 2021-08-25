@@ -347,7 +347,7 @@ Recall that you are only able to deconstruct a resource within the module in whi
 
 ## Storing Resources in Global Storage
 
-Only resource structs can be saved directly in [persistent global storage](doc:move-global-storage-operators). See the [global storage](doc:move-global-storage-operators) chapter for more detail.
+Only resource structs can be saved directly in [persistent global storage](/docs/move/move-global-storage/move-global-storage-operators). See the [global storage](/docs/move/move-global-storage/move-global-storage-operators) chapter for more detail.
 
 ## Example 1: Coin
 ```rust=

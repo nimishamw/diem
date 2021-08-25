@@ -61,6 +61,6 @@ Click on a specific topic of the diagram to be taken to more information about t
 
 ## Where Do I Start?
 
-Begin with understanding [modules and scripts](doc:move-modules-and-scripts) and then work through
-the [first tutorial on creating coins](doc:move-creating-coins). And then use the sidebar to walkthrough even more
+Begin with understanding [modules and scripts](/docs/move/move-start-here/move-modules-and-scripts) and then work through
+the [first tutorial on creating coins](/docs/move/move-start-here/move-creating-coins). And then use the sidebar to walkthrough even more
 details about the language.

@@ -4,8 +4,8 @@ slug: "txns-create-accounts-mint"
 hidden: false
 ---
 Depending on the type of network you are using, you can use transactions to:
-* [Create accounts and mint fake Diem Coins in testnet](doc:txns-create-accounts-mint#create-accounts-mint-in-testnet)
-* [Create a ChildVASP account in mainnet and pre-mainnet](doc:txns-create-accounts-mint#create-childvasp-accounts-in-mainnet-pre-mainnet)
+* [Create accounts and mint fake Diem Coins in testnet](/docs/transactions/txns-types/txns-create-accounts-mint#create-accounts-mint-in-testnet)
+* [Create a ChildVASP account in mainnet and pre-mainnet](/docs/transactions/txns-types/txns-create-accounts-mint#create-childvasp-accounts-in-mainnet-pre-mainnet)
 
 ## Create accounts, mint in testnet
 

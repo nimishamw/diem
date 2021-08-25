@@ -39,7 +39,7 @@ Creating a K-of-N multisig authentication key is similar to creating a single si
 
 Every account on the DPN is created with at least two resources:
 
-* <a href="https://github.com/diem/diem/blob/main/language/diem-framework/modules/doc/Roles.md#resource-roleid" target="_blank">RoleId</a>, which grants the account a single, immutable [role](doc:basics-accounts#account-roles) for <a href="https://github.com/diem/dip/blob/main/dips/dip-2.md" target="_blank">access control</a>.
+* <a href="https://github.com/diem/diem/blob/main/language/diem-framework/modules/doc/Roles.md#resource-roleid" target="_blank">RoleId</a>, which grants the account a single, immutable [role](/docs/basics/basics-accounts#account-roles) for <a href="https://github.com/diem/dip/blob/main/dips/dip-2.md" target="_blank">access control</a>.
 * <a href="https://github.com/diem/diem/blob/main/language/diem-framework/modules/doc/DiemAccount.md#resource-diemaccount" target="_blank">DiemAccount</a>, which holds the account’s <Glossary>sequence number</Glossary>, authentication key, and event handles.
 
 ### Currencies
@@ -62,7 +62,7 @@ When a client sends funds of type CoinType to an account, they should:
 
 To send and receive `Diem<CoinType>`, an account must have a balance in `Diem<CoinType>`. A transaction that sends `Diem<CoinType>` to an account without a balance in `Diem<CoinType>` will abort.
 
-Balances can be added either at account creation or subsequently via the <a href="doc:txns-manage-accounts#add-a-currency-to-an-account" target="_blank">add_currency script</a>. Only the account owner can add new balances after account creation. Once you add a balance to an account, it cannot be removed. For example, an account that accepts `Diem<XUS>` will always accept `Diem<XUS>`.
+Balances can be added either at account creation or subsequently via the <a href="/docs/transactions/txns-types/txns-manage-accounts#add-a-currency-to-an-account" target="_blank">add_currency script</a>. Only the account owner can add new balances after account creation. Once you add a balance to an account, it cannot be removed. For example, an account that accepts `Diem<XUS>` will always accept `Diem<XUS>`.
 
 ## Account roles
 
@@ -88,4 +88,4 @@ To create a new account, the creator must specify
 
 You can only send funds to an address that already contains an account. If you send funds to an empty address, no account will be created for that address and the create account transaction will abort.
 
-Learn more about how accounts are created <a href="doc:txns-create-accounts-mint" target="_blank">here</a>.
+Learn more about how accounts are created <a href="/docs/transactions/txns-types/txns-create-accounts-mint" target="_blank">here</a>.

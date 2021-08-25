@@ -48,7 +48,7 @@ b"" != 0; // ERROR!
 //     ^ expected an argument of type 'vector<u8>'
 ```
 ### Typing with references
-When comparing [references](doc:move-primitives-references), the type of the reference does not matter. This means that you can compare an immutable `&` reference with a mutable one `&mut` of the same type.
+When comparing [references](/docs/move/move-primitive-types/move-primitives-references), the type of the reference does not matter. This means that you can compare an immutable `&` reference with a mutable one `&mut` of the same type.
 ```rust
 let i = &0;
 let m = &mut 1;

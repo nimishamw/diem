@@ -5,8 +5,8 @@ hidden: false
 ---
 The two fundamental concepts at the heart of the Diem Blockchain are 
 
-* [Transactions](doc:basics-txns-states#transactions): Transactions represent the exchange of data and Diem Coins between any two accounts on the Diem Blockchain.
-* [States](doc:basics-txns-states#ledger-state): The ledger state (state) represents the current snapshot of data on the blockchain. At any point in time, the blockchain has a ledger state.
+* [Transactions](/docs/basics/basics-txns-states#transactions): Transactions represent the exchange of data and Diem Coins between any two accounts on the Diem Blockchain.
+* [States](/docs/basics/basics-txns-states#ledger-state): The ledger state (state) represents the current snapshot of data on the blockchain. At any point in time, the blockchain has a ledger state.
 
 When a submitted transaction is executed, the state of the Diem Blockchain changes.
 
@@ -24,7 +24,7 @@ A <Glossary>signed transaction</Glossary> on the blockchain contains the followi
   - A Move bytecode transaction script: The Move transaction script is an arbitrary program that encodes transaction logic and interacts with resources published in the blockchain's distributed database. Move is a next generation language for secure, sandboxed, and formally verified programming. 
   - An optional list of inputs to the script. For a peer-to-peer transaction, these inputs contain the recipient's information and the amount transferred to them.
   - An optional list of Move bytecode modules to publish.
-- **Gas price** (in specified currency/gas units): This is the amount the sender is willing to pay per unit of <Glossary>gas</Glossary> to execute the transaction. [Gas](doc:basics-gas) is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
+- **Gas price** (in specified currency/gas units): This is the amount the sender is willing to pay per unit of <Glossary>gas</Glossary> to execute the transaction. [Gas](/docs/basics/basics-gas-txn-fee#introduction) is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
 - **Maximum gas amount**: The <Glossary>maximum gas amount</Glossary> is the maximum gas units the transaction is allowed to consume.
 - **Gas currency code**: The currency code used to pay for gas.
 - **Sequence number**: This is an unsigned integer that must be equal to the sender's account <Glossary>sequence number</Glossary> at the time of execution.
@@ -61,5 +61,5 @@ In the figure:
 | Accounts **A** and **B** | Represent Alice's and Bob's accounts on the Diem Blockchain |
 | S<sub>N-1</sub> | Represents the (N-1)th state of the blockchain. In this state, Alice's account A has a balance of 110 Diem Coins, and Bob's account B has a balance of 52 Diem Coins. |
 | T<sub>N</sub> | This is the n-th transaction executed on the blockchain. In this example, it represents Alice sending 10 Diem Coins to Bob. |
-| **F** | It is a deterministic function. F always returns the same final state for a specific initial state and a specific transaction. If the current state of the blockchain is S<sub>N-1</sub>, and transaction T<sub>N</sub> is executed on state S<sub>N-1</sub>, the new state of the blockchain is always S<sub>N</sub>. The Diem Blockchain uses the [Move language](doc:move-introduction) to implement the deterministic execution function F. |
+| **F** | It is a deterministic function. F always returns the same final state for a specific initial state and a specific transaction. If the current state of the blockchain is S<sub>N-1</sub>, and transaction T<sub>N</sub> is executed on state S<sub>N-1</sub>, the new state of the blockchain is always S<sub>N</sub>. The Diem Blockchain uses the [Move language](/docs/move/move-start-here/move-introduction) to implement the deterministic execution function F. |
 | **S<sub>N</sub>** | This is the n-th state of the blockchain. When the transaction T<sub>N</sub> is applied to the blockchain, it generates the new state S<sub>N</sub> (an outcome of applying F to S<sub>N-1</sub> and T<sub>N</sub>). This causes Alice’s account balance to be reduced by 10 to 100 Diem Coins and Bob’s account balance to be increased by 10 to 62 Diem Coins. The new state S<sub>N</sub> shows these updated balances. |

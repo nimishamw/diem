@@ -5,7 +5,7 @@ hidden: false
 ---
 Move has two different types of programs: ***Modules*** and ***Scripts***. Modules are libraries that define struct
 types along with functions that operate on these types. Struct types define the schema of
-Move's [global storage](doc:move-global-storage-structure), and module functions define the rules for updating storage.
+Move's [global storage](/docs/move/move-global-storage/move-global-storage-structure), and module functions define the rules for updating storage.
 Modules themselves are also stored in global storage. Scripts are executable entrypoints similar to a `main` function in
 a conventional language. A script typically calls functions of a published module that perform updates to global
 storage. Scripts are ephemeral code snippets that are not published in global storage.
@@ -27,9 +27,9 @@ script {
 }
 ```
 
-A `script` block must start with all of its [uses](doc:move-basics-uses-aliases)  declarations, followed by
-any [constants](doc:move-basics-constants) and (finally) the main
-[function](doc:move-basics-functions) declaration. The main function can have any name (i.e., it need not be
+A `script` block must start with all of its [uses](/docs/move/move-basic-concepts/move-basics-uses-aliases)  declarations, followed by
+any [constants](/docs/move/move-basic-concepts/move-basics-constants) and (finally) the main
+[function](/docs/move/move-basic-concepts/move-basics-functions) declaration. The main function can have any name (i.e., it need not be
 called `main`), is the only function in a script block, can have any number of arguments, and must not return a value.
 Here is an example with each of these components:
 
@@ -109,6 +109,6 @@ Typically, module names start with an uppercase letter. A module named `MyModule
 named `MyModule.move`.
 
 All elements inside a `module` block can appear in any order. Fundamentally, a module is a collection
-of [`types`](doc:move-basics-structs-and-resources) and
-[`function`](doc:move-basics-functions). [Uses](doc:move-basics-uses-aliases) import types from other
-modules. [Constants](doc:move-basics-constants) define private constants that can be used in the functions of a module.
+of [`types`](/docs/move/move-basic-concepts/move-basics-structs-and-resources) and
+[`function`](/docs/move/move-basic-concepts/move-basics-functions). [Uses](/docs/move/move-basic-concepts/move-basics-uses-aliases) import types from other
+modules. [Constants](/docs/move/move-basic-concepts/move-basics-constants) define private constants that can be used in the functions of a module.

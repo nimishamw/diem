@@ -5,7 +5,7 @@ hidden: false
 ---
 Move has two types of references: immutable `&` and mutable `&mut`. Immutable references are read only, and cannot modify the underlying value (or any of its fields). Mutable references allow for modifications via a write through that reference. Move's type system enforces an ownership discipline that prevents reference errors.
 
-For more details on the rules of references, see [Structs and resources](doc:move-basics-structs-and-resources).
+For more details on the rules of references, see [Structs and resources](/docs/move/move-basic-concepts/move-basics-structs-and-resources).
 
 ## Reference Operators
 
@@ -168,7 +168,7 @@ error:
     │
 ```
 
-The only other types currently that has subtyping are [tuples](doc:move-primitives-tuples-unit).
+The only other types currently that has subtyping are [tuples](/docs/move/move-primitive-types/move-primitives-tuples-unit).
 
 ## Ownership
 
@@ -183,7 +183,7 @@ fun reference_copies(s: &mut S) {
 }
 ```
 
-This might be surprising for programmers familiar with Rust's ownership system, which would reject the code above. Move's type system is more permissive in its treatment of [copies](doc:move-basics-equality), but equally strict in ensuring unique ownership of mutable references before writes.
+This might be surprising for programmers familiar with Rust's ownership system, which would reject the code above. Move's type system is more permissive in its treatment of [copies](/docs/move/move-basic-concepts/move-basics-equality), but equally strict in ensuring unique ownership of mutable references before writes.
 
 ### References Cannot Be Stored
 
@@ -191,6 +191,6 @@ References and tuples are the *only* types that cannot be stored inside of struc
 
 This is another difference between Move and Rust, which allows references to be stored inside of structs.
 
-Currently, Move cannot support this because references cannot be [serialized](https://en.wikipedia.org/wiki/Serialization), but *every Move value must be serializable*. This requirement comes from Move's [persistent global storage](doc:move-global-storage-structure), which needs to serialize values to persist them across program executions. Structs can be written to global storage, and thus they must be serializable.
+Currently, Move cannot support this because references cannot be [serialized](https://en.wikipedia.org/wiki/Serialization), but *every Move value must be serializable*. This requirement comes from Move's [persistent global storage](/docs/move/move-global-storage/move-global-storage-structure), which needs to serialize values to persist them across program executions. Structs can be written to global storage, and thus they must be serializable.
 
 One could imagine a fancier, more expressive, type system that would allow references to be stored in structs *and* ban those structs from existing in global storage. Currently, we do not have the ability to discern between types that can and cannot exist in global storage, and are stuck with this ban. That being said even with such a discernation, Move has a fairly complex system for tracking static reference safety, and this aspect of the type system would also have to be extended to support storing references inside of structs. In summary, many aspects of Move's type system would have to expand to support stored references. But it is something we are keeping an eye on as the language evolves.

@@ -115,7 +115,7 @@ let v2: vector<u64> = Vector::empty(); // no error
 ```
 
 
-In a rarer case, the type system might not be able to infer a type for divergent code (where all the following code is unreachable). Both `return` and [`abort`](doc:move-basics-abort-assert) are expressions and can have any type. A [`loop`](doc:move-basics-loops) has type `()` if it has a `break`, but if there is no break out of the `loop`, it could have any type.
+In a rarer case, the type system might not be able to infer a type for divergent code (where all the following code is unreachable). Both `return` and [`abort`](/docs/move/move-basic-concepts/move-basics-abort-assert) are expressions and can have any type. A [`loop`](/docs/move/move-basic-concepts/move-basics-loops) has type `()` if it has a `break`, but if there is no break out of the `loop`, it could have any type.
 If these types cannot be inferred, a type annotation is required. For example, this code:
 ```rust
 let a: u8 = return ();
@@ -402,7 +402,7 @@ Vector::push_back(&mut v, 100);
 assert(*Vector::borrow(&v, 0) == 100, 42)
 ```
 
-For more details, see [Move references](doc:move-primitives-references).
+For more details, see [Move references](/docs/move/move-primitive-types/move-primitives-references).
 
 ## Scopes
 
@@ -585,7 +585,7 @@ y + z
 
 Move's type system will prevent a value from being used after it is moved. This is the same safety check described in [`let` declaration](#let-bindings) that prevents local variables from being used before it is assigned a value.
 
-For more information, see [Move equality](doc:move-basics-equality).
+For more information, see [Move equality](/docs/move/move-basic-concepts/move-basics-equality).
 
 
 ### Inference

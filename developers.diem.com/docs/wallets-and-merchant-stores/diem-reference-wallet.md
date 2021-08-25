@@ -21,9 +21,9 @@ Custodial wallet services like holding Diem Coins for customers, exchanging one 
 
 ## Prerequisities
 
-Before you get started with the Reference Wallet, get familiar with how [transactions are sent and received on the Diem Blockchain](doc:basics-life-of-txn).
+Before you get started with the Reference Wallet, get familiar with how [transactions are sent and received on the Diem Blockchain](/docs/transactions/basics-life-of-txn).
 
-When you submit a transaction to the DPN, you are cryptographically signing a transaction script and then waiting (by listening to the [event stream](doc:basics-events#event-concepts)) for consensus from [validator nodes](doc:basics-validator-nodes). 
+When you submit a transaction to the DPN, you are cryptographically signing a transaction script and then waiting (by listening to the [event stream](/docs/basics/basics-events#event-concepts)) for consensus from [validator nodes](/docs/basics/basics-validator-nodes). 
 
 
 ## Wallet architecture

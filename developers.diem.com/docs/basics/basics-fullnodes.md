@@ -4,17 +4,17 @@ slug: "basics-fullnodes"
 hidden: false
 ---
 A Diem node is a peer entity of the Diem ecosystem that tracks the <Glossary>state</Glossary> of the Diem Blockchain. Clients interact with the blockchain via Diem nodes. There are two types of nodes:
-* <a href="doc:basics-validator-nodes" target="_blank">Validator nodes</a>
+* <a href="/docs/basics/basics-validator-nodes" target="_blank">Validator nodes</a>
 * FullNodes
 
 Each Diem node comprises several logical components:
 * <Glossary>JSON-RPC service</Glossary> (disabled in validator nodes)
-* <a href="doc:basics-validator-nodes#mempool" target="_blank">Mempool</a>
-* <a href="doc:basics-validator-nodes#consensus" target="_blank">Consensus</a>
-* <a href="doc:basics-validator-nodes#execution" target="_blank">Execution</a>
-* <a href="doc:basics-validator-nodes#virtual-machine" target="_blank">Virtual Machine</a>
-* <a href="doc:basics-validator-nodes#storage" target="_blank">Storage</a>
-* <a href="doc:basics-validator-nodes#state-synchronizer" target="_blank">State synchronizer</a>
+* <a href="/docs/basics/basics-validator-nodes#mempool" target="_blank">Mempool</a>
+* <a href="/docs/basics/basics-validator-nodes#consensus" target="_blank">Consensus</a>
+* <a href="/docs/basics/basics-validator-nodes#execution" target="_blank">Execution</a>
+* <a href="/docs/basics/basics-validator-nodes#virtual-machine" target="_blank">Virtual Machine</a>
+* <a href="/docs/basics/basics-validator-nodes#storage" target="_blank">Storage</a>
+* <a href="/docs/basics/basics-validator-nodes#state-synchronizer" target="_blank">State synchronizer</a>
 
 The <Glossary>Diem Core</Glossary> software can be configured to run as a validator node or as a FullNode.
 

@@ -131,7 +131,7 @@ The Custody module handles crafting and signing transactions. Once a VASP is rea
 | Custody solution | A robust custody solution should be plugged in for a production-level product. |
 ## Liquidity inventory setup
 
-The liquidity inventory setup is part of the backend startup sequence. At start, an internal inventory user is created. This internal user manages the balance of the internal custody wallet inventory. After its creation, the backend [“buys” its initial Diem Coins from the external liquidity provider](doc:diem-reference-wallet#diem-coin-sourcing). The custodial wallet provider directs the liquidity provider to send purchased Diem Coins to the custody wallet’s Diem blockchain address.
+The liquidity inventory setup is part of the backend startup sequence. At start, an internal inventory user is created. This internal user manages the balance of the internal custody wallet inventory. After its creation, the backend [“buys” its initial Diem Coins from the external liquidity provider](/docs/wallets-and-merchant-stores/diem-reference-wallet#diem-coin-sourcing). The custodial wallet provider directs the liquidity provider to send purchased Diem Coins to the custody wallet’s Diem blockchain address.
 
 From this point, the custodial wallet service can engage in transfers between its inventory account and the wallet user accounts to transfer the requested funds.
 

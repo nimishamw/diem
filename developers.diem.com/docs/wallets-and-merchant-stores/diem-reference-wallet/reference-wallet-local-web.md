@@ -92,7 +92,7 @@ Account verification demos the expected behavior of a hypothetical wallet. For t
 <br/>In addition, the identification document is always accepted and is not analyzed or stored by the backend. Real-world user verification and risk management are beyond the scope of the reference wallet and contain many opportunities for further development. 
 </BlockQuote>
 
-Read more about the user verification [in the Risk section](doc:reference-wallet-set-up-modules#risk-module).
+Read more about the user verification [in the Risk section](/docs/wallets-and-merchant-stores/diem-reference-wallet/reference-wallet-set-up-modules#risk-module).
 
 ### Sign in
 The local web client is accessible only for authenticated users. When a user accesses the wallet website, the login page is the first page presented to the user. This is where the user is authenticated using their email id and password.

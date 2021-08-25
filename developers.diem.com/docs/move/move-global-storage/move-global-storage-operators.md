@@ -3,7 +3,7 @@ title: "Global storage - operators"
 id: move-global-storage-operators
 hidden: false
 ---
-Move programs can create, delete, and update [resources](doc:move-basics-structs-and-resources) in global storage using the following five instructions:
+Move programs can create, delete, and update [resources](/docs/move/move-basic-concepts/move-basics-structs-and-resources) in global storage using the following five instructions:
 
 | Operation                                   | Description                                                        | Aborts?                                  |
 ----------------------------------------------|--------------------------------------------------------------------|-------------------------------------------
@@ -13,10 +13,10 @@ Move programs can create, delete, and update [resources](doc:move-basics-structs
 |`borrow_global<T>(address): &T`	             | Return an immutable reference to the `T` stored under `address`    | If `address` does not hold a `T`         |
 |`exists<T>(address): bool`                   | Return `true` if a `T` is stored under `address`                   |  Never                                      |
 
-Each of these instructions is parameterized by a resource type `T` declared *in the current module*. This ensures that a resource can only be manipulated via the API exposed by its defining module. The instructions also take either an [`address`](doc:move-primitives-address) or [`&signer`](doc:move-primitives-signer) representing the account address where the resource of type `T` is stored.
+Each of these instructions is parameterized by a resource type `T` declared *in the current module*. This ensures that a resource can only be manipulated via the API exposed by its defining module. The instructions also take either an [`address`](/docs/move/move-primitive-types/move-primitives-address) or [`&signer`](/docs/move/move-primitive-types/move-primitives-signer) representing the account address where the resource of type `T` is stored.
 
 ### References to resources
-References to global resources returned by `borrow_global` or `borrow_global_mut` mostly behave like references to local storage: they can be extended, read, and written using ordinary [reference operators](doc:move-primitives-references) and passed as arguments to other function. However, there is one important difference between local and global references: **a function cannot return a reference that points into global storage**. For example, these two functions will each fail to compile:
+References to global resources returned by `borrow_global` or `borrow_global_mut` mostly behave like references to local storage: they can be extended, read, and written using ordinary [reference operators](/docs/move/move-primitive-types/move-primitives-references) and passed as arguments to other function. However, there is one important difference between local and global references: **a function cannot return a reference that points into global storage**. For example, these two functions will each fail to compile:
 
 ```rust
 resource struct R { f: u64 }
@@ -50,7 +50,7 @@ fun publish_instantiated_generic_container(account: &signer, t: u64) {
 }
 ```
 
-The ability to index into global storage via a type parameter chosen at runtime is a powerful Move feature known as *storage polymorphism*. For more on the design patterns enabled by this feature, see [Move generics](doc:move-basics-generics).
+The ability to index into global storage via a type parameter chosen at runtime is a powerful Move feature known as *storage polymorphism*. For more on the design patterns enabled by this feature, see [Move generics](/docs/move/move-basic-concepts/move-basics-generics).
 
 ## Example: `Counter`
 
@@ -186,11 +186,11 @@ Finally: redundant `acquires` are not allowed. Adding this function inside `Coun
 fun redundant_acquires_bad() acquires Counter {}
 ```
 
-For more information on `acquires`, see [Move functions(doc:move-basics-functions).
+For more information on `acquires`, see [Move functions(/docs/move/move-basic-concepts/move-basics-functions).
 
 ## Reference Safety For Global Resources
 
-Move prohibits returning global references and requires the `acquires` annotation to prevent dangling references. This allows Move to live up to its promise of static reference safety (i.e., no dangling references, no `null` or `nil` dereferences) for all [reference](doc:move-primitives-references) types.
+Move prohibits returning global references and requires the `acquires` annotation to prevent dangling references. This allows Move to live up to its promise of static reference safety (i.e., no dangling references, no `null` or `nil` dereferences) for all [reference](/docs/move/move-primitive-types/move-primitives-references) types.
 
 This example illustrates how the Move type system uses `acquires` to prevent a dangling reference:
 ```rust=
