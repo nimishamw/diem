@@ -12,6 +12,10 @@
     var(--doc-padding-left);
 }
 
+.docItemContainer a {
+  --ifm-link-decoration: underline;
+}
+
 .docItemContainer.wider {
   --doc-padding-left: 35px;
   --doc-padding-right: 25px;
@@ -58,7 +62,7 @@
 }
 
 html {
-  --doc-primary: #15112C;
+  --doc-primary: #000000;
 }
 
 html[data-theme='dark'] {

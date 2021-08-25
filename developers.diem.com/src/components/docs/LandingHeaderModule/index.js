@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from "@docusaurus/Link";
 
 import styles from './styles.module.css';
 
@@ -9,7 +10,7 @@ const LandingHeaderModule = ({copy, cta, ctaLink, img, imgAlt, noArrow, title}) 
       <h1 className={styles.title}>{title}</h1>
       <p>{copy}</p>
 
-      <a className={styles.cta} href={ctaLink}>
+      <Link className={styles.cta} href={ctaLink}>
         <span className={styles.join}>
           <div className="buttonWrapper">
             <span className={styles.button + " button"}>
@@ -17,7 +18,7 @@ const LandingHeaderModule = ({copy, cta, ctaLink, img, imgAlt, noArrow, title}) 
             </span>
           </div>
         </span>
-      </a>
+      </Link>
 
     </div>
     <img alt={imgAlt || "Marketing Module Image"} src={img}/>

@@ -123,6 +123,7 @@ const Sidebar = [
   category('Reference', [
     'reference/reference-rust-docs',
     'reference/security',
+    'reference/glossary',
   ]),
 
   category('Technical Papers', [
