@@ -13,7 +13,7 @@ The Reference Wallet is available as a web and mobile application.
 
 ### API methods
 
-The following API methods provide the backend interface for frontend client requests. The dedicated Flask blueprint under `wallet/routes/cico.py` handles all calls related to liquidity. 
+The following API methods provide the backend interface for frontend client requests. The dedicated Flask blueprint under `wallet/routes/cico.py` handles all calls related to liquidity.
 
 | Methods | Description |
 | ---------- | ---------- |
@@ -49,8 +49,8 @@ Exchange rates are pre-defined. The liquidity provider supports a predefined set
 Virtual Asset Service Providers (VASPs), including custodial wallet providers operating on the Diem Payments Network (DPN), will be required to:
 * Maintain compliance programs
 * Comply with applicable anti-money laundering (AML)
-* Comply with economic and financial sanctions (sanctions) laws 
-* Comply with the standards established by Diem Networks. 
+* Comply with economic and financial sanctions (sanctions) laws
+* Comply with the standards established by Diem Networks.
 
 When a new user wishes to create a Diem wallet account, a VASP, in accordance with its compliance program, would assess the AML and sanctions risks of maintaining a business relationship with the user. The compliance module assesses these risks at the time of customer onboarding and on an ongoing basis through Know Your Customer (KYC) procedures and transaction monitoring.
 
@@ -73,14 +73,14 @@ The type of information requested of a user, including follow-up information or 
 
 The wallet provider must assess the risk of the client and ensure all the required regulatory checks take place. The wallet provider may undertake these checks themselves or may involve one or more service providers. Certain checks may be automated while others may be manual.
 
-In this demo, the user data is sent to an external KYC provider to assess the user. Though in this project, the KYC provider is not actually checking the user, and all users are automatically approved. 
+In this demo, the user data is sent to an external KYC provider to assess the user. Though in this project, the KYC provider is not actually checking the user, and all users are automatically approved.
 
 But, in a real-world scenario, such an external provider would undertake certain checks of the prospective user. Examples of such checks include sanctions screening, negative news screening, black-listed country screening, and document verification. Based on this information, the provider would assign a risk rating that would help the wallet provider decide whether to onboard the customer or whether certain controls (e.g., product or transaction limitations) may be appropriate in light of the user's risk.
 
 After a user has been onboarded, the wallet provider, pursuant to relevant laws and regulations, Diem Network standards, and its compliance program, must continue to assess the risk related to maintaining a business relationship with the user.
 
 <BlockQuote type="warning">
- The compliance processes depicted in this document are for demonstration purposes only and do not reflect the specific compliance obligations of VASPs under applicable regulatory frameworks, their compliance programs, and/or standards imposed by Diem Networks. 
+ The compliance processes depicted in this document are for demonstration purposes only and do not reflect the specific compliance obligations of VASPs under applicable regulatory frameworks, their compliance programs, and/or standards imposed by Diem Networks.
 </BlockQuote>
 
 #### Transaction monitoring
@@ -192,9 +192,9 @@ Settlement flow is not implemented at this point. This is the process where the 
 
 The wallet UI is fully translatable using standard React i18n library [react-i18next](https://react.i18next.com/). All texts are mapped in JSON files located at `frontend/src/locales/LANGUAGE`.
 
-To generate new translations, a script is available for auto-generating new translations using a third-party translation service or exporting all existing text into a CSV file for manual translation. 
+To generate new translations, a script is available for auto-generating new translations using a third-party translation service or exporting all existing text into a CSV file for manual translation.
 
-Located at `scripts/generate_i18n.py` are usage examples for translating from English to Spanish. `./scripts/generate_i18n.py -s en -d es -a` this will use EN JSON files located at `frontend/src/locales/en` and generate new JSON files at `frontend/src/locales/es`. 
+Located at `scripts/generate_i18n.py` are usage examples for translating from English to Spanish. `./scripts/generate_i18n.py -s en -d es -a` this will use EN JSON files located at `frontend/src/locales/en` and generate new JSON files at `frontend/src/locales/es`.
 
 Instructions for using the newly generated files will be shown upon completing these steps:
 
@@ -319,7 +319,7 @@ Docs can be generated locally using SwaggerUI. Instructions for how to get that 
 User APIs handle user creation, and information management and updates.
 
 
-![Figure 1.0 User APIs](https://files.readme.io/76ffba2-service-api-user.svg)
+![Figure 1.0 User APIs](/img/docs/service-api-user.svg)
 <small className="figure">Figure 1.0 User APIs</small>
 
 #### Account
@@ -327,7 +327,7 @@ User APIs handle user creation, and information management and updates.
 Account APIs deal with an account’s address and transactions management.
 
 
-![Figure 1.1 Account APIs](https://files.readme.io/c6c1530-service-api-account.svg)
+![Figure 1.1 Account APIs](/img/docs/service-api-account.svg)
 <small className="figure">Figure 1.1 Account APIs</small>
 
 #### CICO
@@ -335,7 +335,7 @@ Account APIs deal with an account’s address and transactions management.
 CICO handles all cash-in and cash-out flows, including getting rates and executing a given quote.
 
 
-![Figure 1.2 CICO APIs](https://files.readme.io/b95ee3e-service-api-cico.svg)
+![Figure 1.2 CICO APIs](/img/docs/service-api-cico.svg)
 <small className="figure">Figure 1.2 CICO APIs</small>
 
 #### Admin
@@ -343,7 +343,7 @@ CICO handles all cash-in and cash-out flows, including getting rates and executi
 Admin APIs fetch admin user account information and have debt settlement logic.
 
 
-![Figure 1.3 Admin APIs](https://files.readme.io/846c1e8-service-api-admin.svg)
+![Figure 1.3 Admin APIs](/img/docs/service-api-admin.svg)
 <small className="figure">Figure 1.3 Admin APIs</small>
 
 ## Reference Wallet API Docs

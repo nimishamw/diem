@@ -5,7 +5,7 @@ hidden: false
 ---
 ## Overview
 
-The merchant store web UI currently supports the demonstration of the Diem payment integration scenario where a direct payment under US$1,000 is made. 
+The merchant store web UI currently supports the demonstration of the Diem payment integration scenario where a direct payment under US$1,000 is made.
 
 ### Solutions stack
 
@@ -46,7 +46,7 @@ The Diem Reference Merchant implementation makes several assumptions for simplic
 The main purpose of this implementation is to demonstrate common use cases when working with Diem Coin currencies, and to show directions for further development. To make the important concepts more clear for the readers, the implementation is deliberately simplified and avoids some of the complexities of real world, production-grade financial software.
 
 <BlockQuote type="danger">
- This code is to be used as a reference only. Never use this code in production! 
+ This code is to be used as a reference only. Never use this code in production!
 </BlockQuote>
 
 ## Test the local merchant store
@@ -55,14 +55,14 @@ The main purpose of this implementation is to demonstrate common use cases when 
 Direct payments under US$1,000 do not require any special AML procedures and are processed immediately.
 
 1. Open the merchant store.
-2. Choose a product under US$1,000 and click “Buy now.” 
-![Figure 1.0 List of products to purchase](https://files.readme.io/6ea498d-merchant-buy.svg)
+2. Choose a product under US$1,000 and click “Buy now.”
+![Figure 1.0 List of products to purchase](/img/docs/merchant-buy.svg)
 <small className="figure">Figure 1.0 List of products to purchase</small>
 
-3. The checkout dialog window will open. 
+3. The checkout dialog window will open.
 4. Select the desired Diem Coin currency.
-5. The calculated price in the selected Diem Coin currency will be displayed. 
-![Figure 1.1 Checkout page](https://files.readme.io/e8d52aa-merchant-checkout.svg)
+5. The calculated price in the selected Diem Coin currency will be displayed.
+![Figure 1.1 Checkout page](/img/docs/merchant-checkout.svg)
 <small className="figure">Figure 1.1 Checkout page</small>
 
 6. Scan the QR code or copy the deep-link into a Diem wallet of your choice.

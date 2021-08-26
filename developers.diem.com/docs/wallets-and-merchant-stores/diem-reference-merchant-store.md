@@ -10,7 +10,7 @@ The Diem Reference Merchant project demonstrates the possible integration of Die
 You can demo the following concepts using this reference project:
 
 * Integration of a Diem payment solution in a pre-existing website without exposing the merchant to Diem Coins or any Diem Blockchain specifics.
-* Conceptual implementation of a <Glossary>Regulated VASP</Glossary> service providing such Diem integration to merchants.
+* Conceptual implementation of a [Regulated VASP](../reference/glossary#regulated-vasp)) service providing such Diem integration to merchants.
 * Support for Diem payments with web and mobile wallets.
 
 

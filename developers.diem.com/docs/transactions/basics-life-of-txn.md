@@ -9,10 +9,10 @@ To get a deeper understanding of the lifecycle of a Diem transaction (from an op
 
 For the purpose of this doc, we will assume that:
 
-* Alice and Bob are two users who each have an <Glossary>account</Glossary> on the Diem Blockchain.
+* Alice and Bob are two users who each have an [account](../reference/glossary#account) on the Diem Blockchain.
 * Alice's account has 110 Diem Coins.
 * Alice is sending 10 Diem Coins to Bob.
-* The current <Glossary>sequence number</Glossary> of Alice's account is 5 (which indicates that 5 transactions have already been sent from Alice's account).
+* The current [sequence number](../reference/glossary#sequence-number) of Alice's account is 5 (which indicates that 5 transactions have already been sent from Alice's account).
 * There are a total of 100 validator nodes &mdash; V<sub>1</sub> to V<sub>100</sub> on the network.
 * A Diem client submits Alice's transaction to JSON-RPC service on a Diem FullNode. The FullNode forwards this transaction to a validator FullNode which in turn forwards it to validator V<sub>1</sub>.
 * Validator V<sub>1</sub> is a proposer/leader for the current round.
@@ -31,12 +31,12 @@ The raw transaction includes the following fields:
 
 | Fields | Description |
 | ------ | ----------- |
-| <gi ary>account address</Glossary> | Alice's account address |
-| Move Module | A module (or program) that indicates the actions to be performed on Alice's behalf. In this case, it contains:  <br />- A Move bytecode peer-to-peer <Glossary>transaction script</Glossary>. <br />- A list of inputs to the script (for this example the list would contain Bob's account address and the payment amount in Diem Coins). |
-| <Glossary>maximum gas amount</Glossary> | The maximum gas amount Alice is willing to pay for this transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation. |
-| <Glossary>gas price</Glossary> (in microdiem/gas units) | The amount in Diem Coins Alice is willing to pay per unit of gas, to execute the transaction. |
-| <Glossary>expiration time</Glossary> | Expiration time of the transaction. |
-| <Glossary>sequence number</Glossary>  | The sequence number (5 for this example) for an account indicates the number of transactions that have been submitted and commited on chain from that account. In this case, 5 transactions have been submitted from Alice’s account, including T<sub>5</sub>raw). A transaction with sequence number 5 can only be committed on-chain if the account sequence number is 5. |
+| [account address](../reference/glossary#account-address) | Alice's account address |
+| Move Module | A module (or program) that indicates the actions to be performed on Alice's behalf. In this case, it contains:  <br />- A Move bytecode peer-to-peer [transaction script](../reference/glossary#transaction-script) <br />- A list of inputs to the script (for this example the list would contain Bob's account address and the payment amount in Diem Coins). |
+| [maximum gas amount](../reference/glossary#maximum-gas-amount) | The maximum gas amount Alice is willing to pay for this transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation. |
+| [gas price](../reference/glossary#gas-price) (in microdiem/gas units) | The amount in Diem Coins Alice is willing to pay per unit of gas, to execute the transaction. |
+| [expiration time](../reference/glossary#expiration-time) | Expiration time of the transaction. |
+| [sequence number](../reference/glossary#sequence-number)  | The sequence number (5 for this example) for an account indicates the number of transactions that have been submitted and commited on chain from that account. In this case, 5 transactions have been submitted from Alice’s account, including T<sub>5</sub>raw). A transaction with sequence number 5 can only be committed on-chain if the account sequence number is 5. |
 | [Chain ID](https://github.com/diem/diem/blob/main/types/src/chain_id.rs) | An identifier that distinguishes the Diem Mainnet from networks used for other purposes including test networks. |
 
 
@@ -46,7 +46,7 @@ The raw transaction includes the following fields:
 In this section, we will describe the lifecycle of transaction T<sub>5</sub>, from when the client submits it to when it is committed to the Diem Blockchain.
 
 For the relevant steps, we've included a link to the corresponding inter-component interactions of the validator node. After you are familiar with all the steps in the lifecycle of the transaction, you may want to refer to the information on the corresponding inter-component interactions for each step.
-![Figure 1.0 Lifecycle of a transaction](https://files.readme.io/8070d33-validator-sequence.svg)
+![Figure 1.0 Lifecycle of a transaction](/img/docs/validator-sequence.svg)
 <small className="figure">Figure 1.0 Lifecycle of a transaction</small>
 
 <BlockQuote type="warning">
@@ -97,7 +97,7 @@ We've described what happens in each stage below, along with links to the corres
 | ------------------------------------------------------------ | ------------------------------------------------ |
 | 8. **Consensus → Execution**: As part of reaching agreement, the block of transactions (containing T<sub>5</sub>) is shared with the execution component. | [3. Consensus](#3-consensus-→-execution-consensus-→-other-validators), [1. Execution](#1-consensus-→-execution)       |
 | 9. **Execution → Virtual Machine**: The execution component manages the execution of transactions in the virtual machine (VM). Note that this execution happens speculatively before the transactions in the block have been agreed upon. | [2. Execution](#2-execution-→-vm), [3. Virtual Machine](#3-mempool-→-virtual-machine) |
-| 10. **Consensus → Execution**: After executing the transactions in the block, the execution component appends the transactions in the block (including T<sub>5</sub>) to the <Glossary>Merkle accumulator</Glossary> (of the ledger history). This is an in-memory/temporary version of the Merkle accumulator. The necessary part of the proposed/speculative result of executing these transactions is returned to the consensus component to agree on. The arrow from "consensus" to "execution" indicates that the request to execute transactions was made by the consensus component. (For consistent use of arrows throughout this article, the arrows do not represent the flow of data). | [3. Consensus](#3-consensus-→-execution-consensus-→-other-validators), [1. Execution](#1-consensus-→-execution)       |
+| 10. **Consensus → Execution**: After executing the transactions in the block, the execution component appends the transactions in the block (including T<sub>5</sub>) to the [Merkle accumulator](../reference/glossary#merkle-accumulator) (of the ledger history). This is an in-memory/temporary version of the Merkle accumulator. The necessary part of the proposed/speculative result of executing these transactions is returned to the consensus component to agree on. The arrow from "consensus" to "execution" indicates that the request to execute transactions was made by the consensus component. (For consistent use of arrows throughout this article, the arrows do not represent the flow of data). | [3. Consensus](#3-consensus-→-execution-consensus-→-other-validators), [1. Execution](#1-consensus-→-execution)       |
 | 11. **Consensus → Other Validators**: V<sub>1</sub> (the consensus leader) attempts to reach consensus on the proposed block's execution result with the other validator nodes participating in consensus. | [3. Consensus](#3-consensus-→-execution-consensus-→-other-validators)                             |
 
 
@@ -141,7 +141,7 @@ The following are the core logical components of a Diem node used in the lifecyc
 * [Storage](#storage)
 
 ### JSON-RPC Service
-![Figure 1.1 JSON-RPC Service](https://files.readme.io/01dae2e-json-rpc-service.svg)
+![Figure 1.1 JSON-RPC Service](/img/docs/json-rpc-service.svg)
 <small className="figure">Figure 1.1 JSON-RPC Service</small>
 
 Any request made by a client goes to the JSON-RPC Service of a FullNode first. Then, the submitted transaction is forwarded to the validator FullNode, which then sends it to the validator node V<sub>X</sub>.
@@ -161,7 +161,7 @@ When a client performs a read query on the Diem Blockchain (for example, to get 
 
 
 ### Virtual Machine (VM)
-![Figure 1.2 Virtual machine](https://files.readme.io/d79a613-virtual-machine.svg)
+![Figure 1.2 Virtual machine](/img/docs/virtual-machine.svg)
 <small className="figure">Figure 1.2 Virtual machine</small>
 
 The [Move virtual machine](/docs/move/move-start-here/move-introduction) (VM) verifies and executes transaction scripts written in Move bytecode.
@@ -191,7 +191,7 @@ For implementation details refer to the [Virtual Machine README](https://github.
 ### Mempool
 
 
-![Figure 1.3 Mempool](https://files.readme.io/cb7e36c-mempool.svg)
+![Figure 1.3 Mempool](/img/docs/mempool.svg)
 <small className="figure">Figure 1.3 Mempool</small>
 
 Mempool is a shared buffer that holds the transactions that are “waiting” to be executed. When a new transaction is added to the mempool, the mempool shares this transaction with other validator nodes in the system. To reduce network consumption in the “shared mempool,” each validator is responsible for delivering its own transactions to other validators. When a validator receives a transaction from the mempool of another validator, the transaction is added to the mempool of the recipient validator.
@@ -220,7 +220,7 @@ When mempool receives a transaction from other validators, mempool invokes <code
 For implementation details refer to the [Mempool README](https://github.com/diem/diem/tree/main/mempool).
 
 ### Consensus
-![Figure 1.4 Consensus](https://files.readme.io/a320388-consensus.svg)
+![Figure 1.4 Consensus](/img/docs/consensus.svg)
 <small className="figure">Figure 1.4 Consensus</small>
 
 The consensus component (consensus) is responsible for ordering blocks of transactions and agreeing on the results of execution by participating in the [consensus protocol](/docs/reference/glossary/#consensus-protocol) with other validators in the network.
@@ -249,7 +249,7 @@ If enough validators vote for the same execution result, the consensus component
 For implementation details refer to the [Consensus README](https://github.com/diem/diem/tree/main/consensus).
 
 ### Execution
-![Figure 1.5 Execution](https://files.readme.io/45dc900-execution.svg)
+![Figure 1.5 Execution](/img/docs/execution.svg)
 <small className="figure">Figure 1.5 Execution</small>
 
 The execution component coordinates the execution of a block of transactions and maintains a transient state that can be voted upon by consensus. If these transactions are successful, they are committed to storage.
@@ -257,7 +257,7 @@ The execution component coordinates the execution of a block of transactions and
 #### 1. Consensus → Execution
 
 * Consensus requests execution to execute a block of transactions via: `Execution::ExecuteBlock()`.
-* Execution maintains a “scratchpad,” which holds in-memory copies of the relevant portions of the <Glossary>Merkle accumulator</Glossary>s. This information is used to calculate the root hash of the current state of the Diem Blockchain.
+* Execution maintains a “scratchpad,” which holds in-memory copies of the relevant portions of the [Merkle accumulator](../reference/glossary#merkle-accumulator). This information is used to calculate the root hash of the current state of the Diem Blockchain.
 * The root hash of the current state is combined with the information about the transactions in the proposed block to determine the new root hash of the accumulator. This is done prior to persisting any data, and to ensure that no state or transaction is stored until agreement is reached by a quorum of validators.
 * Execution computes the speculative root hash and then the consensus component of V<sub>X</sub> signs this root hash and attempts to reach agreement on this root hash with other validators.
 
@@ -277,7 +277,7 @@ Execution takes the values from its “scratchpad” and sends them to storage f
 For implementation details refer to the [Execution README](https://github.com/diem/diem/tree/main/execution).
 
 ### Storage
-![Figure 1.6 Storage](https://files.readme.io/bfadba0-storage.svg)
+![Figure 1.6 Storage](/img/docs/storage.svg)
 <small className="figure">Figure 1.6 Storage</small>
 
 The storage component persists agreed upon blocks of transactions and their execution results to the Diem Blockchain. A block of transactions (which includes transaction T<sub>N</sub>) will be saved via storage when:
@@ -287,7 +287,7 @@ The storage component persists agreed upon blocks of transactions and their exec
 * The order of the transactions
 * The execution results of the transactions to be included in the block
 
-Refer to <Glossary>Merkle accumulator</Glossary> for information on how a transaction is appended to the data structure representing the Diem Blockchain.
+Refer to [Merkle accumulator](../reference/glossary#merkle-accumulator) for information on how a transaction is appended to the data structure representing the Diem Blockchain.
 
 
 #### 1. VM → Storage

@@ -1,7 +1,8 @@
-
+---
 title: "Glossary"
 slug: "glossary"
-hidden: true
+hidden: false
+---
 
 ## A
 
@@ -23,11 +24,6 @@ hidden: true
 ### Account Address
 
 - The address of a Diem payment system account is a 16-byte value. Users can claim addresses using digital signatures. The account address is derived from a cryptographic hash of a user’s public verification key concatenated with a signature scheme identifier byte. The Diem payment system supports two signature schemes: Ed25519 (for single-signature transactions) and MultiEd25519 (for multi-signature transactions). To sign a transaction sent from an account address, the user, or the custodial client representing the user, must use the private key that corresponds to that account.
-
-### JSON-RPC Service
-
-- The JSON-RPC Service component is the external interface of a Diem node. Any incoming client request, such as submitted transactions or queries, must first go through the JSON-RPC Service. A client needs to go through the JSON-RPC Service component to access storage or any other component in the system. This filters requests and protects the system.
-- Whenever a client submits a new transaction, the JSON-RPC Service passes it to [mempool](#mempool).
 
 
 ### Authentication Key
@@ -63,6 +59,10 @@ hidden: true
 - This implies that BFT consensus protocols can function correctly, even if up to one-third of the voting power is held by validators that are compromised or fail.
 
 ## C
+
+### ChildVASP account
+
+The ChildVASP account is the child of your ParentVASP account. A ChildVASP account stores the address of its ParentVASP. You can have any number of ChildVASP accounts.
 
 ### Client
 
@@ -221,6 +221,14 @@ These are FullNodes used by DPN Participants to forward transactions to the vali
 - DiemBFT, the Diem network's consensus algorithm, is based on HotStuff.
 - It simplifies the reasoning about safety, and it addresses some performance limitations of previous consensus protocols.
 
+## J
+
+### JSON-RPC Service
+
+- The JSON-RPC Service component is the external interface of a Diem node. Any incoming client request, such as submitted transactions or queries, must first go through the JSON-RPC Service. A client needs to go through the JSON-RPC Service component to access storage or any other component in the system. This filters requests and protects the system.
+- Whenever a client submits a new transaction, the JSON-RPC Service passes it to [mempool](#mempool).
+
+
 ## L
 
 ### Leader
@@ -232,6 +240,10 @@ These are FullNodes used by DPN Participants to forward transactions to the vali
 
 
 ## M
+
+### Mainnet
+The production network for the Diem Payment Network.
+
 
 ### Maximum Gas Amount
 
@@ -300,6 +312,11 @@ These are FullNodes used by DPN Participants to forward transactions to the vali
 - **Open-source community** is a term used for a group of developers who work on open-source software. If you're reading this glossary, then you are part of the Diem project's developer community.
 
 ## P
+
+### ParentVASP account
+
+The ParentVASP account is your unique root account. You can have only one parent account per Regulated VASP. Diem Networks will create a ParentVASP account on your behalf with your authentication key.
+
 
 ### Proof
 

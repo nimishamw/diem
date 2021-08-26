@@ -27,9 +27,9 @@ The Reference Wallet mobile app allows sending Diem Coins using the built-in QR 
 8. Press Send.
 
 
-![Figure 1.0 Send Diem Coins using the Local Mobile Wallet](https://files.readme.io/5817bec-mobile-w-send.png)
+![Figure 1.0 Send Diem Coins using the Local Mobile Wallet](/img/docs/mobile-w-send.png)
 <small className="figure">Figure 1.0 Send Diem Coins using the Local Mobile Wallet</small>
 
 
-![Figure 1.1 Choose currency and share QR code of address](https://files.readme.io/12d42b0-mobile-w-receive.png)
+![Figure 1.1 Choose currency and share QR code of address](/img/docs/mobile-w-receive.png)
 <small className="figure">Figure 1.1 Choose currency and share QR code of address</small>

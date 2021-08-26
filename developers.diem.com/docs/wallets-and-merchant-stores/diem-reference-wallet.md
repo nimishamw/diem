@@ -3,27 +3,30 @@ title: "Diem Reference Wallet"
 slug: "diem-reference-wallet"
 hidden: false
 ---
-The Diem Reference Wallet (Reference Wallet) is a project we have developed to demonstrate and help developers learn how a wallet could work on the Diem Blockchain. 
+
+Try the public demo of the Diem Reference Wallet [here](https://demo-wallet.diem.com/login/). You can read how to use the Public Demo Wallet [here](reference-wallet-public-demo.md).
+
+The Diem Reference Wallet (Reference Wallet) is a project we have developed to demonstrate and help developers learn how a wallet could work on the Diem Blockchain.
 
 ## Introduction
 
-The Reference Wallet aims to help you determine how you can implement, customize, and integrate your wallet on the Diem Payment Network (DPN). Once you set up and deploy the Reference Wallet on your local test network, you can test and understand the concepts behind wallet development on the blockchain. 
+The Reference Wallet aims to help you determine how you can implement, customize, and integrate your wallet on the Diem Payment Network (DPN). Once you set up and deploy the Reference Wallet on your local test network, you can test and understand the concepts behind wallet development on the blockchain.
 
-We’ve also created a public, online demo version of the Reference Wallet (the “Public Demo Wallet”). This does not have all the functionalities of the Reference Wallet, and is only meant to provide a demonstration of basic wallet use cases on <Glossary>testnet</Glossary>.
+We’ve also created a public, online demo version of the Reference Wallet (the “Public Demo Wallet”). This does not have all the functionalities of the Reference Wallet, and is only meant to provide a demonstration of basic wallet use cases on [testnet](../reference/glossary#tesnet).
 
-The Reference Wallet and Public Demo Wallet include various references to transacting in Diem Coins.  All such transactions are simulations and these simulated Diem Coins can be deactivated by the Diem Association at any time.  In addition, these simulated Diem Coins will not function, or in any way be usable or recognized, on <Glossary>mainnet</Glossary> .
+The Reference Wallet and Public Demo Wallet include various references to transacting in Diem Coins.  All such transactions are simulations and these simulated Diem Coins can be deactivated by the Diem Association at any time.  In addition, these simulated Diem Coins will not function, or in any way be usable or recognized, on [mainnet](../reference/glossary#mainnet) .
 
 <BlockQuote type="info">
 Custodial wallet services like holding Diem Coins for customers, exchanging one type of Diem Coin for another, transferring customer Diem Coins to other users (whether in the same wallet or others), and exchanging Diem Coins for cash all potentially money transmission or money services business activities, depending on the state/federal jurisdictions involved.
 <br/>
-<br/>The functions described in this document may require the service provider to be licensed in the jurisdictions in which it operates and, to operate on the Diem Payment Network, it will need to be a Regulated VASP reviewed and onboarded by Diem Networks. 
+<br/>The functions described in this document may require the service provider to be licensed in the jurisdictions in which it operates and, to operate on the Diem Payment Network, it will need to be a Regulated VASP reviewed and onboarded by Diem Networks.
 </BlockQuote>
 
 ## Prerequisities
 
 Before you get started with the Reference Wallet, get familiar with how [transactions are sent and received on the Diem Blockchain](/docs/transactions/basics-life-of-txn).
 
-When you submit a transaction to the DPN, you are cryptographically signing a transaction script and then waiting (by listening to the [event stream](/docs/basics/basics-events#event-concepts)) for consensus from [validator nodes](/docs/basics/basics-validator-nodes). 
+When you submit a transaction to the DPN, you are cryptographically signing a transaction script and then waiting (by listening to the [event stream](/docs/basics/basics-events#event-concepts)) for consensus from [validator nodes](/docs/basics/basics-validator-nodes).
 
 
 ## Wallet architecture
@@ -39,9 +42,9 @@ The Reference Wallet is structured into three main modules:
 
 Generally, a custodial wallet service will be expected to buy and sell Diem Coins for fiat currency in the market from a variety of service providers. This type of service is beyond the scope of the Reference Wallet.
 
-The Reference Wallet models this approach by 
-* Having an internal liquidity service that manages its liquidity processes and 
-* Arrangements with external liquidity provider stubs to simulate Diem Coin order fulfillment by a third-party service provider. 
+The Reference Wallet models this approach by
+* Having an internal liquidity service that manages its liquidity processes and
+* Arrangements with external liquidity provider stubs to simulate Diem Coin order fulfillment by a third-party service provider.
 
 This model facilitates a custodial wallet providing a fluid and smooth customer experience, through which a customer can purchase Diem Coins for fiat through the custodial wallet interface, without having to separately engage with the fiat-Diem Coin service provider.
 
@@ -61,7 +64,7 @@ For the sake of this demonstration, the Reference Wallet implements **the one-to
 
 #### Price quotation displays
 
-The Transfer section (Add, Withdraw, and Convert functions) of the Reference Wallet displays Diem Coin prices. Diem Coin price quotes from a custodial wallet to its customer aren’t expected to be changed very often. But as wallet customers expect transactions to be executed at the quoted rate as displayed, the wallet provider should try to limit the prices or spreads at which the transactions occur. 
+The Transfer section (Add, Withdraw, and Convert functions) of the Reference Wallet displays Diem Coin prices. Diem Coin price quotes from a custodial wallet to its customer aren’t expected to be changed very often. But as wallet customers expect transactions to be executed at the quoted rate as displayed, the wallet provider should try to limit the prices or spreads at which the transactions occur.
 
 While the front-end service is running, it polls for rates every few seconds. The price calculation used when a user wants to buy Diem Coins, is based on these recently received rates. This way the price should not fluctuate too much while filling the order or updating the amounts displayed on the screen. Additionally, when a user confirms the simulated sale to convert Diem Coins to fiat or vice versa, the client validates that the price does not exceed boundaries (the boundary check is performed by the backend system), and then requests for execution.
 

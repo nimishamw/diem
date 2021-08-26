@@ -5,7 +5,7 @@ hidden: false
 ---
 ## Overview
 
-The local web wallet is the web version of the Diem Reference Wallet. 
+The local web wallet is the web version of the Diem Reference Wallet.
 
 The local web wallet is a web wallet interface provided as a demonstration of a centralized (custodial) service for consumers. It is meant to be run on a local machine. The wallet demonstrates the following use cases:
 
@@ -19,7 +19,7 @@ The local web wallet is a web wallet interface provided as a demonstration of a 
 The main purpose is to demonstrate common use cases when working with Diem Coins and show options for further development. To illustrate key Diem wallet concepts, we’ve simplified the implementation and avoided some of the complexities of real world, production-grade financial software.
 
 <BlockQuote type="danger">
- This code is to be used as a reference only. Never use this code in production! 
+ This code is to be used as a reference only. Never use this code in production!
 </BlockQuote>
 
 ### Solutions stack
@@ -54,7 +54,7 @@ The Reference Wallet simulates the account verification process by returning the
 ### User flows
 
 The image below details the different user flows for the local Reference Wallet web client.
-![Figure 1.0 User flows for the local web wallet](https://files.readme.io/93b8870-userflows-local-wallet.svg)
+![Figure 1.0 User flows for the local web wallet](/img/docs/userflows-local-wallet.svg)
 <small className="figure">Figure 1.0 User flows for the local web wallet</small>
 
 ### Development
@@ -87,9 +87,9 @@ During registration, the local user is asked to provide information required for
 The account verification begins once the user completes registration. The user won’t be able to access the wallet until their account is verified.
 
 <BlockQuote type="info">
-Account verification demos the expected behavior of a hypothetical wallet. For the Reference Wallet local client, the verification succeeds automatically and the “pending” state is presented briefly to the user for demo purposes only. 
+Account verification demos the expected behavior of a hypothetical wallet. For the Reference Wallet local client, the verification succeeds automatically and the “pending” state is presented briefly to the user for demo purposes only.
 <br/>
-<br/>In addition, the identification document is always accepted and is not analyzed or stored by the backend. Real-world user verification and risk management are beyond the scope of the reference wallet and contain many opportunities for further development. 
+<br/>In addition, the identification document is always accepted and is not analyzed or stored by the backend. Real-world user verification and risk management are beyond the scope of the reference wallet and contain many opportunities for further development.
 </BlockQuote>
 
 Read more about the user verification [in the Risk section](/docs/wallets-and-merchant-stores/diem-reference-wallet/reference-wallet-set-up-modules#risk-module).
@@ -128,7 +128,7 @@ User actions available on the home page include:
 * Convert between Diem Coin currencies.
 
 
-![Figure 2.0 View home page](https://files.readme.io/f8fb752-wallet-home.svg)
+![Figure 2.0 View home page](/img/docs/wallet-home.svg)
 <small className="figure">Figure 2.0 View home page</small>
 
 ## Modify settings
@@ -147,17 +147,17 @@ The supported payment methods are:
 In addition, the page shows the email address of the active user. It is not possible to change the user’s email address.
 
 
-![Figure 2.1 View local web wallet settings page](https://files.readme.io/e516f29-modify-settings.svg)
+![Figure 2.1 View local web wallet settings page](/img/docs/modify-settings.svg)
 <small className="figure">Figure 2.1 View local web wallet settings page</small>
 
 <BlockQuote type="info">
-The payment methods are for demonstration purposes only. The supplied information is not validated, and no real transactions are made using the configured credit cards and bank accounts. 
+The payment methods are for demonstration purposes only. The supplied information is not validated, and no real transactions are made using the configured credit cards and bank accounts.
 </BlockQuote>
 
 To change the wallet UI language, enter the Settings page and choose the desired language from the languages dropdown menu:
 
 
-![Figure 2.2 Choose language in settings](https://files.readme.io/bf2a7f3-language-settings.svg)
+![Figure 2.2 Choose language in settings](/img/docs/language-settings.svg)
 <small className="figure">Figure 2.2 Choose language in settings</small>
 
 ## Execute transactions
@@ -167,7 +167,7 @@ To change the wallet UI language, enter the Settings page and choose the desired
 Choosing a specific Diem Coin currency on the home page shows all the wallet transactions for that currency in descending order. Transactions may be internal (i.e., off-chain), within the wallet’s network (e.g., Diem deposit from a credit card), or external (i.e., on-chain) on the Diem Blockchain (e.g., Diem transfer to some external Diem address).
 
 
-![Figure 3.0 View transactions list](https://files.readme.io/b1c4c37-execute-transactions.png)
+![Figure 3.0 View transactions list](/img/docs/execute-transactions.png)
 <small className="figure">Figure 3.0 View transactions list</small>
 
 Each transaction consists of:
@@ -183,7 +183,7 @@ Each transaction consists of:
 Clicking a transaction in the transactions list will open a window with transaction details.
 
 
-![Figure 3.1 View transaction details](https://files.readme.io/6224cea-check-transaction.png)
+![Figure 3.1 View transaction details](/img/docs/check-transaction.png)
 <small className="figure">Figure 3.1 View transaction details</small>
 
 Each transaction consists of:
@@ -205,7 +205,7 @@ When a user requests to deposit an amount of Diem Coin, the Reference Wallet sim
 
 
 <BlockQuote type="danger">
- For your safety and security, never use real credit card or bank account details. 
+ For your safety and security, never use real credit card or bank account details.
 </BlockQuote>
 
 To perform a deposit, follow these steps:
@@ -226,7 +226,7 @@ The Diem withdrawal process is performed by clicking “Transfer” and then “
 
 ### Convert between Diem currencies
 <BlockQuote type="info">
-In a production application, this action will need to be supported by a regulated VASP. 
+In a production application, this action will need to be supported by a regulated VASP.
 </BlockQuote>
 
 To convert from one Diem Coin currency to another:
