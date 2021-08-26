@@ -3,11 +3,11 @@ title: "My first transaction"
 slug: "tutorial-my-first-transaction"
 hidden: false
 ---
-This document will guide you through executing your first transaction on the Diem Blockchain's <Glossary>testnet</Glossary>. Before you proceed, we recommend that you read the following to familiarize yourself with the key concepts:
+This document will guide you through executing your first transaction on the Diem Blockchain's [testnet](../reference/glossary#testnet). Before you proceed, we recommend that you read the following to familiarize yourself with the key concepts:
 
 
 * [Basics](/docs/basics/basics-txns-states)
-* [Life of a transaction](/docs/transactions/basics-life-of-txn) 
+* [Life of a transaction](/docs/transactions/basics-life-of-txn)
 
 We provide a command line interface (CLI) client to interact with the Diem Blockchain.
 
@@ -85,22 +85,22 @@ usage: <command> <args>
 
 Use the following commands:
 
-account | a 
+account | a
 	Account operations
-query | q 
+query | q
 	Query operations
-transfer | transferb | t | tb 
-	<sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> <currency_code> [gas_unit_price_in_micro_diems (default=0)] [max_gas_amount_in_micro_diems (default 400_000)] Suffix 'b' is for blocking. 
+transfer | transferb | t | tb
+	<sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> <currency_code> [gas_unit_price_in_micro_diems (default=0)] [max_gas_amount_in_micro_diems (default 400_000)] Suffix 'b' is for blocking.
 	Transfer coins from one account to another.
-info | i 
+info | i
 	Print cli config and client internal information
-help | h 
+help | h
 	Prints this help
-quit | q! 
+quit | q!
 	Exit this client
 
 
-Please, input commands: 
+Please, input commands:
 
 diem%
 
@@ -109,7 +109,7 @@ diem%
 If you have problems building the client and connecting to the testnet, refer to [Troubleshooting](#client-build-and-run).
 
 <BlockQuote type="info">
-If you would like to run a test validator network locally on your system, follow the instructions [here](/docs/tutorials/tutorial-run-local-validator-nw). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet. 
+If you would like to run a test validator network locally on your system, follow the instructions [here](/docs/tutorials/tutorial-run-local-validator-nw). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
 </BlockQuote>
 
 ### Create accounts for Alice and Bob
@@ -128,9 +128,9 @@ Use the following args for this command:
 
 Use the following args for this command:
 
-create | c 
+create | c
 	Create a local account--no on-chain effect. Returns reference ID to use in other operations
-list | la 
+list | la
 	Print all accounts that were created or loaded
 recover | r <file_path>
 	Recover Diem wallet from the file path
@@ -196,7 +196,7 @@ User account index: 1, address: 3099d7230aa336f5dcfe13c1231454ce, private_key: "
 
 ```
 
-The sequence number for an account indicates the number of transactions that have been sent from that account. It is incremented by one every time a transaction sent from that account is executed and stored in the Diem Blockchain. To learn more, refer to <Glossary>sequence number</Glossary>.
+The sequence number for an account indicates the number of transactions that have been sent from that account. It is incremented by one every time a transaction sent from that account is executed and stored in the Diem Blockchain. To learn more, refer to [sequence number](,,/reference/glossary#sequence-number).
 
 ### Add Fake Diem Coins to Alice’s and Bob’s accounts
 
@@ -312,7 +312,7 @@ To query for transaction status, run: query txn_acc_seq 0 0 <fetch_events=true|f
 
 You can use the command `query txn_acc_seq 0 0 true` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account, and the second parameter is the sequence number of the account. To see a sample output of this command refer to [Sample Outputs](#query-transaction-by-account-and-sequence-number).
 
-You just submitted your transaction to a validator node on testnet, and it was included in the <Glossary>Mempool</Glossary> of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system were slow or overloaded, it would take some time to see the results, and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample Outputs](#query-events) section
+You just submitted your transaction to a validator node on testnet, and it was included in the [Mempool](../reference/glossary#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system were slow or overloaded, it would take some time to see the results, and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample Outputs](#query-events) section
 
 To troubleshoot the transfer command, refer to [Troubleshooting](#the-transfer-command).
 
@@ -591,7 +591,7 @@ In this example, we will query for the state of a single account.
 ```plaintext
 diem% query account_state 0
 >> Getting latest account state
-Latest account state is: 
+Latest account state is:
  Account: (
     9D02DA2312D2687CA665CCF77F2435FC,
     Some(
