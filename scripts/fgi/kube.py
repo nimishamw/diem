@@ -20,6 +20,7 @@ AWS_ACCOUNT = (
 def create_forge_job(context, user, tag, timeout_secs, forge_envs, forge_args):
     job_name = f"forge-{user}-{int(time.time())}"
     job_name = job_name.replace("_", "-")  # underscore not allowed in pod name
+    cluster_name = get_cluster_name_from_context(context)
 
     # job template to spin up. Edit this in place
     template = json.loads(
@@ -43,7 +44,6 @@ def create_forge_job(context, user, tag, timeout_secs, forge_envs, forge_args):
     template = template["items"][0]
 
     # delete old spec details
-    del template["metadata"]["selfLink"]
     del template["spec"]["selector"]["matchLabels"]["controller-uid"]
     del template["spec"]["template"]["metadata"]["labels"]["controller-uid"]
     del template["spec"]["template"]["metadata"]["labels"]["job-name"]
@@ -58,7 +58,7 @@ def create_forge_job(context, user, tag, timeout_secs, forge_envs, forge_args):
     cmd = template["spec"]["template"]["spec"]["containers"][0]["command"][2]
     template["spec"]["template"]["spec"]["containers"][0]["command"][2] = cmd.replace(
         "tail -f /dev/null",
-        f"timeout {timeout_secs} forge --image-tag {tag} {' '.join(forge_args)}".strip(),
+        f"timeout {timeout_secs} forge {' '.join(forge_args)} test k8s-swarm --cluster-name {cluster_name} --image-tag {tag}".strip(),
     )
     # additional environment variables
     for env_var in forge_envs:
@@ -82,15 +82,13 @@ def create_forge_job(context, user, tag, timeout_secs, forge_envs, forge_args):
 def get_cluster_context(cluster_name):
     return f"arn:aws:eks:us-west-2:{AWS_ACCOUNT}:cluster/libra-{cluster_name}"
 
+def get_cluster_name_from_context(context):
+    return context.split("/")[1]
 
-# randomly select a cluster that is free based on its pod status:
-# - no other forge pods currently Running or Pending
-# - all monitoring pods are ready
-def kube_select_cluster():
-    shuffled_clusters = random.sample(FORGE_K8S_CLUSTERS, len(FORGE_K8S_CLUSTERS))
+def kube_ensure_cluster(clusters):
     attempts = 360
     for attempt in range(attempts):
-        for cluster in shuffled_clusters:
+        for cluster in clusters:
             context = get_cluster_context(cluster)
             running_pods = get_forge_pods_by_phase(context, "Running")
             pending_pods = get_forge_pods_by_phase(context, "Pending")
@@ -101,14 +99,7 @@ def kube_select_cluster():
             num_pending_pods = len(pending_pods["items"])
             for pod in monitoring_pods["items"]:
                 pod_name = pod["metadata"]["name"]
-                healthy = all(
-                    list(
-                        map(
-                            lambda container: container["ready"],
-                            pod["status"]["containerStatuses"],
-                        )
-                    )
-                )
+                healthy = pod["status"]["phase"] == "Running"
                 if not healthy:
                     print(
                         f"{cluster} has an unhealthy monitoring pod {pod_name}. Skipping."
@@ -128,6 +119,13 @@ def kube_select_cluster():
         time.sleep(10)
     print("Failed to schedule forge pod. All clusters are busy")
     return None
+
+# randomly select a cluster that is free based on its pod status:
+# - no other forge pods currently Running or Pending
+# - all monitoring pods are ready
+def kube_select_cluster():
+    shuffled_clusters = random.sample(FORGE_K8S_CLUSTERS, len(FORGE_K8S_CLUSTERS))
+    return kube_ensure_cluster(shuffled_clusters)
 
 
 def kube_wait_job(job_name, context):

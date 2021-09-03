@@ -2,10 +2,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    backend::k8s::node::K8sNode, k8s_client, query_sequence_numbers, remove_validator,
-    set_validator_image_tag, ChainInfo, FullNode, Node, Result, Swarm, Validator, Version,
+    backend::k8s::node::K8sNode, create_k8s_client, query_sequence_numbers, remove_helm_release,
+    set_eks_nodegroup_size, set_validator_image_tag, uninstall_from_k8s_cluster, ChainInfo,
+    FullNode, Node, Result, Swarm, Validator, Version,
 };
 use anyhow::{anyhow, bail, format_err};
+use diem_config::config::NodeConfig;
 use diem_logger::*;
 use diem_sdk::{
     crypto::ed25519::Ed25519PrivateKey,
@@ -19,7 +21,7 @@ use kube::{
     api::{Api, ListParams},
     client::Client as K8sClient,
 };
-use std::{collections::HashMap, convert::TryFrom, str, sync::Arc};
+use std::{collections::HashMap, convert::TryFrom, env, process::Command, str, sync::Arc};
 use tokio::{runtime::Runtime, time::Duration};
 
 const JSON_RPC_PORT: u32 = 80;
@@ -32,6 +34,7 @@ pub struct K8sSwarm {
     treasury_compliance_account: LocalAccount,
     designated_dealer_account: LocalAccount,
     kube_client: K8sClient,
+    cluster_name: String,
     helm_repo: String,
     versions: Arc<HashMap<Version, String>>,
     pub chain_id: ChainId,
@@ -41,11 +44,12 @@ impl K8sSwarm {
     pub async fn new(
         root_key: &[u8],
         treasury_compliance_key: &[u8],
+        cluster_name: &str,
         helm_repo: &str,
         image_tag: &str,
         base_image_tag: &str,
     ) -> Result<Self> {
-        let kube_client = k8s_client().await;
+        let kube_client = create_k8s_client().await;
         let fullnodes = HashMap::new();
         let validators = get_validators(kube_client.clone(), image_tag).await?;
 
@@ -106,6 +110,7 @@ impl K8sSwarm {
             designated_dealer_account,
             kube_client,
             chain_id: ChainId::new(NamedChain::DEVNET.id()),
+            cluster_name: cluster_name.to_string(),
             helm_repo: helm_repo.to_string(),
             versions: Arc::new(versions),
         })
@@ -123,6 +128,14 @@ impl K8sSwarm {
     #[allow(dead_code)]
     fn get_kube_client(&self) -> K8sClient {
         self.kube_client.clone()
+    }
+}
+
+impl Drop for K8sSwarm {
+    // When the K8sSwarm struct goes out of scope we need to wipe the chain state and scale down
+    fn drop(&mut self) {
+        uninstall_from_k8s_cluster().unwrap();
+        set_eks_nodegroup_size(self.cluster_name.clone(), 0, true).unwrap();
     }
 }
 
@@ -190,15 +203,15 @@ impl Swarm for K8sSwarm {
         self.fullnodes.get_mut(&id).map(|v| v as &mut dyn FullNode)
     }
 
-    fn add_validator(&mut self, _id: PeerId) -> Result<PeerId> {
+    fn add_validator(&mut self, _version: &Version, _template: NodeConfig) -> Result<PeerId> {
         todo!()
     }
 
     fn remove_validator(&mut self, id: PeerId) -> Result<()> {
-        remove_validator(self.validator(id).unwrap().name())
+        remove_helm_release(self.validator(id).unwrap().name())
     }
 
-    fn add_full_node(&mut self, _id: PeerId) -> Result<()> {
+    fn add_full_node(&mut self, _version: &Version, _template: NodeConfig) -> Result<PeerId> {
         todo!()
     }
 
@@ -221,8 +234,21 @@ impl Swarm for K8sSwarm {
         )
     }
 
+    // Returns env CENTRAL_LOGGING_ADDRESS if present (without timestamps)
+    // otherwise returns a kubectl logs command to retrieve the logs manually
     fn logs_location(&mut self) -> String {
-        todo!()
+        if let Ok(central_logging_address) = std::env::var("CENTRAL_LOGGING_ADDRESS") {
+            central_logging_address
+        } else {
+            let hostname_output = Command::new("hostname")
+                .output()
+                .expect("failed to get pod hostname");
+            let hostname = String::from_utf8(hostname_output.stdout).unwrap();
+            format!(
+                "aws eks --region us-west-2 update-kubeconfig --name {} && kubectl logs {}",
+                &self.cluster_name, hostname
+            )
+        }
     }
 }
 

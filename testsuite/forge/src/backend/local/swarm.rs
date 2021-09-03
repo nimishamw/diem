@@ -7,10 +7,13 @@ use crate::{
 };
 use anyhow::{anyhow, Result};
 use diem_config::config::NodeConfig;
-use diem_genesis_tool::validator_builder::ValidatorBuilder;
+use diem_genesis_tool::{fullnode_builder::FullnodeConfig, validator_builder::ValidatorBuilder};
 use diem_sdk::{
     crypto::ed25519::Ed25519PrivateKey,
-    types::{chain_id::ChainId, AccountKey, LocalAccount, PeerId},
+    types::{
+        chain_id::ChainId, transaction::Transaction, waypoint::Waypoint, AccountKey, LocalAccount,
+        PeerId,
+    },
 };
 use std::{
     collections::HashMap,
@@ -129,7 +132,7 @@ impl LocalSwarmBuilder {
             SwarmDirectory::Temporary(TempDir::new()?)
         };
 
-        let (root_keys, validators) = ValidatorBuilder::new(
+        let (root_keys, genesis, genesis_waypoint, validators) = ValidatorBuilder::new(
             &dir,
             diem_framework_releases::current_module_blobs().to_vec(),
         )
@@ -186,9 +189,12 @@ impl LocalSwarmBuilder {
         );
 
         Ok(LocalSwarm {
+            node_name_counter: validators.len() as u64,
+            genesis,
+            genesis_waypoint,
             versions,
             validators,
-            full_nodes: HashMap::new(),
+            fullnodes: HashMap::new(),
             dir,
             validator_network_address_encryption_key,
             root_account,
@@ -201,9 +207,12 @@ impl LocalSwarmBuilder {
 
 #[derive(Debug)]
 pub struct LocalSwarm {
+    node_name_counter: u64,
+    genesis: Transaction,
+    genesis_waypoint: Waypoint,
     versions: Arc<HashMap<Version, LocalVersion>>,
     validators: HashMap<PeerId, LocalNode>,
-    full_nodes: HashMap<PeerId, LocalNode>,
+    fullnodes: HashMap<PeerId, LocalNode>,
     dir: SwarmDirectory,
     validator_network_address_encryption_key: ValidatorNetworkAddressEncryptionKey,
     root_account: LocalAccount,
@@ -267,11 +276,61 @@ impl LocalSwarm {
 
         Err(anyhow!("Launching Swarm timed out"))
     }
+
+    fn add_fullnode(&mut self, version: &Version, template: NodeConfig) -> Result<PeerId> {
+        let name = self.node_name_counter.to_string();
+        self.node_name_counter += 1;
+        let fullnode_config = FullnodeConfig::public_fullnode(
+            name,
+            self.dir.as_ref(),
+            template,
+            &self.genesis_waypoint,
+            &self.genesis,
+        )?;
+
+        let version = self.versions.get(version).unwrap();
+        let mut fullnode = LocalNode::new(
+            version.to_owned(),
+            fullnode_config.name,
+            fullnode_config.directory,
+        )?;
+
+        let peer_id = fullnode.peer_id();
+        fullnode.start()?;
+
+        self.fullnodes.insert(peer_id, fullnode);
+
+        Ok(peer_id)
+    }
+
+    pub fn chain_id(&self) -> ChainId {
+        self.chain_id
+    }
+
+    pub fn validator(&self, peer_id: PeerId) -> Option<&LocalNode> {
+        self.validators.get(&peer_id)
+    }
+
+    pub fn validator_mut(&mut self, peer_id: PeerId) -> Option<&mut LocalNode> {
+        self.validators.get_mut(&peer_id)
+    }
+
+    pub fn validators(&self) -> impl Iterator<Item = &LocalNode> {
+        self.validators.values()
+    }
+
+    pub fn validators_mut(&mut self) -> impl Iterator<Item = &mut LocalNode> {
+        self.validators.values_mut()
+    }
+
+    pub fn dir(&self) -> &Path {
+        self.dir.as_ref()
+    }
 }
 
 impl Swarm for LocalSwarm {
     fn health_check(&mut self) -> Result<()> {
-        todo!()
+        Ok(())
     }
 
     fn validators<'a>(&'a self) -> Box<dyn Iterator<Item = &'a dyn Validator> + 'a> {
@@ -310,26 +369,26 @@ impl Swarm for LocalSwarm {
     }
 
     fn full_nodes<'a>(&'a self) -> Box<dyn Iterator<Item = &'a dyn FullNode> + 'a> {
-        Box::new(self.full_nodes.values().map(|v| v as &'a dyn FullNode))
+        Box::new(self.fullnodes.values().map(|v| v as &'a dyn FullNode))
     }
 
     fn full_nodes_mut<'a>(&'a mut self) -> Box<dyn Iterator<Item = &'a mut dyn FullNode> + 'a> {
         Box::new(
-            self.full_nodes
+            self.fullnodes
                 .values_mut()
                 .map(|v| v as &'a mut dyn FullNode),
         )
     }
 
     fn full_node(&self, id: PeerId) -> Option<&dyn FullNode> {
-        self.full_nodes.get(&id).map(|v| v as &dyn FullNode)
+        self.fullnodes.get(&id).map(|v| v as &dyn FullNode)
     }
 
     fn full_node_mut(&mut self, id: PeerId) -> Option<&mut dyn FullNode> {
-        self.full_nodes.get_mut(&id).map(|v| v as &mut dyn FullNode)
+        self.fullnodes.get_mut(&id).map(|v| v as &mut dyn FullNode)
     }
 
-    fn add_validator(&mut self, _id: PeerId) -> Result<PeerId> {
+    fn add_validator(&mut self, _version: &Version, _template: NodeConfig) -> Result<PeerId> {
         todo!()
     }
 
@@ -337,12 +396,16 @@ impl Swarm for LocalSwarm {
         todo!()
     }
 
-    fn add_full_node(&mut self, _id: PeerId) -> Result<()> {
-        todo!()
+    fn add_full_node(&mut self, version: &Version, template: NodeConfig) -> Result<PeerId> {
+        self.add_fullnode(version, template)
     }
 
-    fn remove_full_node(&mut self, _id: PeerId) -> Result<()> {
-        todo!()
+    fn remove_full_node(&mut self, id: PeerId) -> Result<()> {
+        if let Some(mut fullnode) = self.fullnodes.remove(&id) {
+            fullnode.stop();
+        }
+
+        Ok(())
     }
 
     fn versions<'a>(&'a self) -> Box<dyn Iterator<Item = Version> + 'a> {

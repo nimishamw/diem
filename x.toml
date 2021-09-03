@@ -4,7 +4,7 @@ version = "0.8.0"
 [system-tests]
 smoke-test = { path = "smoke-test" }
 jsonrpc-integration-tests = { path = "json-rpc/integration-tests" }
-compatibility-test = { path = "testsuite/compatibility-test" }
+compatibility-test = { path = "testsuite/testcases" }
 
 [cargo.sccache]
 bucket = "ci-artifacts.diem.com"
@@ -182,17 +182,17 @@ members = [
     "bytecode-verifier-transactional-tests",
     "cli",
     "cluster-test",
-    "compatibility-test",
+    "testcases",
     "diem-documentation-tool",
     "diem-e2e-tests-replay",
     "diem-fuzz",
     "diem-fuzzer",
     "diem-json-rpc-client",
     "diem-keygen",
+    "diem-parallel-executor", # Will be removed once parallel execution is used in production.
     "diem-proptest-helpers",
     "diem-read-write-set",
     "diem-retrier",
-    "diem-smoke-test-attribute",
     "diem-swarm",
     "diem-transactional-test-harness",
     "diem-transaction-benchmarks",
@@ -227,6 +227,7 @@ members = [
     "serializer-tests",
     "smoke-test",
     "socket-bench-server",
+    "state-sync-v2", # Will be removed once state sync v2 is plugged into diem-node.
     "test-generation",
     "x",
     "x-core",

@@ -64,8 +64,6 @@ pub struct Options {
     pub move_named_address_values: Vec<String>,
     /// Whether to run experimental pipeline
     pub experimental_pipeline: bool,
-    /// Whether to use the old polymorphic boogie backend.
-    pub boogie_poly: bool,
     /// BEGIN OF STRUCTURED OPTIONS
     /// Options for the model builder.
     pub model_builder: ModelBuilderOptions,
@@ -94,7 +92,15 @@ impl Default for Options {
             verbosity_level: LevelFilter::Info,
             move_sources: vec![],
             move_deps: vec![],
-            move_named_address_values: vec![],
+            move_named_address_values: vec![
+                // TODO: Remove this and this field when package support has landed
+                "Std=0x1".into(),
+                "DiemFramework=0x1".into(),
+                "DiemRoot=0xA550C18".into(),
+                "CurrencyInfo=0xA550C18".into(),
+                "TreasuryCompliance=0xB1E55ED".into(),
+                "VMReserved=0x0".into(),
+            ],
             model_builder: ModelBuilderOptions::default(),
             prover: ProverOptions::default(),
             backend: BoogieOptions::default(),
@@ -102,7 +108,6 @@ impl Default for Options {
             abigen: AbigenOptions::default(),
             errmapgen: ErrmapOptions::default(),
             experimental_pipeline: false,
-            boogie_poly: false,
         }
     }
 }
@@ -339,6 +344,39 @@ impl Options {
                     ),
             )
             .arg(
+                Arg::with_name("mutation-sub-add")
+                    .long("mutation-sub-add")
+                    .takes_value(true)
+                    .value_name("COUNT")
+                    .validator(is_number)
+                    .help(
+                        "indicates that this program should mutate the indicated minus operation to a plus\
+                        specifically by modifyig the \"nth\" such operation",
+                    ),
+            )
+            .arg(
+                Arg::with_name("mutation-mul-div")
+                    .long("mutation-mul-div")
+                    .takes_value(true)
+                    .value_name("COUNT")
+                    .validator(is_number)
+                    .help(
+                        "indicates that this program should mutate the indicated multiplication operation to a divide\
+                        specifically by modifyig the \"nth\" such operation",
+                    ),
+            )
+            .arg(
+                Arg::with_name("mutation-div-mul")
+                    .long("mutation-div-mul")
+                    .takes_value(true)
+                    .value_name("COUNT")
+                    .validator(is_number)
+                    .help(
+                        "indicates that this program should mutate the indicated divide operation to a multiplication\
+                        specifically by modifyig the \"nth\" such operation",
+                    ),
+            )
+            .arg(
                 Arg::with_name("dependencies")
                     .long("dependency")
                     .short("d")
@@ -556,6 +594,24 @@ impl Options {
                 .unwrap()
                 .parse::<usize>()?;
         }
+        if matches.is_present("mutation-sub-add") {
+            options.prover.mutation_sub_add = matches
+                .value_of("mutation-sub-add")
+                .unwrap()
+                .parse::<usize>()?;
+        }
+        if matches.is_present("mutation-mul-div") {
+            options.prover.mutation_mul_div = matches
+                .value_of("mutation-mul-div")
+                .unwrap()
+                .parse::<usize>()?;
+        }
+        if matches.is_present("mutation-div-mul") {
+            options.prover.mutation_div_mul = matches
+                .value_of("mutation-div-mul")
+                .unwrap()
+                .parse::<usize>()?;
+        }
         if matches.is_present("verify") {
             options.prover.verify_scope = match matches.value_of("verify").unwrap() {
                 "public" => VerificationScope::Public,
@@ -621,7 +677,7 @@ impl Options {
             options.backend.keep_artifacts = true;
         }
         if matches.is_present("boogie-poly") {
-            options.boogie_poly = true;
+            options.prover.boogie_poly = true;
         }
         if matches.is_present("seed") {
             options.backend.random_seed = matches.value_of("seed").unwrap().parse::<usize>()?;

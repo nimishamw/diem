@@ -13,6 +13,8 @@ module DiemFramework::Diem {
     use Std::Signer;
     use Std::Vector;
 
+    friend DiemFramework::DesignatedDealer;
+
     /// The `Diem` resource defines the Diem coin for each currency in
     /// Diem. Each "coin" is coupled with a type `CoinType` specifying the
     /// currency of the coin, and a `value` field specifying the value
@@ -613,7 +615,7 @@ module DiemFramework::Diem {
     /// used for bootstrapping the designated dealer at account-creation
     /// time, and the association TC account `tc_account` (at `@TreasuryCompliance`) is creating
     /// this resource for the designated dealer `account`.
-    public fun publish_preburn_queue_to_account<CoinType>(
+    public(friend) fun publish_preburn_queue_to_account<CoinType>(
         account: &signer,
         tc_account: &signer
     ) acquires CurrencyInfo {
@@ -641,6 +643,18 @@ module DiemFramework::Diem {
         aborts_if exists<Preburn<CoinType>>(account_addr) with Errors::INVALID_STATE;
 
     }
+
+    // #[test_only] TODO: uncomment once unit tests are fully migrated
+    public fun publish_preburn_queue_to_account_for_test<CoinType>(
+           account: &signer,
+           tc_account: &signer
+    ) acquires CurrencyInfo {
+        publish_preburn_queue_to_account<CoinType>(account, tc_account)
+    }
+    spec publish_preburn_queue_to_account_for_test {
+        pragma verify = false;
+    }
+
 
     ///////////////////////////////////////////////////////////////////////////
 
@@ -1781,19 +1795,27 @@ module DiemFramework::Diem {
 
 
     /// ## Update Exchange Rates
-    spec schema ExchangeRateRemainsSame<CoinType> {
-        /// The exchange rate to XDX stays constant.
-        ensures old(spec_is_currency<CoinType>())
-            ==> spec_currency_info<CoinType>().to_xdx_exchange_rate
-                == old(spec_currency_info<CoinType>().to_xdx_exchange_rate);
-    }
     spec module {
-        /// The permission "UpdateExchangeRate(type)" is granted to TreasuryCompliance [[H5]][PERMISSION].
-        apply Roles::AbortsIfNotTreasuryCompliance{account: tc_account} to update_xdx_exchange_rate<FromCoinType>;
+        /// Only TreasuryCompliance can change the exchange rate [[H5]][PERMISSION].
+        invariant<CoinType> update old(spec_is_currency<CoinType>()) ==>
+            ((spec_xdx_exchange_rate<CoinType>() != old(spec_xdx_exchange_rate<CoinType>()))
+                ==> Roles::spec_signed_by_treasury_compliance_role());
+    }
 
-        /// Only update_xdx_exchange_rate can change the exchange rate [[H5]][PERMISSION].
-        apply ExchangeRateRemainsSame<CoinType> to *<CoinType>
-            except update_xdx_exchange_rate<CoinType>;
+    /// ## Enable/disable minting
+    spec module {
+        /// Only TreasuryCompliance can enable/disable minting [[H2]][PERMISSION].
+        invariant<CoinType> update old(spec_is_currency<CoinType>()) ==>
+            ((spec_can_mint<CoinType>() != old(spec_can_mint<CoinType>()))
+                ==> Roles::spec_signed_by_treasury_compliance_role());
+    }
+
+    /// ## Register new currency
+    spec module {
+        /// Only DiemRoot can register a new currency [[H8]][PERMISSION].
+        invariant<CoinType> update
+            !old(spec_is_currency<CoinType>()) && spec_is_currency<CoinType>()
+                ==> Roles::spec_signed_by_diem_root_role();
     }
 
     /// # Helper Functions
@@ -1814,8 +1836,14 @@ module DiemFramework::Diem {
             FixedPoint32::spec_multiply_u64(value, spec_xdx_exchange_rate<CoinType>())
         }
 
+        /// Returns the `to_xdx_exchange_rate` of CoinType
         fun spec_xdx_exchange_rate<CoinType>(): FixedPoint32 {
             global<CurrencyInfo<CoinType>>(@CurrencyInfo).to_xdx_exchange_rate
+        }
+
+        /// Returns the `to_xdx_exchange_rate` of CoinType
+        fun spec_can_mint<CoinType>(): bool {
+            global<CurrencyInfo<CoinType>>(@CurrencyInfo).can_mint
         }
 
         /// Checks whether the currency has a mint capability.  This is only relevant for

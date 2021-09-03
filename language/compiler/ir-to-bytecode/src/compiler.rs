@@ -14,13 +14,9 @@ use move_binary_format::{
     },
     file_format_common::VERSION_MAX,
 };
-use move_core_types::{
-    account_address::AccountAddress,
-    value::{MoveTypeLayout, MoveValue},
-};
+use move_core_types::value::{MoveTypeLayout, MoveValue};
 use move_ir_types::{
     ast::{self, Bytecode as IRBytecode, Bytecode_ as IRBytecode_, *},
-    location::*,
     sp,
 };
 use std::{
@@ -405,20 +401,18 @@ impl FunctionFrame {
 
 /// Compile a transaction script.
 pub fn compile_script<'a>(
-    address: Option<AccountAddress>,
     script: Script,
     dependencies: impl IntoIterator<Item = &'a CompiledModule>,
-) -> Result<(CompiledScript, SourceMap<Loc>)> {
+) -> Result<(CompiledScript, SourceMap)> {
     let mut context = Context::new(HashMap::new(), None)?;
     for dep in dependencies {
         context.add_compiled_dependency(dep)?;
     }
 
-    compile_imports(&mut context, address, script.imports.clone())?;
+    compile_imports(&mut context, script.imports.clone())?;
     // Add explicit handles/dependency declarations to `dependencies`
     compile_explicit_dependency_declarations(
         &mut context,
-        None,
         script.imports,
         script.explicit_dependency_declarations,
     )?;
@@ -477,32 +471,27 @@ pub fn compile_script<'a>(
 
 /// Compile a module.
 pub fn compile_module<'a>(
-    address: AccountAddress,
     module: ModuleDefinition,
     dependencies: impl IntoIterator<Item = &'a CompiledModule>,
-) -> Result<(CompiledModule, SourceMap<Loc>)> {
-    let current_module = QualifiedModuleIdent {
-        address,
-        name: module.name,
-    };
-    let mut context = Context::new(HashMap::new(), Some(current_module.clone()))?;
+) -> Result<(CompiledModule, SourceMap)> {
+    let current_module = module.identifier;
+    let mut context = Context::new(HashMap::new(), Some(current_module))?;
     for dep in dependencies {
         context.add_compiled_dependency(dep)?;
     }
 
     // Compile friends
-    let friend_decls = compile_friends(&mut context, Some(address), module.friends)?;
+    let friend_decls = compile_friends(&mut context, module.friends)?;
 
     // Compile imports
     let self_name = ModuleName::module_self();
-    let self_module_handle_idx = context.declare_import(current_module, self_name.clone())?;
+    let self_module_handle_idx = context.declare_import(current_module, self_name)?;
     // Explicitly declare all imports as they will be included even if not used
-    compile_imports(&mut context, Some(address), module.imports.clone())?;
+    compile_imports(&mut context, module.imports.clone())?;
 
     // Add explicit handles/dependency declarations to `dependencies`
     compile_explicit_dependency_declarations(
         &mut context,
-        Some(address),
         module.imports,
         module.explicit_dependency_declarations,
     )?;
@@ -511,7 +500,7 @@ pub fn compile_module<'a>(
     for s in &module.structs {
         let abilities = abilities(&s.value.abilities);
         let ident = QualifiedStructIdent {
-            module: self_name.clone(),
+            module: self_name,
             name: s.value.name.clone(),
         };
         let type_parameters = struct_type_parameters(&s.value.type_formals);
@@ -527,7 +516,7 @@ pub fn compile_module<'a>(
 
     for (name, function) in &module.functions {
         let sig = function_signature(&mut context, &function.value.signature)?;
-        context.declare_function(self_name.clone(), name.clone(), sig)?;
+        context.declare_function(self_name, name.clone(), sig)?;
     }
 
     // Compile definitions
@@ -577,7 +566,6 @@ pub fn compile_module<'a>(
 // Any `Error` should stop compilation in the caller
 fn compile_explicit_dependency_declarations(
     outer_context: &mut Context,
-    address_opt: Option<AccountAddress>,
     imports: Vec<ImportDefinition>,
     dependencies: Vec<ModuleDependency>,
 ) -> Result<()> {
@@ -589,8 +577,8 @@ fn compile_explicit_dependency_declarations(
             functions,
         } = dependency;
         let current_module = outer_context.module_ident(&mname)?;
-        let mut context = Context::new(dependencies_acc, Some(current_module.clone()))?;
-        compile_imports(&mut context, address_opt, imports.clone())?;
+        let mut context = Context::new(dependencies_acc, Some(*current_module))?;
+        compile_imports(&mut context, imports.clone())?;
         let self_module_handle_idx = context.module_handle_index(&mname)?;
         for struct_dep in structs {
             let StructDependency {
@@ -598,7 +586,7 @@ fn compile_explicit_dependency_declarations(
                 name,
                 type_formals: tys,
             } = struct_dep;
-            let sname = QualifiedStructIdent::new(mname.clone(), name);
+            let sname = QualifiedStructIdent::new(mname, name);
             let ability_set = abilities(&abs);
             let kinds = struct_type_parameters(&tys);
             context.declare_struct_handle_index(sname, ability_set, kinds)?;
@@ -606,7 +594,7 @@ fn compile_explicit_dependency_declarations(
         for function_dep in functions {
             let FunctionDependency { name, signature } = function_dep;
             let sig = function_signature(&mut context, &signature)?;
-            context.declare_function(mname.clone(), name, sig)?;
+            context.declare_function(mname, name, sig)?;
         }
 
         let (
@@ -646,7 +634,7 @@ fn compile_explicit_dependency_declarations(
         };
         dependencies_acc = compiled_deps;
         dependencies_acc.insert(
-            current_module.clone(),
+            *current_module,
             CompiledDependency::stored(compiled_module)?,
         );
     }
@@ -656,46 +644,19 @@ fn compile_explicit_dependency_declarations(
 
 fn compile_friends(
     context: &mut Context,
-    address_opt: Option<AccountAddress>,
     friends: Vec<ast::ModuleIdent>,
 ) -> Result<Vec<ModuleHandle>> {
     let mut friend_decls = vec![];
     for friend in friends {
-        let ident = match (address_opt, friend) {
-            (Some(address), ModuleIdent::Transaction(name)) => {
-                QualifiedModuleIdent { name, address }
-            }
-            (None, ModuleIdent::Transaction(name)) => bail!(
-                "Invalid friend '{}'. No address specified for script so cannot resolve friend",
-                name
-            ),
-            (_, ModuleIdent::Qualified(id)) => id,
-        };
-        let handle = context.declare_friend(ident)?;
-        friend_decls.push(handle);
+        friend_decls.push(context.declare_friend(friend)?);
     }
     Ok(friend_decls)
 }
 
-fn compile_imports(
-    context: &mut Context,
-    address_opt: Option<AccountAddress>,
-    imports: Vec<ImportDefinition>,
-) -> Result<()> {
-    for import in imports {
-        let ident = match (address_opt, import.ident) {
-            (Some(address), ModuleIdent::Transaction(name)) => {
-                QualifiedModuleIdent { name, address }
-            }
-            (None, ModuleIdent::Transaction(name)) => bail!(
-                "Invalid import '{}'. No address specified for script so cannot resolve import",
-                name
-            ),
-            (_, ModuleIdent::Qualified(id)) => id,
-        };
-        context.declare_import(ident, import.alias)?;
-    }
-    Ok(())
+fn compile_imports(context: &mut Context, imports: Vec<ImportDefinition>) -> Result<()> {
+    Ok(for import in imports {
+        context.declare_import(import.ident, import.alias)?;
+    })
 }
 
 fn type_parameter_indexes<'a>(
@@ -839,7 +800,7 @@ fn compile_structs(
     let mut struct_defs = vec![];
     for s in structs {
         let sident = QualifiedStructIdent {
-            module: self_name.clone(),
+            module: *self_name,
             name: s.value.name.clone(),
         };
         let sh_idx = context.struct_handle_index(sident.clone())?;
@@ -955,7 +916,7 @@ fn compile_function(
         function_type_formals: context,
         &ast_function.value.signature.type_formals
     );
-    let fh_idx = context.function_handle(self_name.clone(), name)?.1;
+    let fh_idx = context.function_handle(*self_name, name)?.1;
 
     let ast_function = ast_function.value;
 
@@ -1821,7 +1782,7 @@ fn compile_call(
             let subst = &make_type_argument_subst(&ty_args)?;
             let tokens = Signature(ty_arg_tokens);
             let type_actuals_id = context.signature_index(tokens)?;
-            let fh_idx = context.function_handle(module.clone(), name.clone())?.1;
+            let fh_idx = context.function_handle(module, name.clone())?.1;
             let fcall = if type_actuals.is_empty() {
                 Bytecode::Call(fh_idx)
             } else {

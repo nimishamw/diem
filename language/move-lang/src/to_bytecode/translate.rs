@@ -207,7 +207,10 @@ fn module(
         }
     ) = ident;
     let ir_module = IR::ModuleDefinition {
-        name: IR::ModuleName(module_name.0.value),
+        identifier: IR::ModuleIdent {
+            address: MoveAddress::new(addr_bytes.into_bytes()),
+            name: IR::ModuleName(module_name.0.value),
+        },
         friends,
         imports,
         explicit_dependency_declarations,
@@ -217,9 +220,7 @@ fn module(
         synthetics: vec![],
     };
     let deps: Vec<&F::CompiledModule> = vec![];
-    let addr = MoveAddress::new(addr_bytes.into_bytes());
-    let (module, source_map) = match ir_to_bytecode::compiler::compile_module(addr, ir_module, deps)
-    {
+    let (module, source_map) = match ir_to_bytecode::compiler::compile_module(ir_module, deps) {
         Ok(res) => res,
         Err(e) => {
             compilation_env.add_diag(diag!(
@@ -276,8 +277,7 @@ fn script(
         main,
     };
     let deps: Vec<&F::CompiledModule> = vec![];
-    let (script, source_map) = match ir_to_bytecode::compiler::compile_script(None, ir_script, deps)
-    {
+    let (script, source_map) = match ir_to_bytecode::compiler::compile_script(ir_script, deps) {
         Ok(res) => res,
         Err(e) => {
             compilation_env.add_diag(diag!(
@@ -299,7 +299,7 @@ fn script(
 
 fn module_function_infos(
     compile_module: &F::CompiledModule,
-    source_map: &SourceMap<Loc>,
+    source_map: &SourceMap,
     collected_function_infos: &CollectedInfos,
 ) -> UniqueMap<FunctionName, FunctionInfo> {
     UniqueMap::maybe_from_iter((0..compile_module.function_defs.len()).map(|i| {
@@ -311,7 +311,7 @@ fn module_function_infos(
 
 fn function_info_map(
     compile_module: &F::CompiledModule,
-    source_map: &SourceMap<Loc>,
+    source_map: &SourceMap,
     collected_function_infos: &CollectedInfos,
     idx: F::FunctionDefinitionIndex,
 ) -> (FunctionName, FunctionInfo) {
@@ -353,10 +353,7 @@ fn function_info_map(
     (function_name, function_info)
 }
 
-fn script_function_info(
-    source_map: &SourceMap<Loc>,
-    (params, specs): CollectedInfo,
-) -> FunctionInfo {
+fn script_function_info(source_map: &SourceMap, (params, specs): CollectedInfo) -> FunctionInfo {
     let idx = F::FunctionDefinitionIndex(0);
     let function_source_map = source_map.get_function_source_map(idx).unwrap();
     let local_map = function_source_map

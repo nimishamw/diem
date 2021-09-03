@@ -1,11 +1,14 @@
 // Copyright (c) The Diem Core Contributors
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::smoke_test_environment::SmokeTestEnvironment;
-use cli::client_proxy::ClientProxy;
 use diem_config::config::{Identity, NodeConfig, SecureBackend};
 use diem_crypto::ed25519::Ed25519PublicKey;
-use diem_types::account_address::AccountAddress;
+use diem_sdk::{
+    client::BlockingClient,
+    transaction_builder::{Currency, TransactionFactory},
+    types::{transaction::SignedTransaction, LocalAccount},
+};
+use forge::{LocalSwarm, Swarm};
 use rust_decimal::{prelude::FromPrimitive, Decimal};
 use std::{collections::BTreeMap, fs::File, io::Write, path::PathBuf, str::FromStr};
 
@@ -44,33 +47,53 @@ pub fn compare_balances(
         })
 }
 
-/// Sets up a SmokeTestEnvironment with specified size and connects a client
-/// proxy to the node_index.
-pub fn setup_swarm_and_client_proxy(
-    num_nodes: usize,
-    node_index: usize,
-) -> (SmokeTestEnvironment, ClientProxy) {
-    let mut env = SmokeTestEnvironment::new(num_nodes);
-    env.validator_swarm.launch();
-
-    let client = env.get_validator_client(node_index, None);
-    (env, client)
+pub fn create_and_fund_account(swarm: &mut LocalSwarm, amount: u64) -> LocalAccount {
+    let account = LocalAccount::generate(&mut rand::rngs::OsRng);
+    swarm
+        .chain_info()
+        .create_parent_vasp_account(Currency::XUS, account.authentication_key())
+        .unwrap();
+    swarm
+        .chain_info()
+        .fund(Currency::XUS, account.address(), amount)
+        .unwrap();
+    account
 }
 
-/// Waits for a transaction to be processed by all validator nodes in the smoke
-/// test environment.
-pub fn wait_for_transaction_on_all_nodes(
-    env: &SmokeTestEnvironment,
-    num_nodes: usize,
-    account: AccountAddress,
-    sequence_number: u64,
-) {
-    for i in 0..num_nodes {
-        let client = env.get_validator_client(i, None);
-        client
-            .wait_for_transaction(account, sequence_number)
-            .unwrap();
-    }
+pub fn transfer_coins(
+    client: &BlockingClient,
+    transaction_factory: &TransactionFactory,
+    sender: &mut LocalAccount,
+    receiver: &LocalAccount,
+    amount: u64,
+) -> SignedTransaction {
+    let txn = sender.sign_with_transaction_builder(transaction_factory.peer_to_peer(
+        Currency::XUS,
+        receiver.address(),
+        amount,
+    ));
+
+    client.submit(&txn).unwrap();
+    client
+        .wait_for_signed_transaction(&txn, None, None)
+        .unwrap();
+
+    txn
+}
+
+pub fn assert_balance(client: &BlockingClient, account: &LocalAccount, balance: u64) {
+    let account_view = client
+        .get_account(account.address())
+        .unwrap()
+        .into_inner()
+        .unwrap();
+
+    let onchain_balance = account_view
+        .balances
+        .into_iter()
+        .find(|amount_view| amount_view.currency == Currency::XUS)
+        .unwrap();
+    assert_eq!(onchain_balance.amount, balance);
 }
 
 /// This module provides useful functions for operating, handling and managing
@@ -81,12 +104,12 @@ pub fn wait_for_transaction_on_all_nodes(
 pub mod diem_swarm_utils {
     use crate::test_utils::fetch_backend_storage;
     use cli::client_proxy::ClientProxy;
-    use diem_config::config::{NodeConfig, SecureBackend, WaypointConfig};
-    use diem_key_manager::diem_interface::JsonRpcDiemInterface;
-    use diem_operational_tool::test_helper::OperationalTool;
-    use diem_secure_storage::{KVStorage, Storage};
+    use diem_config::config::{NodeConfig, OnDiskStorageConfig, SecureBackend, WaypointConfig};
+    use diem_global_constants::{DIEM_ROOT_KEY, TREASURY_COMPLIANCE_KEY};
+    use diem_secure_storage::{CryptoStorage, KVStorage, OnDiskStorage, Storage};
     use diem_swarm::swarm::DiemSwarm;
     use diem_types::{chain_id::ChainId, waypoint::Waypoint};
+    use forge::{LocalNode, LocalSwarm, Swarm};
     use std::path::PathBuf;
 
     /// Returns a new client proxy connected to the given swarm at the specified
@@ -122,53 +145,32 @@ pub mod diem_swarm_utils {
         .unwrap()
     }
 
-    /// Returns the JSON RPC url pointing to a node at the given
-    /// node index.
-    pub fn get_json_rpc_url(swarm: &DiemSwarm, node_index: usize) -> String {
-        format!("http://127.0.0.1:{}", swarm.get_client_port(node_index))
-    }
-
-    /// Returns a JSON RPC based Diem Interface pointing to a node at the given
-    /// node index.
-    pub fn get_json_rpc_diem_interface(
-        swarm: &DiemSwarm,
-        node_index: usize,
-    ) -> JsonRpcDiemInterface {
-        let json_rpc_endpoint = format!("http://127.0.0.1:{}", swarm.get_client_port(node_index));
-        JsonRpcDiemInterface::new(json_rpc_endpoint)
-    }
-
-    /// Returns an operational tool pointing to a validator node at the given node index.
-    pub fn get_op_tool(swarm: &DiemSwarm, node_index: usize) -> OperationalTool {
-        OperationalTool::new(
-            format!("http://127.0.0.1:{}", swarm.get_client_port(node_index)),
-            ChainId::test(),
-        )
-    }
-
     /// Loads the nodes's storage backend identified by the node index in the given swarm.
-    pub fn load_backend_storage(swarm: &DiemSwarm, node_index: usize) -> SecureBackend {
-        let (node_config, _) = load_node_config(swarm, node_index);
-        fetch_backend_storage(&node_config, None)
+    pub fn load_validators_backend_storage(validator: &LocalNode) -> SecureBackend {
+        fetch_backend_storage(validator.config(), None)
     }
 
-    /// Loads the diem root's storage backend identified by the node index in the given swarm.
-    pub fn load_diem_root_storage(swarm: &DiemSwarm, _node_index: usize) -> SecureBackend {
-        SecureBackend::OnDiskStorage(swarm.config.root_storage.clone())
-    }
+    pub fn create_root_storage(swarm: &mut LocalSwarm) -> SecureBackend {
+        let chain_info = swarm.chain_info();
+        let root_key =
+            bcs::from_bytes(&bcs::to_bytes(chain_info.root_account.private_key()).unwrap())
+                .unwrap();
+        let treasury_compliance_key = bcs::from_bytes(
+            &bcs::to_bytes(chain_info.treasury_compliance_account.private_key()).unwrap(),
+        )
+        .unwrap();
 
-    /// Loads the node config for the validator at the specified index. Also returns the node
-    /// config path.
-    pub fn load_node_config(swarm: &DiemSwarm, node_index: usize) -> (NodeConfig, PathBuf) {
-        let node_config_path = swarm.config.config_files.get(node_index).unwrap();
-        let node_config = NodeConfig::load(&node_config_path).unwrap();
-        (node_config, node_config_path.clone())
-    }
+        let mut root_storage_config = OnDiskStorageConfig::default();
+        root_storage_config.path = swarm.dir().join("root-storage.json");
+        let mut root_storage = OnDiskStorage::new(root_storage_config.path());
+        root_storage
+            .import_private_key(DIEM_ROOT_KEY, root_key)
+            .unwrap();
+        root_storage
+            .import_private_key(TREASURY_COMPLIANCE_KEY, treasury_compliance_key)
+            .unwrap();
 
-    /// Saves the node config for the node at the specified index in the given swarm.
-    pub fn save_node_config(node_config: &mut NodeConfig, swarm: &DiemSwarm, node_index: usize) {
-        let node_config_path = swarm.config.config_files.get(node_index).unwrap();
-        node_config.save(node_config_path).unwrap();
+        SecureBackend::OnDiskStorage(root_storage_config)
     }
 
     pub fn insert_waypoint(node_config: &mut NodeConfig, waypoint: Waypoint) {

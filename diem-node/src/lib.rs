@@ -3,6 +3,7 @@
 
 use backup_service::start_backup_service;
 use consensus::{consensus_provider::start_consensus, gen_consensus_reconfig_subscription};
+use consensus_notifications::ConsensusNotifier;
 use debug_interface::node_debug_service::NodeDebugService;
 use diem_config::{
     config::{NetworkConfig, NodeConfig, PersistableConfig},
@@ -23,8 +24,9 @@ use diemdb::DiemDB;
 use executor::{db_bootstrapper::maybe_bootstrap, Executor};
 use executor_types::ChunkExecutor;
 use futures::{channel::mpsc::channel, executor::block_on};
+use mempool_notifications::MempoolNotifier;
 use network_builder::builder::NetworkBuilder;
-use state_sync::bootstrapper::StateSyncBootstrapper;
+use state_sync_v1::bootstrapper::StateSyncBootstrapper;
 use std::{
     boxed::Box,
     convert::TryFrom,
@@ -343,7 +345,7 @@ pub fn setup_environment(node_config: &NodeConfig, logger: Option<Arc<Logger>>) 
 
         // Create the endpoints to connect the Network to State Sync.
         let (state_sync_sender, state_sync_events) =
-            network_builder.add_protocol_handler(state_sync::network::network_endpoint_config());
+            network_builder.add_protocol_handler(state_sync_v1::network::network_endpoint_config());
         state_sync_network_handles.push((
             NodeNetworkId::new(network_id.clone(), idx),
             state_sync_sender,
@@ -386,12 +388,16 @@ pub fn setup_environment(node_config: &NodeConfig, logger: Option<Arc<Logger>>) 
     // TODO set up on-chain discovery network based on UpstreamConfig.fallback_network
     // and pass network handles to mempool/state sync
 
-    // for state sync to send requests to mempool
-    let (state_sync_to_mempool_sender, state_sync_requests) =
-        channel(INTRA_NODE_CHANNEL_BUFFER_SIZE);
+    // For state sync to send notifications to mempool and receive notifications from consensus.
+    let (mempool_notifier, mempool_listener) = MempoolNotifier::new();
+    let (consensus_notifier, consensus_listener) =
+        ConsensusNotifier::new(node_config.state_sync.client_commit_timeout_ms);
+
+    // Create state sync bootstrapper
     let state_sync_bootstrapper = StateSyncBootstrapper::bootstrap(
         state_sync_network_handles,
-        state_sync_to_mempool_sender,
+        mempool_notifier,
+        consensus_listener,
         Arc::clone(&db_rw.reader),
         chunk_executor,
         node_config,
@@ -412,7 +418,7 @@ pub fn setup_environment(node_config: &NodeConfig, logger: Option<Arc<Logger>>) 
         mempool_network_handles,
         mp_client_events,
         consensus_requests,
-        state_sync_requests,
+        mempool_listener,
         mempool_reconfig_events,
     );
     debug!("Mempool started in {} ms", instant.elapsed().as_millis());
@@ -421,8 +427,7 @@ pub fn setup_environment(node_config: &NodeConfig, logger: Option<Arc<Logger>>) 
     // network provider -> consensus -> state synchronizer -> network provider.  This has resulted
     // in a deadlock as observed in GitHub issue #749.
     if let Some((consensus_network_sender, consensus_network_events)) = consensus_network_handles {
-        let state_sync_client =
-            state_sync_bootstrapper.create_client(node_config.state_sync.client_commit_timeout_ms);
+        let state_sync_client = state_sync_bootstrapper.create_client();
 
         // Make sure that state synchronizer is caught up at least to its waypoint
         // (in case it's present). There is no sense to start consensus prior to that.
@@ -439,7 +444,7 @@ pub fn setup_environment(node_config: &NodeConfig, logger: Option<Arc<Logger>>) 
             node_config,
             consensus_network_sender,
             consensus_network_events,
-            state_sync_client,
+            Box::new(consensus_notifier),
             consensus_to_mempool_sender,
             diem_db,
             consensus_reconfig_events,

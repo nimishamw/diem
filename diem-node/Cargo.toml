@@ -21,6 +21,7 @@ tokio-stream = "0.1.4"
 
 backup-service = { path = "../storage/backup/backup-service" }
 consensus = { path = "../consensus" }
+consensus-notifications = { path = "../state-sync/inter-component/consensus-notifications" }
 crash-handler = { path = "../common/crash-handler" }
 debug-interface = { path = "../common/debug-interface" }
 executor = { path = "../execution/executor" }
@@ -40,8 +41,9 @@ diem-types = { path = "../types" }
 diem-vm = { path = "../language/diem-vm" }
 diem-workspace-hack = { path = "../common/workspace-hack" }
 diemdb = { path = "../storage/diemdb" }
+mempool-notifications = { path = "../state-sync/inter-component/mempool-notifications" }
 network-builder = { path = "../network/builder" }
-state-sync = { path = "../state-sync" }
+state-sync-v1 = { path = "../state-sync/state-sync-v1" }
 storage-client = { path = "../storage/storage-client" }
 storage-interface= { path = "../storage/storage-interface" }
 storage-service = { path = "../storage/storage-service" }
@@ -50,4 +52,4 @@ subscription-service = { path = "../common/subscription-service" }
 [features]
 default = []
 assert-private-keys-not-cloneable = ["diem-crypto/assert-private-keys-not-cloneable"]
-failpoints = ["fail/failpoints", "consensus/failpoints", "executor/failpoints", "diem-json-rpc/failpoints", "diem-mempool/failpoints", "state-sync/failpoints"]
+failpoints = ["fail/failpoints", "consensus/failpoints", "executor/failpoints", "diem-json-rpc/failpoints", "diem-mempool/failpoints", "state-sync-v1/failpoints"]

@@ -67,13 +67,13 @@ pub struct Script {
 //**************************************************************************************************
 
 /// Newtype for a name of a module
-#[derive(Clone, Debug, Eq, Hash, PartialEq, PartialOrd, Ord)]
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, PartialOrd, Ord)]
 pub struct ModuleName(pub Symbol);
 
 /// Newtype of the address + the module name
 /// `addr.m`
-#[derive(Clone, Debug, Eq, Hash, PartialEq, PartialOrd, Ord)]
-pub struct QualifiedModuleIdent {
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, PartialOrd, Ord)]
+pub struct ModuleIdent {
     /// Name for the module. Will be unique among modules published under the same address
     pub name: ModuleName,
     /// Address that this module is published under
@@ -83,8 +83,8 @@ pub struct QualifiedModuleIdent {
 /// A Move module
 #[derive(Clone, Debug, PartialEq)]
 pub struct ModuleDefinition {
-    /// name of the module
-    pub name: ModuleName,
+    /// name and address of the module
+    pub identifier: ModuleIdent,
     /// the module's friends
     pub friends: Vec<ModuleIdent>,
     /// the module's dependencies
@@ -101,14 +101,6 @@ pub struct ModuleDefinition {
     pub functions: Vec<(FunctionName, Function)>,
     /// the synthetic, specification variables the module defines.
     pub synthetics: Vec<SyntheticDefinition>,
-}
-
-/// Either a qualified module name like `addr.m` or `Transaction.m`, which refers to a module in
-/// the same transaction.
-#[derive(Clone, Debug, Eq, Hash, PartialEq, PartialOrd, Ord)]
-pub enum ModuleIdent {
-    Transaction(ModuleName),
-    Qualified(QualifiedModuleIdent),
 }
 
 /// Explicitly given dependency
@@ -130,7 +122,7 @@ pub struct ModuleDependency {
 #[derive(Clone, Debug, PartialEq)]
 pub struct ImportDefinition {
     /// the dependency
-    /// `addr.m` or `Transaction.m`
+    /// `addr.m`
     pub ident: ModuleIdent,
     /// the alias for that dependency
     /// `m`
@@ -724,10 +716,8 @@ pub type Bytecode = Spanned<Bytecode_>;
 fn get_external_deps(imports: &[ImportDefinition]) -> Vec<ModuleId> {
     let mut deps = HashSet::new();
     for dep in imports.iter() {
-        if let ModuleIdent::Qualified(id) = &dep.ident {
-            let identifier = Identifier::new(id.name.0.as_str().to_owned()).unwrap();
-            deps.insert(ModuleId::new(id.address, identifier));
-        }
+        let identifier = Identifier::new(dep.ident.name.0.as_str().to_owned()).unwrap();
+        deps.insert(ModuleId::new(dep.ident.address, identifier));
     }
     deps.into_iter().collect()
 }
@@ -784,11 +774,11 @@ impl ModuleName {
     }
 }
 
-impl QualifiedModuleIdent {
+impl ModuleIdent {
     /// Creates a new fully qualified module identifier from the module name and the address at
     /// which it is published
     pub fn new(name: ModuleName, address: AccountAddress) -> Self {
-        QualifiedModuleIdent { name, address }
+        ModuleIdent { name, address }
     }
 
     /// Accessor for the name of the fully qualified module identifier
@@ -802,21 +792,12 @@ impl QualifiedModuleIdent {
     }
 }
 
-impl ModuleIdent {
-    pub fn name(&self) -> &ModuleName {
-        match self {
-            ModuleIdent::Transaction(name) => name,
-            ModuleIdent::Qualified(id) => &id.name,
-        }
-    }
-}
-
 impl ModuleDefinition {
     /// Creates a new `ModuleDefinition` from its string name, dependencies, structs+resources,
     /// and procedures
     /// Does not verify the correctness of any internal properties of its elements
     pub fn new(
-        name: Symbol,
+        identifier: ModuleIdent,
         friends: Vec<ModuleIdent>,
         imports: Vec<ImportDefinition>,
         explicit_dependency_declarations: Vec<ModuleDependency>,
@@ -826,7 +807,7 @@ impl ModuleDefinition {
         synthetics: Vec<SyntheticDefinition>,
     ) -> Self {
         ModuleDefinition {
-            name: ModuleName(name),
+            identifier,
             friends,
             imports,
             explicit_dependency_declarations,
@@ -900,7 +881,7 @@ impl ImportDefinition {
     pub fn new(ident: ModuleIdent, alias_opt: Option<ModuleName>) -> Self {
         let alias = match alias_opt {
             Some(alias) => alias,
-            None => ident.name().clone(),
+            None => *ident.name(),
         };
         ImportDefinition { ident, alias }
     }
@@ -1244,23 +1225,13 @@ impl fmt::Display for Script {
     }
 }
 
-impl fmt::Display for ModuleIdent {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        use ModuleIdent::*;
-        match self {
-            Transaction(module_name) => write!(f, "{}", module_name),
-            Qualified(qual_module_ident) => write!(f, "{}", qual_module_ident),
-        }
-    }
-}
-
 impl fmt::Display for ModuleName {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}", self.0)
     }
 }
 
-impl fmt::Display for QualifiedModuleIdent {
+impl fmt::Display for ModuleIdent {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{:?}.{}", self.address, self.name)
     }
@@ -1268,7 +1239,7 @@ impl fmt::Display for QualifiedModuleIdent {
 
 impl fmt::Display for ModuleDefinition {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        writeln!(f, "Module({}, ", self.name)?;
+        writeln!(f, "Module({}, ", self.identifier)?;
 
         writeln!(f, "Imports(")?;
         for import in &self.imports {

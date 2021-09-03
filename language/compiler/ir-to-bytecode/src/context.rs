@@ -19,12 +19,9 @@ use move_core_types::{
     account_address::AccountAddress,
     identifier::{IdentStr, Identifier},
 };
-use move_ir_types::{
-    ast::{
-        BlockLabel, ConstantName, Field_, FunctionName, ModuleName, QualifiedModuleIdent,
-        QualifiedStructIdent, StructName,
-    },
-    location::*,
+use move_ir_types::ast::{
+    BlockLabel, ConstantName, Field_, FunctionName, ModuleIdent, ModuleName, QualifiedStructIdent,
+    StructName,
 };
 use std::{clone::Clone, collections::HashMap, hash::Hash};
 
@@ -114,10 +111,7 @@ impl<'a> CompiledDependencyView<'a> {
         })
     }
 
-    fn source_struct_info(
-        &self,
-        idx: StructHandleIndex,
-    ) -> Option<(QualifiedModuleIdent, StructName)> {
+    fn source_struct_info(&self, idx: StructHandleIndex) -> Option<(ModuleIdent, StructName)> {
         let handle = self.struct_pool.get(idx.0 as usize)?;
         let module_handle = self.module_pool.get(handle.module.0 as usize)?;
         let address = *self
@@ -130,7 +124,7 @@ impl<'a> CompiledDependencyView<'a> {
                 .into(),
         );
         assert!(module != ModuleName::module_self());
-        let ident = QualifiedModuleIdent {
+        let ident = ModuleIdent {
             address,
             name: module,
         };
@@ -205,7 +199,7 @@ impl<'a> CompiledDependency<'a> {
     }
 }
 
-pub(crate) type CompiledDependencies<'a> = HashMap<QualifiedModuleIdent, CompiledDependency<'a>>;
+pub(crate) type CompiledDependencies<'a> = HashMap<ModuleIdent, CompiledDependency<'a>>;
 
 /// Represents all of the pools to be used in the file format, both by CompiledModule
 /// and CompiledScript.
@@ -242,8 +236,8 @@ pub(crate) struct Context<'a> {
     dependencies: CompiledDependencies<'a>,
 
     // helpers
-    aliases: HashMap<QualifiedModuleIdent, ModuleName>,
-    modules: HashMap<ModuleName, (QualifiedModuleIdent, ModuleHandle)>,
+    aliases: HashMap<ModuleIdent, ModuleName>,
+    modules: HashMap<ModuleName, (ModuleIdent, ModuleHandle)>,
     structs: HashMap<QualifiedStructIdent, StructHandle>,
     struct_defs: HashMap<StructName, TableIndex>,
     named_constants: HashMap<ConstantName, TableIndex>,
@@ -272,7 +266,7 @@ pub(crate) struct Context<'a> {
     current_function_index: FunctionDefinitionIndex,
 
     // Source location mapping for this module
-    pub source_map: SourceMap<Loc>,
+    pub source_map: SourceMap,
 }
 
 impl<'a> Context<'a> {
@@ -281,7 +275,7 @@ impl<'a> Context<'a> {
     /// It initializes an "import" of `Self` as the alias for the current_module.
     pub fn new(
         dependencies: CompiledDependencies<'a>,
-        current_module_opt: Option<QualifiedModuleIdent>,
+        current_module_opt: Option<ModuleIdent>,
     ) -> Result<Self> {
         let context = Self {
             dependencies,
@@ -321,7 +315,7 @@ impl<'a> Context<'a> {
     }
 
     pub fn add_compiled_dependency(&mut self, compiled_dep: &'a CompiledModule) -> Result<()> {
-        let ident = QualifiedModuleIdent {
+        let ident = ModuleIdent {
             address: *compiled_dep.address(),
             name: ModuleName(compiled_dep.name().as_str().into()),
         };
@@ -351,9 +345,7 @@ impl<'a> Context<'a> {
     }
 
     /// Finish compilation, and materialize the pools for file format.
-    pub fn materialize_pools(
-        self,
-    ) -> (MaterializedPools, CompiledDependencies<'a>, SourceMap<Loc>) {
+    pub fn materialize_pools(self) -> (MaterializedPools, CompiledDependencies<'a>, SourceMap) {
         let num_functions = self.function_handles.len();
         assert!(num_functions == self.function_signatures.len());
         let function_handles = Self::materialize_pool(
@@ -394,7 +386,7 @@ impl<'a> Context<'a> {
     //**********************************************************************************************
 
     /// Get the alias for the identifier, fails if it is not bound.
-    fn module_alias(&self, ident: &QualifiedModuleIdent) -> Result<&ModuleName> {
+    fn module_alias(&self, ident: &ModuleIdent) -> Result<&ModuleName> {
         self.aliases
             .get(ident)
             .ok_or_else(|| format_err!("Missing import for module {}", ident))
@@ -409,7 +401,7 @@ impl<'a> Context<'a> {
     }
 
     /// Get the identifier for the alias, fails if it is not bound.
-    pub fn module_ident(&self, module_name: &ModuleName) -> Result<&QualifiedModuleIdent> {
+    pub fn module_ident(&self, module_name: &ModuleName) -> Result<&ModuleIdent> {
         match self.modules.get(module_name) {
             None => bail!("Unbound module alias {}", module_name),
             Some((id, _)) => Ok(id),
@@ -567,7 +559,7 @@ impl<'a> Context<'a> {
     //**********************************************************************************************
 
     /// Add a friend. This creates a module handle for the friended module.
-    pub fn declare_friend(&mut self, id: QualifiedModuleIdent) -> Result<ModuleHandle> {
+    pub fn declare_friend(&mut self, id: ModuleIdent) -> Result<ModuleHandle> {
         let address = self.address_index(id.address)?;
         let name = self.identifier_index(id.name.0)?;
         Ok(ModuleHandle { address, name })
@@ -576,15 +568,15 @@ impl<'a> Context<'a> {
     /// Add an import. This creates a module handle index for the imported module.
     pub fn declare_import(
         &mut self,
-        id: QualifiedModuleIdent,
+        id: ModuleIdent,
         alias: ModuleName,
     ) -> Result<ModuleHandleIndex> {
         // We don't care about duplicate aliases, if they exist
-        self.aliases.insert(id.clone(), alias.clone());
+        self.aliases.insert(id, alias);
         let address = self.address_index(id.address)?;
         let name = self.identifier_index(id.name.0)?;
         self.modules
-            .insert(alias.clone(), (id, ModuleHandle { address, name }));
+            .insert(alias, (id, ModuleHandle { address, name }));
         Ok(ModuleHandleIndex(get_or_add_item_ref(
             &mut self.module_handles,
             &self.modules.get(&alias).unwrap().1,
@@ -650,7 +642,7 @@ impl<'a> Context<'a> {
         fname: FunctionName,
         signature: FunctionSignature,
     ) -> Result<()> {
-        let m_f = (mname.clone(), fname.clone());
+        let m_f = (mname, fname.clone());
         let module = self.module_handle_index(&mname)?;
         let name = self.identifier_index(fname.0)?;
 
@@ -714,7 +706,7 @@ impl<'a> Context<'a> {
     // Dependency Resolution
     //**********************************************************************************************
 
-    fn dependency(&self, m: &QualifiedModuleIdent) -> Result<&CompiledDependencyView> {
+    fn dependency(&self, m: &ModuleIdent) -> Result<&CompiledDependencyView> {
         let dep = self
             .dependencies
             .get(m)
@@ -732,7 +724,7 @@ impl<'a> Context<'a> {
         if s.module == ModuleName::module_self() {
             bail!("Unbound struct {}", s)
         }
-        let mident = self.module_ident(&s.module)?.clone();
+        let mident = *self.module_ident(&s.module)?;
         let dep = self.dependency(&mident)?;
         match dep.struct_handle(&mident.name, &s.name) {
             None => bail!("Unbound struct {}", s),
@@ -755,7 +747,7 @@ impl<'a> Context<'a> {
 
     fn reindex_signature_token(
         &mut self,
-        dep: &QualifiedModuleIdent,
+        dep: &ModuleIdent,
         orig: SignatureToken,
     ) -> Result<SignatureToken> {
         Ok(match orig {
@@ -783,7 +775,7 @@ impl<'a> Context<'a> {
                 let (mident, sname) = dep_info
                     .source_struct_info(orig_sh_idx)
                     .ok_or_else(|| format_err!("Malformed dependency"))?;
-                let module_name = self.module_alias(&mident)?.clone();
+                let module_name = *self.module_alias(&mident)?;
                 let sident = QualifiedStructIdent {
                     module: module_name,
                     name: sname,
@@ -796,7 +788,7 @@ impl<'a> Context<'a> {
                 let (mident, sname) = dep_info
                     .source_struct_info(orig_sh_idx)
                     .ok_or_else(|| format_err!("Malformed dependency"))?;
-                let module_name = self.module_alias(&mident)?.clone();
+                let module_name = *self.module_alias(&mident)?;
                 let sident = QualifiedStructIdent {
                     module: module_name,
                     name: sname,
@@ -813,7 +805,7 @@ impl<'a> Context<'a> {
 
     fn reindex_function_signature(
         &mut self,
-        dep: &QualifiedModuleIdent,
+        dep: &ModuleIdent,
         orig: FunctionSignature,
     ) -> Result<FunctionSignature> {
         let return_ = orig
@@ -842,7 +834,7 @@ impl<'a> Context<'a> {
         if m == &ModuleName::module_self() {
             bail!("Unbound function {}.{}", m, f)
         }
-        let mident = self.module_ident(m)?.clone();
+        let mident = *self.module_ident(m)?;
         let dep = self.dependency(&mident)?;
         match dep.function_signature(f) {
             None => bail!("Unbound function {}.{}", mident, f),
@@ -851,7 +843,7 @@ impl<'a> Context<'a> {
     }
 
     fn ensure_function_declared(&mut self, m: ModuleName, f: FunctionName) -> Result<()> {
-        let m_f = (m.clone(), f.clone());
+        let m_f = (m, f.clone());
         if !self.function_handles.contains_key(&m_f) {
             assert!(!self.function_signatures.contains_key(&m_f));
             let sig = self.dep_function_signature(&m, &f)?;
@@ -871,7 +863,7 @@ impl<'a> Context<'a> {
         m: ModuleName,
         f: FunctionName,
     ) -> Result<&(FunctionHandle, FunctionHandleIndex)> {
-        self.ensure_function_declared(m.clone(), f.clone())?;
+        self.ensure_function_declared(m, f.clone())?;
         Ok(self.function_handles.get(&(m, f)).unwrap())
     }
 
@@ -883,7 +875,7 @@ impl<'a> Context<'a> {
         m: ModuleName,
         f: FunctionName,
     ) -> Result<&FunctionSignature> {
-        self.ensure_function_declared(m.clone(), f.clone())?;
+        self.ensure_function_declared(m, f.clone())?;
         Ok(self.function_signatures.get(&(m, f)).unwrap())
     }
 }

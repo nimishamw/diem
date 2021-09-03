@@ -1995,39 +1995,15 @@ fn parse_struct_decl(
     ))
 }
 
-// QualifiedModuleIdent: QualifiedModuleIdent = {
-//     <a: AccountAddress> "." <m: ModuleName> => QualifiedModuleIdent::new(m, a),
-// }
-
-fn parse_qualified_module_ident(
-    tokens: &mut Lexer,
-) -> Result<QualifiedModuleIdent, ParseError<Loc, anyhow::Error>> {
-    let a = parse_account_address(tokens)?;
-    consume_token(tokens, Tok::Period)?;
-    let m = parse_module_name(tokens)?;
-    Ok(QualifiedModuleIdent::new(m, a))
-}
-
 // ModuleIdent: ModuleIdent = {
-//     <q: QualifiedModuleIdent> => ModuleIdent::Qualified(q),
-//     <transaction_dot_module: DotName> =>? { ... }
+//     <a: AccountAddress> "." <m: ModuleName> => ModuleIdent::new(m, a),
 // }
 
 fn parse_module_ident(tokens: &mut Lexer) -> Result<ModuleIdent, ParseError<Loc, anyhow::Error>> {
-    if tokens.peek() == Tok::AccountAddressValue {
-        return Ok(ModuleIdent::Qualified(parse_qualified_module_ident(
-            tokens,
-        )?));
-    }
-    let transaction_dot_module = parse_dot_name(tokens)?;
-    let v: Vec<&str> = transaction_dot_module.split('.').collect();
-    assert!(v.len() == 2);
-    let ident: String = v[0].to_string();
-    if ident != "Transaction" {
-        panic!("Ident = {} which is not Transaction", ident);
-    }
-    let m: ModuleName = ModuleName(Symbol::from(v[1]));
-    Ok(ModuleIdent::Transaction(m))
+    let a = parse_account_address(tokens)?;
+    consume_token(tokens, Tok::Period)?;
+    let m = parse_module_name(tokens)?;
+    Ok(ModuleIdent::new(m, a))
 }
 
 // FriendDecl: ModuleIdent = {
@@ -2091,15 +2067,15 @@ fn is_struct_decl(tokens: &mut Lexer) -> Result<bool, ParseError<Loc, anyhow::Er
 
 fn parse_module(tokens: &mut Lexer) -> Result<ModuleDefinition, ParseError<Loc, anyhow::Error>> {
     consume_token(tokens, Tok::Module)?;
-    let name = parse_name(tokens)?;
+    let identifier = parse_module_ident(tokens)?;
     consume_token(tokens, Tok::LBrace)?;
 
-    let mut friends: Vec<ModuleIdent> = vec![];
+    let mut friends = vec![];
     while tokens.peek() == Tok::Friend {
         friends.push(parse_friend_decl(tokens)?);
     }
 
-    let mut imports: Vec<ImportDefinition> = vec![];
+    let mut imports = vec![];
     while tokens.peek() == Tok::Import {
         imports.push(parse_import_decl(tokens)?);
     }
@@ -2121,7 +2097,7 @@ fn parse_module(tokens: &mut Lexer) -> Result<ModuleDefinition, ParseError<Loc, 
     tokens.advance()?; // consume the RBrace
 
     Ok(ModuleDefinition::new(
-        name,
+        identifier,
         friends,
         imports,
         vec![],

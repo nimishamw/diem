@@ -23,13 +23,19 @@ const DEFAULT_TESTNET_IMAGE_TAG: &str = "devnet";
 pub struct K8sFactory {
     root_key: [u8; ED25519_PRIVATE_KEY_LENGTH],
     treasury_compliance_key: [u8; ED25519_PRIVATE_KEY_LENGTH],
+    cluster_name: String,
     helm_repo: String,
     image_tag: String,
     base_image_tag: String,
 }
 
 impl K8sFactory {
-    pub fn new(helm_repo: String, image_tag: String, base_image_tag: String) -> Result<K8sFactory> {
+    pub fn new(
+        cluster_name: String,
+        helm_repo: String,
+        image_tag: String,
+        base_image_tag: String,
+    ) -> Result<K8sFactory> {
         let vault_addr = env::var("VAULT_ADDR")
             .map_err(|_| format_err!("Expected environment variable VAULT_ADDR"))?;
         let vault_cacert = env::var("VAULT_CACERT")
@@ -68,6 +74,7 @@ impl K8sFactory {
         Ok(Self {
             root_key,
             treasury_compliance_key,
+            cluster_name,
             helm_repo,
             image_tag,
             base_image_tag,
@@ -77,7 +84,11 @@ impl K8sFactory {
 
 impl Factory for K8sFactory {
     fn versions<'a>(&'a self) -> Box<dyn Iterator<Item = Version> + 'a> {
-        Box::new(std::iter::once(Version::new(0, self.image_tag.clone())))
+        let version = vec![
+            Version::new(0, self.base_image_tag.clone()),
+            Version::new(1, self.image_tag.clone()),
+        ];
+        Box::new(version.into_iter())
     }
 
     fn launch_swarm(
@@ -86,18 +97,21 @@ impl Factory for K8sFactory {
         node_num: NonZeroUsize,
         version: &Version,
     ) -> Result<Box<dyn Swarm>> {
-        let _ = clean_k8s_cluster(
+        set_eks_nodegroup_size(self.cluster_name.clone(), node_num.get(), true)?;
+        uninstall_from_k8s_cluster()?;
+        clean_k8s_cluster(
             self.helm_repo.clone(),
             node_num.get(),
             format!("{}", version),
             DEFAULT_TESTNET_IMAGE_TAG.to_string(),
             true,
-        );
+        )?;
         let rt = Runtime::new().unwrap();
         let swarm = rt
             .block_on(K8sSwarm::new(
                 &self.root_key,
                 &self.treasury_compliance_key,
+                &self.cluster_name,
                 &self.helm_repo,
                 &self.image_tag,
                 &self.base_image_tag,
